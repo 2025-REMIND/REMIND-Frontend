@@ -1,4 +1,5 @@
 import * as S from "./Rimi.style";
+import RIMI from "../../../assets/home/rimi/rimi.svg";
 
 export default function Rimi() {
     return (
@@ -10,6 +11,11 @@ export default function Rimi() {
                 서로의 마음을 다시 마주보고, 조금은 잊고 지냈던 감정을 되살려보는 시간,
                 지금 'RIMI'와 함께 시작해 보세요.
             `}</S.SubTitle>
+            <S.Chatting>
+                <S.Question>RIMI와 대화를 시작해 보세요</S.Question>
+                <S.Answer>대화하기</S.Answer>
+            </S.Chatting>
+            <S.Image src = { RIMI } />
         </S.RimiLayout>
     )
 }

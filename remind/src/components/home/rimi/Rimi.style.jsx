@@ -23,3 +23,40 @@ export const SubTitle = styled.div`
     color: #9D8C84;
     white-space: pre-line;
 `
+
+export const Chatting = styled.div`
+    display: flex;
+    margin-top: 4.37vw;
+    gap: 1.56vw;
+`
+
+export const Question = styled.div`
+    display: flex;
+    align-items: center;
+    padding-left: 3.85vw;
+    border:0.05vw solid #D7749B;
+    border-radius: 5.20vw;
+    width: 60.36vw;
+    height: 9.37vw;
+    color: #878787;
+    font-size: 2.60vw;
+`
+
+export const Answer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D7749B;
+    border:0.05vw solid #D7749B;
+    border-radius: 5.20vw;
+    width: 17.18vw;
+    height: 9.37vw;
+    color: #FFFAF8;
+    font-size: 2.60vw;
+`
+
+export const Image = styled.img`
+    width: 27.60vw;
+    height: 27.60vw;
+    margin-top: 4.68vw;
+`
