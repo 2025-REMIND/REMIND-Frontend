@@ -6,6 +6,7 @@ export const RecordLayout = styled.div`
     align-items: center;
     width: 100vw;
     height: 63.75vw;
+    overflow-x: hidden;
 `
 
 export const Title = styled.div`
@@ -35,7 +36,6 @@ export const Plus = styled.div`
 export const ItemWrapper = styled.div`
   overflow-x: auto;
   width: 100vw;
-  padding-left: 4vw;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
 
@@ -47,6 +47,7 @@ export const ItemWrapper = styled.div`
 export const Items = styled.div`
   display: flex;
   gap: 2vw;
+  margin-left: calc((100vw - (34.68vw * 2 + 2vw)) / 2); 
 `;
 
 export const Item = styled.div`
@@ -56,6 +57,7 @@ export const Item = styled.div`
     width: 34.68vw;
     height: 41.87vw;
     background-color: #F6BFCF;
+    scroll-snap-align: center;
 `
 
 export const ItemLayout = styled.div`
