@@ -34,20 +34,21 @@ export const Plus = styled.div`
 `
 
 export const ItemWrapper = styled.div`
-  overflow-x: auto;
-  width: 100vw;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    width: 100vw;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
+    &::-webkit-scrollbar {
+        display: none;
+    }
 `;
 
 export const Items = styled.div`
-  display: flex;
-  gap: 2vw;
-  margin-left: calc((100vw - (34.68vw * 2 + 2vw)) / 2); 
+    display: flex;
+    gap: 3.12vw;
 `;
 
 export const Item = styled.div`
@@ -57,7 +58,7 @@ export const Item = styled.div`
     width: 34.68vw;
     height: 41.87vw;
     background-color: #F6BFCF;
-    scroll-snap-align: center;
+    /* scroll-snap-align: center; */
 `
 
 export const ItemLayout = styled.div`

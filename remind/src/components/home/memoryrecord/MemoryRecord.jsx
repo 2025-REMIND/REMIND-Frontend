@@ -1,9 +1,30 @@
 import * as S from "./MemoryRecord.style";
 import ARCHIVE from "../../../assets/home/memoryrecord/archive.svg";
+import { useEffect, useRef } from "react";
 
 export default function MemoryRecord() {
     // const memoryList = response.data.memories;
     const memoryList = [1, 2, 3, 4];
+
+    const mainRef = useRef(null);
+
+    useEffect(() => {
+        if (mainRef.current) {
+            const itemWidth = 34.68;
+            const gap = 3.1;
+            const vw = window.innerWidth / 100;
+
+            const itemAllWidth = (itemWidth + gap) * vw;
+            const gapCenter = (gap * vw) / 2;
+
+            const myMain = itemAllWidth * 2 - gapCenter;
+
+            const center = window.innerWidth / 2;
+            const scroll = myMain - center;
+
+            mainRef.current.scrollLeft = scroll;
+        }
+    }, []);
 
     return (
         <S.RecordLayout>
@@ -13,7 +34,7 @@ export default function MemoryRecord() {
             </S.SubTitle>
             <S.Plus>더보기 ＞</S.Plus>
 
-            <S.ItemWrapper>
+            <S.ItemWrapper ref = { mainRef }>
                 <S.Items>
                     { memoryList.map((_, i) => (
                         <S.Item key = { i }>
