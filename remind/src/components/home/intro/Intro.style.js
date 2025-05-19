@@ -27,3 +27,11 @@ export const Comment = styled.div`
     color: #FFFFFF;
     white-space: pre-line;
 `
+
+export const Heart = styled.img`
+    position: absolute;
+    top: ${ ({ top }) => top };
+    left: ${ ({ left }) => left };
+    width: 2.60vw;
+    height: 2.60vw;
+`

@@ -1,8 +1,15 @@
 import * as S from "./Intro.style";
+import HEART from "../../../assets/home/intro/heart.svg";
 
 export default function Intro() {
     return(
         <S.IntroLayout>
+            <S.Heart src = { HEART } top = "3.95vw" left = "17.65vw" />
+            <S.Heart src = { HEART } top = "17.86vw" left = "7.44vw" />
+            <S.Heart src = { HEART } top = "26.97vw" left = "17.76vw" />
+            <S.Heart src = { HEART } top = "3.33vw" left = "82.34vw" />
+            <S.Heart src = { HEART } top = "16.92vw" left = "92.55vw" />
+            <S.Heart src = { HEART } top = "26.35vw" left = "82.23vw" />
             <S.Title>요즘, 우리 잘 지내고 있는 걸까?</S.Title>
             <S.Comment>{`
                 가끔은 무심코 지나친 기억이,
