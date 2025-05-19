@@ -1,5 +1,6 @@
 import Header from "./components/home/header/Header";
 import Intro from "./components/home/intro/Intro";
+import PlanArchive from "./components/home/planarchive/PlanArchive";
 import GlobalStyle from "./styles/globalStyles";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       <GlobalStyle />
       <Header />
       <Intro />
+      <PlanArchive />
     </>
   );
 }
