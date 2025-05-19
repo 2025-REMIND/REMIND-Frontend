@@ -1,6 +1,7 @@
 import * as S from "./MemoryRecord.style";
 import HOME from "../../assets/memoryrecord/remind.svg";
 import RECORD from "../../assets/memoryrecord/memory.svg";
+import BASIC_PLUS from "../../assets/memoryrecord/basic-plusimage.svg";
 
 export default function MemoryRecord() {
     return (
@@ -14,6 +15,12 @@ export default function MemoryRecord() {
                     <S.Title>기억을 기록해요</S.Title>
                     <S.SubTitle>그날의 온도와 마음을 여기에 남겨보세요.</S.SubTitle>
                 </S.Text>
+                <S.Memory>
+                    <S.ImageBox>
+                        <S.BasicPlusImage src = { BASIC_PLUS } />
+                        사진을 첨부해 주세요
+                    </S.ImageBox>  
+                </S.Memory>
             </S.Content> 
         </S.RecordLayout>
     )

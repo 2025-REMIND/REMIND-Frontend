@@ -59,3 +59,33 @@ export const SubTitle = styled.div`
     font-size: 1.30vw;
     line-height: 140%;
 `
+
+export const Memory = styled.div`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.82vw;
+`
+
+export const ImageBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 36.45vw;
+    height: 18.22vw;
+    gap: 1.04vw;
+    background-color: #FFFAF8;
+    border: 0.05vw solid #D7749B;
+    border-radius: 1.56vw;
+    color: #D7749B;
+    font-size: 2.08vw;
+    /* margin-left: 31.82vw; */
+`
+
+export const BasicPlusImage = styled.img`
+    width: 5.20vw;
+    height: 5.20vw;
+`
