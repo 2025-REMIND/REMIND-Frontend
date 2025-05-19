@@ -1,13 +1,11 @@
-import MemoryRecord from "./components/memoryrecord/MemoryRecord";
-import MainHome from "./pages/MainHome";
+import MainHomePage from "./pages/MainHomePage";
 import GlobalStyle from "./styles/globalStyles";
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <MainHome />
-      <MemoryRecord />
+      <MainHomePage />
     </>
   );
 }
