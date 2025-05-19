@@ -22,3 +22,11 @@ export const Logo = styled.img`
     width: 14.06vw;
     height: 2.34vw;
 `
+
+export const RecordImage = styled.img`
+    position: absolute;
+    width: 100vw;
+    height: 52.29vw;
+    top: 3.95vw;
+    z-index: -1;
+`
