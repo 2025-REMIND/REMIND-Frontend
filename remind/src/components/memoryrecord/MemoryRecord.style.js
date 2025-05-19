@@ -30,3 +30,32 @@ export const RecordImage = styled.img`
     top: 3.95vw;
     z-index: -1;
 `
+
+export const Content = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`
+
+export const Text = styled.div`
+`
+
+export const Title = styled.div`
+    display: flex;
+    margin-top: 6.25vw;
+    margin-left: 5.52vw;
+    color: #D7749B;
+    font-weight: 700;
+    font-size: 3.12vw;
+    line-height: 140%;
+`
+
+export const SubTitle = styled.div`
+    display: flex;
+    margin-left: 5vw;
+    color: #FFFAF8;
+    font-size: 1.30vw;
+    line-height: 140%;
+`
