@@ -120,3 +120,21 @@ export const SongBox = styled.div`
     font-size: 1.56vw;
     margin: 0 auto;
 `
+
+export const SaveBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    width: 15.20vw;
+    height: 5.20vw;
+    background-color: #FFFAF8;
+    color: #D7749B;
+    font-size: 2.08vw;
+    font-weight: 600;
+    border: 0.05vw solid #D7749B;
+    border-radius: 1.56vw;
+    position: absolute;
+    top: 47.80vw;
+    right: 3.75vw;
+`

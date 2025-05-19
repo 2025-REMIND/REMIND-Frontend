@@ -27,6 +27,9 @@ export default function MemoryRecord() {
                         이때 들었던 노래나, 생각나는 노래가 있으면 입력해 주세요.
                     </S.SongBox> 
                 </S.Memory>
+                <S.SaveBox>
+                    저장하기
+                </S.SaveBox>
             </S.Content> 
         </S.RecordLayout>
     )
