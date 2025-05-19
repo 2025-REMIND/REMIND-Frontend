@@ -20,6 +20,9 @@ export default function MemoryRecord() {
                         <S.BasicPlusImage src = { BASIC_PLUS } />
                         사진을 첨부해 주세요
                     </S.ImageBox>  
+                    <S.CommentBox>
+                        이때 어떤 일이 있었는지, 지금은 어땠는지 자유롭게 남겨보세요.    
+                    </S.CommentBox>
                 </S.Memory>
             </S.Content> 
         </S.RecordLayout>
