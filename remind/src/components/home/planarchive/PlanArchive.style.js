@@ -54,7 +54,15 @@ export const ArchiveBox = styled.div`
     height: 26.04vw;
     margin-top: 1.04vw;
     border-radius: 1.56vw;
-    background-color: #F6BFCF;
+
+    background-color: ${({ status }) => {
+        if (status === "ing" || status === "detail") return "#F6BFCF";
+        else if (status === "x") return "#FFFAF8";
+    }};
+
+    border: ${({ status }) => {
+        if (status === "x") return "0.05vw solid #D7749B";
+    }};
 `
 
 export const Archive = styled.div`
@@ -83,7 +91,10 @@ export const Date = styled.div`
 export const Name = styled.div`
     font-weight: 700;
     font-size: 2.60vw;
-    color: #FFFAF8;
+    color: ${({ status }) => {
+        if (status === "ing" || status === "detail") return "#FFFAF8";
+        else if (status === "x") return "#D7749B";
+    }};
     margin-bottom: 1.25vw;
     white-space: nowrap;
     overflow: hidden; 
@@ -93,7 +104,10 @@ export const Name = styled.div`
 export const Comment = styled.div`
     font-weight: 400;
     font-size: 2.08vw;
-    color: #FFFAF8;
+    color: ${({ status }) => {
+        if (status === "ing" || status === "detail") return "#FFFAF8";
+        else if (status === "x") return "#D7749B";
+    }};
     line-height: 140%;
     white-space: pre-line;
 `
