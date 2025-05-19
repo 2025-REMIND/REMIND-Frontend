@@ -23,6 +23,9 @@ export default function MemoryRecord() {
                     <S.CommentBox>
                         이때 어떤 일이 있었는지, 지금은 어땠는지 자유롭게 남겨보세요.    
                     </S.CommentBox>
+                    <S.SongBox>
+                        이때 들었던 노래나, 생각나는 노래가 있으면 입력해 주세요.
+                    </S.SongBox> 
                 </S.Memory>
             </S.Content> 
         </S.RecordLayout>

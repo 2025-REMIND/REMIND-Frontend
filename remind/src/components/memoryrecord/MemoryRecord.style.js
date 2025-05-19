@@ -104,3 +104,19 @@ export const CommentBox = styled.div`
     font-weight: 200;
     font-size: 1.56vw;
 `
+
+export const SongBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    width: 48.33vw;
+    height: 5.20vw;
+    background-color: #FFFAF8;
+    border: 0.05vw solid #D7749B;
+    border-radius: 1.56vw;
+    color: #878787;
+    font-weight: 200;
+    font-size: 1.56vw;
+    margin: 0 auto;
+`
