@@ -41,3 +41,69 @@ export const IconDetail = styled.div`
     font-size: 1.30vw;
     color: #9D8C84;
 `
+
+export const ArchiveBox = styled.div`
+    position: relative;
+    width: 31.25vw;
+    height: 26.04vw;
+    margin-top: 1.04vw;
+    border-radius: 1.56vw;
+    background-color: #F6BFCF;
+`
+
+export const Archive = styled.div`
+    margin-left: 2.08vw;
+    margin-right: 2.08vw;
+`
+
+export const Info = styled.div`
+    display: flex;
+    margin-top: 2.39vw;
+    margin-bottom: 1.56vw;
+    gap: 1.14vw;
+`
+
+export const Icon = styled.img`
+    width: 2.76vw;
+    height: 2.76vw;
+`
+
+export const Date = styled.div`
+    display: flex;
+    align-items: center;
+    color: #d7749b;
+`
+
+export const Name = styled.div`
+    font-weight: 700;
+    font-size: 2.60vw;
+    color: #FFFAF8;
+    margin-bottom: 1.25vw;
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+`
+
+export const Comment = styled.div`
+    font-weight: 400;
+    font-size: 2.08vw;
+    color: #FFFAF8;
+    line-height: 140%;
+    white-space: pre-line;
+`
+
+export const Status = styled.div`
+    position: absolute;
+    bottom: 2.08vw;
+    right: 2.08vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFAF8;
+    border: 0.05vw solid #D7749B;
+    border-radius: 0.75vw;
+    color: #D7749B;
+    font-size: 1.56vw;
+    width: 8.85vw;
+    height: 4.16vw;
+`
