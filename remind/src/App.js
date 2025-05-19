@@ -1,4 +1,5 @@
 import Header from "./components/home/header/Header";
+import Intro from "./components/home/intro/Intro";
 import GlobalStyle from "./styles/globalStyles";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <>
       <GlobalStyle />
       <Header />
+      <Intro />
     </>
   );
 }
