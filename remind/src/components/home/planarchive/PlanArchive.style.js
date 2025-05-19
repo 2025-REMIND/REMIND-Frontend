@@ -42,6 +42,12 @@ export const IconDetail = styled.div`
     color: #9D8C84;
 `
 
+export const ArchiveWrapper = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.60vw
+`
+
 export const ArchiveBox = styled.div`
     position: relative;
     width: 31.25vw;
