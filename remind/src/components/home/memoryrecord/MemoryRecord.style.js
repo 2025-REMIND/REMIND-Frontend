@@ -32,6 +32,23 @@ export const Plus = styled.div`
     margin-right: 4.32vw;
 `
 
+export const ItemWrapper = styled.div`
+  overflow-x: auto;
+  width: 100vw;
+  padding-left: 4vw;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+export const Items = styled.div`
+  display: flex;
+  gap: 2vw;
+`;
+
 export const Item = styled.div`
     display: flex;
     flex-direction: column;
