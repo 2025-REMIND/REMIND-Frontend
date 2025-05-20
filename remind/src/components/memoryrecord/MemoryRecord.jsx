@@ -4,6 +4,7 @@ import RECORD from "../../assets/memoryrecord/memory.svg";
 import BASIC_PLUS from "../../assets/memoryrecord/basic-plusimage.svg";
 import UPLOADING_PLUS from "../../assets/memoryrecord/uploading-plusimage.svg";
 import React, { useCallback, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function MemoryRecord() {
     const [isUploading, setIsUploading] = useState(false);
@@ -12,6 +13,12 @@ export default function MemoryRecord() {
     const [comment, setComment] = useState("이때 어떤 일이 있었는지, 지금은 어땠는지 자유롭게 남겨보세요.");
     const [song, setSong] = useState("이때 들었던 노래나, 생각나는 노래가 있으면 입력해 주세요.");
     
+    const navigate = useNavigate();
+
+    const logoClick = () => {
+        navigate(`/home`);
+    }
+
     const onUploadImage = useCallback((e) => {
         setIsUploading(false);
         if (!e.target.files || e.target.files.length === 0) return;
@@ -36,7 +43,7 @@ export default function MemoryRecord() {
     return (
         <S.RecordLayout>
             {isUploading && <S.BlurOverlay />}
-            <S.LogoBox>
+            <S.LogoBox onClick = { () => logoClick() }>
                 <S.Logo src = { HOME } />
             </S.LogoBox>   
             <S.RecordImage src = { RECORD } /> 

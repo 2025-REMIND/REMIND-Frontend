@@ -10,7 +10,8 @@ export const BlurOverlay = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 999;
+    z-index: 1000;
+    cursor: pointer;
     width: 100%;
     height: 100%;
     backdrop-filter: blur(0.52vw);
@@ -28,6 +29,7 @@ export const LogoBox = styled.div`
     right: 3.54vw;
     border-radius: 0vw 0vw 2.08vw 2.08vw;
     background-color: #D7749B;
+    z-index: 10;
 `
 
 export const Logo = styled.img`

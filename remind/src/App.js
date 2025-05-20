@@ -9,6 +9,7 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route path = "/" element = { <MainHomePage /> } />
+        <Route path = "/home" element = { <MainHomePage /> } />
         <Route path = "/memoryrecord" element = { <MemoryRecordPage /> } />
       </Routes>
     </Router>
