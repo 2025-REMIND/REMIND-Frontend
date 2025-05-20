@@ -1,6 +1,7 @@
 import * as S from "./MemoryRecord.style";
 import ARCHIVE from "../../../assets/home/memoryrecord/archive.svg";
 import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function MemoryRecord() {
     // const memoryList = response.data.memories;
@@ -26,6 +27,12 @@ export default function MemoryRecord() {
         }
     }, []);
 
+    const navigate = useNavigate();
+    
+    const handleClick = () => {
+        navigate(`/memoryrecord`);
+    }
+
     return (
         <S.RecordLayout>
             <S.Title>기억 기록하기</S.Title>
@@ -37,7 +44,7 @@ export default function MemoryRecord() {
             <S.ItemWrapper ref = { mainRef }>
                 <S.Items>
                     { memoryList.map((_, i) => (
-                        <S.Item key = { i }>
+                        <S.Item key = { i } onClick = { () => handleClick() }>
                             <S.ItemLayout>
                                 <S.Name>오늘, 문득 떠오른 생각</S.Name>
                                 <S.Detail>{`
@@ -46,7 +53,7 @@ export default function MemoryRecord() {
                                 RE:MIND에 기록해 보아요
                                 `}</S.Detail>
                                 <S.Image src = { ARCHIVE } />
-                            <   S.Detail>2025. 03. 13.</S.Detail>
+                                <S.Detail>2025. 03. 13.</S.Detail>
                             </S.ItemLayout>
                         </S.Item>
                     ))}

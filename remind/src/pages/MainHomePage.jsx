@@ -5,7 +5,7 @@ import TodayPlan from "../components/home/todayplan/TodayPlan";
 import MemoryRecord from "../components/home/memoryrecord/MemoryRecord";
 import Rimi from "../components/home/rimi/Rimi";
 
-export default function MainHome() {
+export default function MainHomePage() {
     return (
         <>
             <Header />
