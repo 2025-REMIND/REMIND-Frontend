@@ -120,8 +120,8 @@ export const SaveBox = styled.div`
     right: 3.75vw;
 
     &:active {
-        background-color: #D7749B; /* 클릭 시 배경 */
-        color: #FFFAF8;            /* 클릭 시 글자색 반전 */
+        background-color: #D7749B; 
+        color: #FFFAF8; 
     }
 `
 

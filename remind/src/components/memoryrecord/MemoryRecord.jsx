@@ -9,12 +9,14 @@ import { useNavigate } from "react-router-dom";
 export default function MemoryRecord() {
     const [isUploading, setIsUploading] = useState(false);
     const inputRef = useRef(null);
-
-    const [comment, setComment] = useState("이때 어떤 일이 있었는지, 지금은 어땠는지 자유롭게 남겨보세요.");
-    const [song, setSong] = useState("이때 들었던 노래나, 생각나는 노래가 있으면 입력해 주세요.");
-    
     const navigate = useNavigate();
 
+    const [formData, setFormData] = useState({
+        comment: "",
+        song: "",
+        images: [],
+    });
+    
     const logoClick = () => {
         navigate(`/home`);
     }
@@ -22,7 +24,12 @@ export default function MemoryRecord() {
     const onUploadImage = useCallback((e) => {
         setIsUploading(false);
         if (!e.target.files || e.target.files.length === 0) return;
-        // const file = e.target.files[0];
+        
+        const files = Array.from(e.target.files);
+        setFormData(prev => ({
+            ...prev,
+            images: [...prev.images, ...files],
+        }))
     }, []);
 
     const onUploadImageButtonClick = useCallback(() => {
@@ -39,11 +46,22 @@ export default function MemoryRecord() {
 
         window.addEventListener("focus", handleFocusBack);
     }, []);
+
+    const Save = () => {
+        const { comment, song, images } = formData;
+
+        const form = new FormData();
+        form.append("comment", comment);
+        form.append("song", song);
+        images.forEach(file => {
+            form.append("images", file);
+        });
+    }
     
     return (
         <S.RecordLayout>
             {isUploading && <S.BlurOverlay />}
-            <S.LogoBox onClick = { () => logoClick() }>
+            <S.LogoBox onClick = { logoClick }>
                 <S.Logo src = { HOME } />
             </S.LogoBox>   
             <S.RecordImage src = { RECORD } /> 
@@ -52,26 +70,45 @@ export default function MemoryRecord() {
                 <S.SubTitle>그날의 온도와 마음을 여기에 남겨보세요.</S.SubTitle>
                 <S.Memory>
                     <S.ImageBox $status = { isUploading }>
-                        <S.BasicPlusImage src = { isUploading ? UPLOADING_PLUS : BASIC_PLUS } onClick = { onUploadImageButtonClick } />
+                        <S.BasicPlusImage 
+                            src = { isUploading ? UPLOADING_PLUS : BASIC_PLUS } 
+                            onClick = { onUploadImageButtonClick } 
+                        />
                         사진을 첨부해 주세요
-                        <input type = "file" accept = "image/*" ref = { inputRef } onChange = { onUploadImage } style = {{ display: "none" }} />
+                        <input 
+                            type = "file" 
+                            accept = "image/*" 
+                            ref = { inputRef } 
+                            onChange = { onUploadImage } 
+                            style = {{ display: "none" }} 
+                        />
                     </S.ImageBox>  
                     <S.CommentBox>
                         <S.CommentText
-                            value = { comment }
-                            onChange = { (e) => setComment(e.target.value) }
+                            value = { formData.comment }
+                            onChange = { (e) => 
+                                setFormData((prev) => ({
+                                    ...prev,
+                                    comment: e.target.value,
+                                })) 
+                            }
+                            placeholder = "이때 어떤 일이 있었는지, 지금은 어땠는지 자유롭게 남겨보세요."
                         />
                     </S.CommentBox>
                     <S.SongBox>
                         <S.SongText
-                            value = { song }
-                            onChange = { (e) => setSong(e.target.value) }
+                            value = { formData.song }
+                            onChange = { (e) => 
+                                setFormData((prev) => ({
+                                    ...prev,
+                                    song: e.target.value,
+                                }))
+                            }
+                            placeholder = "이때때 들었던 노래나, 생각나는 노래가 있으면 입력해 주세요."
                         />
                     </S.SongBox>
                 </S.Memory>
-                <S.SaveBox>
-                    저장하기
-                </S.SaveBox>
+                <S.SaveBox onClick = { Save }>저장하기</S.SaveBox>
             </S.Content> 
         </S.RecordLayout>
     )
