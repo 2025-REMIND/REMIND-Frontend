@@ -77,12 +77,13 @@ export const ImageBox = styled.div`
     width: 36.45vw;
     height: 18.22vw;
     gap: 1.04vw;
-    background-color: #FFFAF8;
+    background-color:${({ $status }) => (
+        $status ? "#D7749B" : "#FFFAF8")};
     border: 0.05vw solid #D7749B;
     border-radius: 1.56vw;
-    color: #D7749B;
+    color:${({ $status }) => (
+        $status ? "#FFFAF8" : "#D7749B")};
     font-size: 2.08vw;
-    /* margin-left: 31.82vw; */
 `
 
 export const BasicPlusImage = styled.img`

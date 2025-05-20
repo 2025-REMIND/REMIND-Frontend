@@ -2,19 +2,32 @@ import * as S from "./MemoryRecord.style";
 import HOME from "../../assets/memoryrecord/remind.svg";
 import RECORD from "../../assets/memoryrecord/memory.svg";
 import BASIC_PLUS from "../../assets/memoryrecord/basic-plusimage.svg";
-import React, { useCallback, useRef } from "react";
+import UPLOADING_PLUS from "../../assets/memoryrecord/uploading-plusimage.svg";
+import React, { useCallback, useRef, useState } from "react";
 
 export default function MemoryRecord() {
+    const [isUploading, setIsUploading] = useState(false);
     const inputRef = useRef(null);
 
     const onUploadImage = useCallback((e) => {
+        setIsUploading(false);
         if (!e.target.files || e.target.files.length === 0) return;
-        const file = e.target.files[0];
+        // const file = e.target.files[0];
     }, []);
 
     const onUploadImageButtonClick = useCallback(() => {
+        setIsUploading(true);
+
         if (!inputRef.current) return;
+        inputRef.current.value = "";
         inputRef.current.click();
+
+        const handleFocusBack = () => {
+            setIsUploading(false);
+            window.removeEventListener("focus", handleFocusBack);
+        };
+
+        window.addEventListener("focus", handleFocusBack);
     }, []);
     
     return (
@@ -29,8 +42,8 @@ export default function MemoryRecord() {
                     <S.SubTitle>그날의 온도와 마음을 여기에 남겨보세요.</S.SubTitle>
                 </S.Text>
                 <S.Memory>
-                    <S.ImageBox>
-                        <S.BasicPlusImage src = { BASIC_PLUS } onClick = { onUploadImageButtonClick } />
+                    <S.ImageBox $status = { isUploading }>
+                        <S.BasicPlusImage src = { isUploading ? UPLOADING_PLUS : BASIC_PLUS } onClick = { onUploadImageButtonClick } />
                         사진을 첨부해 주세요
                         <input type = "file" accept = "image/*" ref = { inputRef } onChange = { onUploadImage } style = {{ display: "none" }} />
                     </S.ImageBox>  
