@@ -9,6 +9,9 @@ export default function MemoryRecord() {
     const [isUploading, setIsUploading] = useState(false);
     const inputRef = useRef(null);
 
+    const [comment, setComment] = useState("이때 어떤 일이 있었는지, 지금은 어땠는지 자유롭게 남겨보세요.");
+    const [song, setSong] = useState("이때 들었던 노래나, 생각나는 노래가 있으면 입력해 주세요.");
+    
     const onUploadImage = useCallback((e) => {
         setIsUploading(false);
         if (!e.target.files || e.target.files.length === 0) return;
@@ -47,11 +50,17 @@ export default function MemoryRecord() {
                         <input type = "file" accept = "image/*" ref = { inputRef } onChange = { onUploadImage } style = {{ display: "none" }} />
                     </S.ImageBox>  
                     <S.CommentBox>
-                        <S.Comment>이때 어떤 일이 있었는지, 지금은 어땠는지 자유롭게 남겨보세요.</S.Comment>   
+                        <S.CommentText
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+                        />
                     </S.CommentBox>
                     <S.SongBox>
-                        <S.Song>이때 들었던 노래나, 생각나는 노래가 있으면 입력해 주세요.</S.Song>
-                    </S.SongBox> 
+                        <S.SongText
+                            value={song}
+                            onChange={(e) => setSong(e.target.value)}
+                        />
+                    </S.SongBox>
                 </S.Memory>
                 <S.SaveBox>
                     저장하기

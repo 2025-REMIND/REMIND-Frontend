@@ -100,46 +100,6 @@ export const BasicPlusImage = styled.img`
     height: 5.20vw;
 `
 
-export const CommentBox = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 48.33vw;
-    height: 10.41vw;
-    background-color: #FFFAF8;
-    border: 0.05vw solid #D7749B;
-    border-radius: 1.56vw;
-`
-
-export const Comment = styled.div`
-    color: #878787;
-    font-weight: 200;
-    font-size: 1.56vw;
-    margin-top: 1.92vw;
-    margin-left: 3.12vw;
-`
-
-export const SongBox = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 48.33vw;
-    height: 5.20vw;
-    background-color: #FFFAF8;
-    border: 0.05vw solid #D7749B;
-    border-radius: 1.56vw;
-    color: #878787;
-    font-weight: 200;
-    font-size: 1.56vw;
-    margin: 0 auto;
-`
-
-export const Song = styled.div`
-    color: #878787;
-    font-weight: 200;
-    font-size: 1.56vw;
-    margin-top: 1.61vw;
-    margin-left: 3.12vw;
-`
-
 export const SaveBox = styled.div`
     display: flex;
     flex-direction: column;
@@ -157,3 +117,63 @@ export const SaveBox = styled.div`
     top: 47.80vw;
     right: 3.75vw;
 `
+
+export const CommentBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  width: 48.33vw;
+  height: 10.41vw;
+  background-color: #fffaF8;
+  border: 0.05vw solid #d7749b;
+  border-radius: 1.56vw;
+  color: #878787;
+  font-weight: 200;
+  font-size: 1.56vw;
+`;
+
+export const SongBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* text-align: center;
+  justify-content: center; */
+  width: 48.33vw;
+  height: 5.20vw;
+  background-color: #fffaF8;
+  border: 0.05vw solid #d7749b;
+  border-radius: 1.56vw;
+  color: #878787;
+  font-weight: 200;
+  font-size: 1.56vw;
+  margin: 0 auto;
+`;
+
+export const CommentText = styled.textarea`
+  width: 100%;
+  height: 100%;
+margin-top: 1.92vw;
+margin-left: 3.12vw;
+  border: none;
+  resize: none;
+  background: transparent;
+  outline: none;
+  font-size: 1.56vw;
+  font-weight: 200;
+  font-family: inherit;
+  color: #878787;
+`;
+
+export const SongText = styled.textarea`
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 1.56vw;
+  font-weight: 200;
+  font-family: inherit;
+  color: #878787;
+    margin-top: 1.61vw;
+    margin-left: 3.12vw;
+`;
