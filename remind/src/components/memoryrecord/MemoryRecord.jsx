@@ -51,14 +51,14 @@ export default function MemoryRecord() {
                     </S.ImageBox>  
                     <S.CommentBox>
                         <S.CommentText
-                            value={comment}
-                            onChange={(e) => setComment(e.target.value)}
+                            value = { comment }
+                            onChange = { (e) => setComment(e.target.value) }
                         />
                     </S.CommentBox>
                     <S.SongBox>
                         <S.SongText
-                            value={song}
-                            onChange={(e) => setSong(e.target.value)}
+                            value = { song }
+                            onChange = { (e) => setSong(e.target.value) }
                         />
                     </S.SongBox>
                 </S.Memory>
