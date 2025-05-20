@@ -95,6 +95,7 @@ export const ImageBox = styled.div`
     color:${({ $status }) => (
         $status ? "#FFFAF8" : "#D7749B")};
     font-size: 2.08vw;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `
 
 export const BasicPlusImage = styled.img`
@@ -118,6 +119,7 @@ export const SaveBox = styled.div`
     position: absolute;
     top: 47.80vw;
     right: 3.75vw;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
     &:active {
         background-color: #D7749B; 
@@ -138,6 +140,7 @@ export const CommentBox = styled.div`
     color: #878787;
     font-weight: 200;
     font-size: 1.56vw;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `;
 
 export const SongBox = styled.div`
@@ -152,6 +155,7 @@ export const SongBox = styled.div`
     font-weight: 200;
     font-size: 1.56vw;
     margin: 0 auto;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `;
 
 export const CommentText = styled.textarea`
