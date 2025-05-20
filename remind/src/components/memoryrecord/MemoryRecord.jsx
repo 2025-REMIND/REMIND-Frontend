@@ -2,8 +2,21 @@ import * as S from "./MemoryRecord.style";
 import HOME from "../../assets/memoryrecord/remind.svg";
 import RECORD from "../../assets/memoryrecord/memory.svg";
 import BASIC_PLUS from "../../assets/memoryrecord/basic-plusimage.svg";
+import React, { useCallback, useRef } from "react";
 
 export default function MemoryRecord() {
+    const inputRef = useRef(null);
+
+    const onUploadImage = useCallback((e) => {
+        if (!e.target.files || e.target.files.length === 0) return;
+        const file = e.target.files[0];
+    }, []);
+
+    const onUploadImageButtonClick = useCallback(() => {
+        if (!inputRef.current) return;
+        inputRef.current.click();
+    }, []);
+    
     return (
         <S.RecordLayout>
             <S.LogoBox>
@@ -17,8 +30,9 @@ export default function MemoryRecord() {
                 </S.Text>
                 <S.Memory>
                     <S.ImageBox>
-                        <S.BasicPlusImage src = { BASIC_PLUS } />
+                        <S.BasicPlusImage src = { BASIC_PLUS } onClick = { onUploadImageButtonClick } />
                         사진을 첨부해 주세요
+                        <input type = "file" accept = "image/*" ref = { inputRef } onChange = { onUploadImage } style = {{ display: "none" }} />
                     </S.ImageBox>  
                     <S.CommentBox>
                         이때 어떤 일이 있었는지, 지금은 어땠는지 자유롭게 남겨보세요.    
