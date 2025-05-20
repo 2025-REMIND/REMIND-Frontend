@@ -40,6 +40,7 @@ export const ItemWrapper = styled.div`
     width: 100vw;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
     &::-webkit-scrollbar {
         display: none;
@@ -58,7 +59,6 @@ export const Item = styled.div`
     width: 34.68vw;
     height: 41.87vw;
     background-color: #F6BFCF;
-    /* scroll-snap-align: center; */
 `
 
 export const ItemLayout = styled.div`
@@ -83,4 +83,5 @@ export const Image = styled.img`
     height: 13.54vw;
     margin-top: 2.65vw;
     margin-bottom: 2.65vw;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `

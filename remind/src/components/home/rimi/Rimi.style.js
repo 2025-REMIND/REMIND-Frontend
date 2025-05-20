@@ -59,4 +59,5 @@ export const Image = styled.img`
     width: 27.60vw;
     height: 27.60vw;
     margin-top: 4.68vw;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `

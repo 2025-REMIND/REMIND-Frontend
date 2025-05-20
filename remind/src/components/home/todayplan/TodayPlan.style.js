@@ -45,10 +45,12 @@ export const CheckBox = styled.div`
     color: #D7749B;
     font-weight: 700;
     font-size: 2.08vw;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `
 
 export const Image = styled.img`
     width: 31.14vw;
     height: 31.14vw;
     align-self: flex-end;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `
