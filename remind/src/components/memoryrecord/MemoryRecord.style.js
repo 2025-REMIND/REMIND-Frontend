@@ -46,11 +46,11 @@ export const RecordImage = styled.img`
 `
 
 export const Content = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 `
 
 export const Title = styled.div`
@@ -118,6 +118,11 @@ export const SaveBox = styled.div`
     position: absolute;
     top: 47.80vw;
     right: 3.75vw;
+
+    &:active {
+        background-color: #D7749B; /* 클릭 시 배경 */
+        color: #FFFAF8;            /* 클릭 시 글자색 반전 */
+    }
 `
 
 export const CommentBox = styled.div`
