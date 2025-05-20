@@ -6,6 +6,18 @@ export const RecordLayout = styled.div`
     height: 56.25vw;
 `
 
+export const BlurOverlay = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(0.52vw);
+    background-color: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+`;
+
 export const LogoBox = styled.div`
     position: absolute;
     display: flex;
@@ -37,9 +49,6 @@ export const Content = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-`
-
-export const Text = styled.div`
 `
 
 export const Title = styled.div`
@@ -94,23 +103,24 @@ export const BasicPlusImage = styled.img`
 export const CommentBox = styled.div`
     display: flex;
     flex-direction: column;
-    text-align: center;
-    justify-content: center;
     width: 48.33vw;
     height: 10.41vw;
     background-color: #FFFAF8;
     border: 0.05vw solid #D7749B;
     border-radius: 1.56vw;
+`
+
+export const Comment = styled.div`
     color: #878787;
     font-weight: 200;
     font-size: 1.56vw;
+    margin-top: 1.92vw;
+    margin-left: 3.12vw;
 `
 
 export const SongBox = styled.div`
     display: flex;
     flex-direction: column;
-    text-align: center;
-    justify-content: center;
     width: 48.33vw;
     height: 5.20vw;
     background-color: #FFFAF8;
@@ -120,6 +130,14 @@ export const SongBox = styled.div`
     font-weight: 200;
     font-size: 1.56vw;
     margin: 0 auto;
+`
+
+export const Song = styled.div`
+    color: #878787;
+    font-weight: 200;
+    font-size: 1.56vw;
+    margin-top: 1.61vw;
+    margin-left: 3.12vw;
 `
 
 export const SaveBox = styled.div`

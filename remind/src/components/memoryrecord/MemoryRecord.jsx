@@ -32,15 +32,14 @@ export default function MemoryRecord() {
     
     return (
         <S.RecordLayout>
+            {isUploading && <S.BlurOverlay />}
             <S.LogoBox>
                 <S.Logo src = { HOME } />
             </S.LogoBox>   
             <S.RecordImage src = { RECORD } /> 
             <S.Content>
-                <S.Text>
-                    <S.Title>기억을 기록해요</S.Title>
-                    <S.SubTitle>그날의 온도와 마음을 여기에 남겨보세요.</S.SubTitle>
-                </S.Text>
+                <S.Title>기억을 기록해요</S.Title>
+                <S.SubTitle>그날의 온도와 마음을 여기에 남겨보세요.</S.SubTitle>
                 <S.Memory>
                     <S.ImageBox $status = { isUploading }>
                         <S.BasicPlusImage src = { isUploading ? UPLOADING_PLUS : BASIC_PLUS } onClick = { onUploadImageButtonClick } />
@@ -48,10 +47,10 @@ export default function MemoryRecord() {
                         <input type = "file" accept = "image/*" ref = { inputRef } onChange = { onUploadImage } style = {{ display: "none" }} />
                     </S.ImageBox>  
                     <S.CommentBox>
-                        이때 어떤 일이 있었는지, 지금은 어땠는지 자유롭게 남겨보세요.    
+                        <S.Comment>이때 어떤 일이 있었는지, 지금은 어땠는지 자유롭게 남겨보세요.</S.Comment>   
                     </S.CommentBox>
                     <S.SongBox>
-                        이때 들었던 노래나, 생각나는 노래가 있으면 입력해 주세요.
+                        <S.Song>이때 들었던 노래나, 생각나는 노래가 있으면 입력해 주세요.</S.Song>
                     </S.SongBox> 
                 </S.Memory>
                 <S.SaveBox>
