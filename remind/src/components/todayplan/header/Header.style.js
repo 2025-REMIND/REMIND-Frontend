@@ -43,7 +43,6 @@ export const Title = styled.div`
 
 export const TimeBox = styled.div`
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 13.54vw;
@@ -52,10 +51,13 @@ export const TimeBox = styled.div`
     margin-left: 23.69vw;
     margin-top: 2.18vw;
     border-radius: 2.08vw 2.08vw 0vw 0vw;
+    gap: 0.78vw;
 `
 
 export const Time = styled.div`
-
+    font-size: 2.08vw;
+    font-weight: 700;
+    color: #FFFAF8;
 `
 
 export const MusicBox = styled.div`
