@@ -6,6 +6,7 @@
 // import MemoryRecordPage from "./pages/MemoryRecordPage";
 import GlobalStyle from "./styles/globalStyles";
 import Header from './components/todayplan/header/Header';
+import Mission from "./components/todayplan/mission/Mission";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
     <>
       <GlobalStyle />
       <Header />
+      <Mission />
     </>
   )
 }
