@@ -52,3 +52,16 @@ export const SaveBox = styled.div`
     margin-left: 1.04vw;
     box-shadow: 0vw 0.2vw 0.2vw rgba(215, 116, 155, 0.25);
 `
+
+export const BlurOverlay = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(0.52vw);
+    background-color: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+`;
