@@ -67,7 +67,7 @@ export const LoginForm = () => {
                 error={!!errors.password}
               />
               <S.ToggleIcon onClick={togglePasswordVisibility}>
-                {isPasswordVisible ? <FaEyeSlash /> : <FaEye />}
+                {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
               </S.ToggleIcon>
               <S.ErrorText visible={!!errors.password}>{errors.password}</S.ErrorText>
 
