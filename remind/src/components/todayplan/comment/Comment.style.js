@@ -30,6 +30,7 @@ export const ImageBox = styled.div`
     font-size: 2.34vw;
     font-weight: 600;
     margin-left: 1.25vw;
+    box-shadow: 0vw 0.2vw 0.2vw rgba(215, 116, 155, 0.25);
 `
 
 export const SaveBox = styled.div`
@@ -44,4 +45,5 @@ export const SaveBox = styled.div`
     font-size: 2.34vw;
     font-weight: 600;
     margin-left: 1.04vw;
+    box-shadow: 0vw 0.2vw 0.2vw rgba(215, 116, 155, 0.25);
 `

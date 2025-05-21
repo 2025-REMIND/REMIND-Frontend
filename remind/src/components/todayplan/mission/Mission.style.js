@@ -75,6 +75,7 @@ export const StartBox = styled.div`
     border: 0.05vw solid #D7749B;
     border-radius: 1.56vw;
     margin-right: 3.54vw;
+    box-shadow: 0vw 0.2vw 0.2vw rgba(215, 116, 155, 0.25);
 `
 
 export const Start = styled.div`

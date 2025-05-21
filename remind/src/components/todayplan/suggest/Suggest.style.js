@@ -75,6 +75,7 @@ export const PlanBox = styled.div`
     border-radius: 1.56vw;
     margin-right: 3.54vw;
     margin-top: 1.56vw;
+    box-shadow: 0vw 0.2vw 0.2vw rgba(215, 116, 155, 0.25);
 `
 
 export const Plan = styled.div`
