@@ -7,6 +7,7 @@
 import GlobalStyle from "./styles/globalStyles";
 import Header from './components/todayplan/header/Header';
 import Mission from "./components/todayplan/mission/Mission";
+import Suggest from "./components/todayplan/suggest/Suggest";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <GlobalStyle />
       <Header />
       <Mission />
+      <Suggest />
     </>
   )
 }
