@@ -1,13 +1,16 @@
 import React from 'react'
-import * as S from '../LoginForm.style'
+import { useNavigate } from 'react-router-dom';
+import * as S from '../LoginForm.style';
 
 const ToRegisterButton = () => {
+  const navigate = useNavigate();
+
   return (
-    
-    <S.RegisterButton>
+    <S.RegisterButton onClick={() => navigate('/register')}>
       <p>회원가입 하기</p>
     </S.RegisterButton>
-  )
-}
+  );
+};
+
 
 export default ToRegisterButton;

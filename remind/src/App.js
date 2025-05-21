@@ -1,15 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import {LoginForm} from './components/LoginForm/LoginForm';
-import {RegisterForm} from './components/Regitster/RegisterForm'; // 예시
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 function App() {
   return (
     <BrowserRouter> 
       <Routes>
-        <Route path="/" element={<LoginForm />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/register" element={<RegisterForm />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </BrowserRouter>
   );
