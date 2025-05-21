@@ -68,14 +68,16 @@ export const InputWithButton = styled.div`
 
 export const Input = styled.input`
   flex: 1;
+  padding-left:12px;
   width: 100%;
   height: 60px;
-  padding-right: 40px;  /* 오른쪽 아이콘 공간 확보 */
-  border: 1px solid ${(props) => (props.error ? '#3f2e2e' : '#aaa')};
-  background-color: ${(props) => (props.error ? '#FFEFEF' : 'white')};
+  padding-right: 40px;
+  border: 1px solid ${(props) => (props.$isError ? '#ff0000' : '#3f2e2e')};
+  background-color: ${(props) => (props.$isError ? '#FF000033' : 'white')};
   border-radius: 25px;
   font-size: 14px;
   box-sizing: border-box;
+  transition: all 0.2s ease;
 
   &::placeholder {
     color: #aaa;

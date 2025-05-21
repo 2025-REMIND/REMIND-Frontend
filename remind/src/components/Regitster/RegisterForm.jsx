@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as S from './RegisterForm.style';
 import Header from '../LoginForm/header/Header';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
@@ -43,6 +43,11 @@ const handleConfirmPwChange = (e) => {
   setConfirmPw(val);
   setConfirmPwError(val === pw ? '' : '비밀번호가 일치하지 않습니다.');
 };
+  useEffect(() => {
+    if (confirmPw) {
+      setConfirmPwError(pw === confirmPw ? '' : '비밀번호가 일치하지 않습니다.');
+    }
+  }, [pw, confirmPw]);
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prev) => !prev);
   };
@@ -65,6 +70,7 @@ const handleConfirmPwChange = (e) => {
   placeholder="아이디를 입력해주세요"
   value={id}
   onChange={handleIdChange}
+  $isError={!!idError}
 />
 
                   <S.CheckButton>아이디 중복 확인</S.CheckButton>
@@ -81,19 +87,21 @@ const handleConfirmPwChange = (e) => {
               </S.Label>
               <S.InputRow>
                 <S.InputWrapper>
-                  <S.Input
+<S.Input
   type={isPasswordVisible ? 'text' : 'password'}
   placeholder="비밀번호를 입력해주세요"
-  value={confirmPw}
-  onChange={handleConfirmPwChange}
+  value={pw}
+  onChange={handlePwChange}
+  $isError={!!pwError}
 />
+
                   <S.ToggleIcon onClick={togglePasswordVisibility}>
                     {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
                   </S.ToggleIcon>
                 </S.InputWrapper>
-                <S.Guideline style={{ color: confirmPwError ? 'red' : '#999' }}>
-  {confirmPwError || '비밀번호를 다시 입력해주세요'}
-</S.Guideline>
+                <S.Guideline style={{ color: pwError ? 'red' : '#999' }}>
+      {pwError || '영문 / 숫자 혼용하여 4자~10자 이내로 작성해주세요'}
+    </S.Guideline>
               </S.InputRow>
             </S.Row>
 
@@ -106,11 +114,17 @@ const handleConfirmPwChange = (e) => {
                     placeholder="비밀번호를 입력해주세요"
                     value={confirmPw} // confirmPw 상태 사용
                     onChange={(e) => setConfirmPw(e.target.value)} // confirmPw 변경 함수
+                    $isError={!!confirmPwError}
                   />
                   <S.ToggleIcon onClick={togglePasswordVisibility}>
                     {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
                   </S.ToggleIcon>
                 </S.InputWrapper>
+                {confirmPwError && (
+  <S.Guideline style={{ color: 'red' }}>
+    {confirmPwError}
+  </S.Guideline>
+)}
               </S.InputRow>
             </S.Row>
 
