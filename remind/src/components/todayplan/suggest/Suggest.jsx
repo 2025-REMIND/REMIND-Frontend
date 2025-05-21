@@ -1,12 +1,20 @@
 import * as S from "./Suggest.style";
 import CHECKBOX from "../../../assets/todayplan/checkbox.svg";
+import CHECKINGBOX from "../../../assets/todayplan/checkingbox.svg";
 import SUGGEST from "../../../assets/todayplan/suggest.svg";
+import { useState } from "react";
 
 export default function Mission() {
+    const [isCheck, setIsCheck] = useState(false);
+
+    const checkClick = () => {
+        setIsCheck((prev) => !prev);
+    };
+
     return (
         <S.SuggestLayout>
-            <S.Check>
-                <S.CheckBox src = { CHECKBOX } />
+            <S.Check onClick = { checkClick }>
+                <S.CheckBox src = { isCheck ? CHECKINGBOX : CHECKBOX } />
             </S.Check>
             <S.SuggestBox>
                 <S.Content>

@@ -1,12 +1,20 @@
 import * as S from "./Mission.style";
 import CHECKBOX from "../../../assets/todayplan/checkbox.svg";
+import CHECKINGBOX from "../../../assets/todayplan/checkingbox.svg";
 import MISSION from "../../../assets/todayplan/mission.svg";
+import { useState } from "react";
 
 export default function Mission() {
+    const [isChecked, setIsChecked] = useState(false);
+
+    const checkClick = () => {
+        setIsChecked((prev) => !prev);
+    };
+
     return (
         <S.MissionLayout>
-            <S.Check>
-                <S.CheckBox src = { CHECKBOX } />
+            <S.Check onClick = { checkClick } >
+                <S.CheckBox src = { isChecked ? CHECKINGBOX : CHECKBOX } />
             </S.Check>
             <S.MissionBox>
                 <S.Content>
