@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import * as S from './LoginForm.style';
 import Header from './header/Header';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
-
+import UsernameInput from './input/UsernameInput';
+import PasswordInput from './input/PasswordInput';
+import ToRegisterButton from './button/ToRegisterButton';
 export const LoginForm = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
   const [errors, setErrors] = useState({ username: '', password: '' });
 
   const togglePasswordVisibility = () => {
@@ -16,22 +16,24 @@ export const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let isValid = true;
     const newErrors = { username: '', password: '' };
+    let isValid = true;
 
-    // 아이디 유효성
     if (username.trim().length < 4) {
       newErrors.username = '아이디가 일치하지 않습니다.';
       isValid = false;
     }
 
-    // 비밀번호 유효성
     if (password.length < 8) {
       newErrors.password = '비밀번호가 일치하지 않습니다.';
       isValid = false;
     }
 
     setErrors(newErrors);
+    if (isValid) {
+      // 로그인 처리 로직 (ex. API 호출)
+      console.log('로그인 시도:', username, password);
+    }
   };
 
   return (
@@ -42,43 +44,23 @@ export const LoginForm = () => {
           <form onSubmit={handleSubmit}>
             <h1>로그인</h1>
 
-            <S.InputBox>
-              <S.InputBoxText>ID</S.InputBoxText>
-              <S.Input
-                type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-                error={!!errors.username}
-              />
-              <S.ErrorText visible={!!errors.username}>{errors.username}</S.ErrorText>
+            <UsernameInput
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              error={errors.username}
+            />
 
-            </S.InputBox>
-
-            <S.InputBox>
-              <S.InputBoxText>PASSWORD</S.InputBoxText>
-              <S.Input
-                type={isPasswordVisible ? 'text' : 'password'}
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                error={!!errors.password}
-              />
-              <S.ToggleIcon onClick={togglePasswordVisibility}>
-                {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
-              </S.ToggleIcon>
-              <S.ErrorText visible={!!errors.password}>{errors.password}</S.ErrorText>
-
-
-            </S.InputBox>
+            <PasswordInput
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              error={errors.password}
+              isVisible={isPasswordVisible}
+              toggle={togglePasswordVisibility}
+            />
 
             <S.LoginButton type="submit">로그인</S.LoginButton>
 
-            <S.RegisterButton>
-              <p>회원가입 하기</p>
-            </S.RegisterButton>
+            <ToRegisterButton/>
           </form>
         </S.LoginFromWrapper>
       </S.LoginFromLayout>
