@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import {LoginForm} from './components/LoginForm/LoginForm';
-import {RegisterForm} from './components/Regitster/RegisterForm'; // 예시
+import { LoginForm } from './components/LoginForm/LoginForm';
+import { RegisterForm } from './components/Regitster/RegisterForm';
 import MainHomePage from "./pages/MainHomePage";
 import MemoryRecordPage from "./pages/MemoryRecordPage";
 import GlobalStyle from "./styles/globalStyles";
@@ -11,9 +11,9 @@ function App() {
     <BrowserRouter>
       <GlobalStyle />
       <Routes>
-        <Route path="/" element={<LoginForm />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/register" element={<RegisterForm />} />
+        <Route path="/" element = { <LoginForm /> } />
+        <Route path="/login" element = { <LoginForm /> } />
+        <Route path="/register" element = { <RegisterForm /> } />
         <Route path = "/home" element = { <MainHomePage /> } />
         <Route path = "/memoryrecord" element = { <MemoryRecordPage /> } />
       </Routes>
