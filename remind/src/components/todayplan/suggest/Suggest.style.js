@@ -6,7 +6,6 @@ export const SuggestLayout = styled.div`
     align-items: center;
     width: 100vw;
     height: 25.98vw;
-    margin-top: 3.75vw;
     gap: 5.31vw;
 `
 

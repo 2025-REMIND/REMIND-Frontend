@@ -8,6 +8,7 @@ import GlobalStyle from "./styles/globalStyles";
 import Header from './components/todayplan/header/Header';
 import Mission from "./components/todayplan/mission/Mission";
 import Suggest from "./components/todayplan/suggest/Suggest";
+import Comment from "./components/todayplan/comment/Comment";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <Header />
       <Mission />
       <Suggest />
+      <Comment />
     </>
   )
 }
