@@ -104,7 +104,7 @@ export default function MemoryRecord() {
                                     song: e.target.value,
                                 }))
                             }
-                            placeholder = "이때때 들었던 노래나, 생각나는 노래가 있으면 입력해 주세요."
+                            placeholder = "이때 들었던 노래나, 생각나는 노래가 있으면 입력해 주세요."
                         />
                     </S.SongBox>
                 </S.Memory>

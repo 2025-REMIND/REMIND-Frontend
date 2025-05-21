@@ -76,10 +76,16 @@ export const StartBox = styled.div`
     border-radius: 1.56vw;
     margin-right: 3.54vw;
     box-shadow: 0vw 0.2vw 0.2vw rgba(215, 116, 155, 0.25);
+
+    background-color: ${({ isStarted }) => (
+        isStarted ? "#D7749B" : "#FFFAF8"
+    )};
 `
 
 export const Start = styled.div`
-    color: #D7749B;
+    color: ${({ isStarted }) => (
+        isStarted ? "#FFFAF8" : "#D7749B"
+    )};
     font-size: 2.08vw;
     font-weight: 600;
 `

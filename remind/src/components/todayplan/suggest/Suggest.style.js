@@ -21,7 +21,6 @@ export const SuggestBox = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
     width: 62.50vw;
     height: 22.23vw;
     border: 0.05vw solid #D7749B;
@@ -76,10 +75,16 @@ export const PlanBox = styled.div`
     margin-right: 3.54vw;
     margin-top: 1.56vw;
     box-shadow: 0vw 0.2vw 0.2vw rgba(215, 116, 155, 0.25);
+
+    background-color: ${({ isLooked }) => (
+        isLooked ? "#D7749B" : "#FFFAF8"
+    )};
 `
 
 export const Plan = styled.div`
-    color: #D7749B;
+    color: ${({ isLooked }) => (
+        isLooked ? "#FFFAF8" : "#D7749B"
+    )};
     font-size: 2.08vw;
     font-weight: 600;
 `

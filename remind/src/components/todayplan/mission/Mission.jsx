@@ -6,9 +6,14 @@ import { useState } from "react";
 
 export default function Mission() {
     const [isChecked, setIsChecked] = useState(false);
+    const [isStarted, setIsStarted] = useState(false);
 
     const checkClick = () => {
         setIsChecked((prev) => !prev);
+    };
+
+    const startClick = () => {
+        setIsStarted((prev) => !prev);
     };
 
     return (
@@ -25,8 +30,8 @@ export default function Mission() {
                     <S.Title>감정을 함께 나누는 시간</S.Title>
                     <S.SubTitle>서로에게 궁금했던 점 3가지 질문하기</S.SubTitle>
                 </S.Content>
-                <S.StartBox>
-                    <S.Start>미션 시작하기</S.Start>
+                <S.StartBox isStarted = { isStarted } onClick = { startClick }>
+                    <S.Start isStarted = { isStarted } >미션 시작하기</S.Start>
                 </S.StartBox>
             </S.MissionBox>
         </S.MissionLayout>

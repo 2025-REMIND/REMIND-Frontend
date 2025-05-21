@@ -39,9 +39,14 @@ export const SaveBox = styled.div`
     align-items: center;
     width: 26.04vw;
     height: 7.81vw;
+    background-color: ${({ isSaved }) => (
+        isSaved ? "#D7749B" : "#FFFAF8"
+    )};
     border: 0.05vw solid #D7749B;
     border-radius: 2.08vw;
-    color: #D7749B;
+    color: ${({ isSaved }) => (
+        isSaved ? "#FFFAF8" : "#D7749B"
+    )};
     font-size: 2.34vw;
     font-weight: 600;
     margin-left: 1.04vw;
