@@ -50,12 +50,18 @@ export const SaveButton = styled.div`
     width: 15.62vw;
     height: 5.20vw;
     margin-left: 40.62vw;
-    background-color: #FFFAF8;
     border: 0.05vw solid #D7749B;
     border-radius: 1.56vw;
-    color: #D7749B;
     font-size: 2.34vw;
     font-weight: 600;
+
+    color: ${({ isSaved }) => (
+        isSaved ? "#FFFAF8" : "#D7749B"
+    )};
+
+    background-color: ${({ isSaved }) => (
+        isSaved ? "#D7749B" : "#FFFAF8"
+    )};
 `
 
 export const SubTitle = styled.div`
@@ -128,6 +134,14 @@ export const ExampleButton = styled.div`
     color: #D7749B;
     font-size: 2.08vw;
     font-weight: 400;
+
+    color: ${({ isExample }) => (
+        isExample ? "#FFFAF8" : "#D7749B"
+    )};
+
+    background-color: ${({ isExample }) => (
+        isExample ? "#D7749B" : "#F6BFCF"
+    )};
 `
 
 export const EndButton = styled.div`
@@ -136,10 +150,16 @@ export const EndButton = styled.div`
     align-items: center;
     width: 17.71vw;
     height: 5.20vw;
-    background-color: #FFFAF8;
     border: 0.05vw solid #D7749B;
     border-radius: 1.56vw;
-    color: #D7749B;
     font-size: 2.08vw;
     font-weight: 400;
+
+    color: ${({ isEnded }) => (
+        isEnded ? "#FFFAF8" : "#D7749B"
+    )};
+
+    background-color: ${({ isEnded }) => (
+        isEnded ? "#D7749B" : "#FFFAF8"
+    )};
 `

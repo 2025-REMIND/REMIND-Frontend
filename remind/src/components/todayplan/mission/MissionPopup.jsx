@@ -10,6 +10,9 @@ export default function MissionPopup() {
     ]
 
     const [answer, setAnswer] = useState([]);
+    const [isSaved, setIsSaved] = useState(false);
+    const [isEnded, setIsEnded] = useState(false);
+    const [isExample, setIsExample] = useState(false);
 
     useEffect(() => {
         setAnswer(Array(questions.length).fill(""));
@@ -19,7 +22,19 @@ export default function MissionPopup() {
         const update = [...answer];
         update[index] = value;
         setAnswer(update);
-    }
+    };
+
+    const saveClick = () => {
+        setIsSaved((prev) => !prev);
+    };
+
+    const endClick = () => {
+        setIsEnded((prev) => !prev);
+    };
+
+    const exampleClick = () => {
+        setIsExample((prev) => !prev);
+    };
 
     return (
         <S.Overlay>
@@ -27,7 +42,7 @@ export default function MissionPopup() {
                 <S.Label>
                     <S.Icon src = { ICON } />
                     <S.Title>오늘의 미션</S.Title>
-                    <S.SaveButton>저장하기</S.SaveButton>
+                    <S.SaveButton isSaved = { isSaved } onClick = { saveClick }>저장하기</S.SaveButton>
                 </S.Label>
                 <S.SubTitle>
                     {`질문은 마음의 문을 여는 열쇠가 되어 줄지도 몰라요.
@@ -48,8 +63,8 @@ export default function MissionPopup() {
                     </S.QuestionBox>
                 ))}
                 <S.Button>
-                    <S.ExampleButton>예시 보기</S.ExampleButton>
-                    <S.EndButton>미션 완료</S.EndButton>
+                    <S.ExampleButton isExample = { isExample } onClick = { exampleClick }>예시 보기</S.ExampleButton>
+                    <S.EndButton isEnded = { isEnded } onClick = { endClick }>미션 완료</S.EndButton>
                 </S.Button>
             </S.MissionPopupLayout>
         </S.Overlay>
