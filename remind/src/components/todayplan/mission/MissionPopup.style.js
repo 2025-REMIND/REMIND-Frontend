@@ -49,7 +49,7 @@ export const SaveButton = styled.div`
     align-items: center;
     width: 15.62vw;
     height: 5.20vw;
-    margin-left: 40.62vw;
+    margin-left: 40vw;
     border: 0.05vw solid #D7749B;
     border-radius: 1.56vw;
     font-size: 2.34vw;
@@ -62,6 +62,13 @@ export const SaveButton = styled.div`
     background-color: ${({ isSaved }) => (
         isSaved ? "#D7749B" : "#FFFAF8"
     )};
+`
+
+export const CloseButton = styled.img`
+    width: 3.65vw;
+    height: 3.65vw;
+    margin-left: 1.56vw;
+    margin-right: 3.13vw;
 `
 
 export const SubTitle = styled.div`

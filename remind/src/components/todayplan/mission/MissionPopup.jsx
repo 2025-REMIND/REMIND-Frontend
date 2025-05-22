@@ -1,8 +1,9 @@
 import * as S from "./MissionPopup.style";
 import ICON from "../../../assets/todayplan/mission.svg";
+import CLOSE from "../../../assets/todayplan/popup/closebutton.svg";
 import { useEffect, useState } from "react";
 
-export default function MissionPopup() {
+export default function MissionPopup({ onClose }) {
     const questions = [
         "요즘 애인과 가장 좋았던 순간은 언제였어?",
         "요즘 애인과 가장 좋았던 순간은 언제였어?",
@@ -43,6 +44,7 @@ export default function MissionPopup() {
                     <S.Icon src = { ICON } />
                     <S.Title>오늘의 미션</S.Title>
                     <S.SaveButton isSaved = { isSaved } onClick = { saveClick }>저장하기</S.SaveButton>
+                    <S.CloseButton src = { CLOSE } onClick = { onClose } />
                 </S.Label>
                 <S.SubTitle>
                     {`질문은 마음의 문을 여는 열쇠가 되어 줄지도 몰라요.

@@ -72,20 +72,23 @@ export const StartBox = styled.div`
     align-self: flex-end;
     width: 15.62vw;
     height: 4.68vw;   
+    background-color: #FFFAF8;
     border: 0.05vw solid #D7749B;
     border-radius: 1.56vw;
     margin-right: 3.54vw;
     box-shadow: 0vw 0.2vw 0.2vw rgba(215, 116, 155, 0.25);
 
-    background-color: ${({ isStarted }) => (
-        isStarted ? "#D7749B" : "#FFFAF8"
-    )};
+    &:active {
+        background-color: #D7749B;
+    }
 `
 
 export const Start = styled.div`
-    color: ${({ isStarted }) => (
-        isStarted ? "#FFFAF8" : "#D7749B"
-    )};
+    color: #D7749B;
     font-size: 2.08vw;
     font-weight: 600;
+
+    &:active {
+        color: #FFFAF8;
+    }
 `
