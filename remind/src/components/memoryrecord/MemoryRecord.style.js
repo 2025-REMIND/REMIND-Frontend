@@ -169,7 +169,6 @@ export const CommentText = styled.textarea`
     outline: none;
     font-size: 1.56vw;
     font-weight: 200;
-    font-family: inherit;
     color: #878787;
 
     &:focus {
