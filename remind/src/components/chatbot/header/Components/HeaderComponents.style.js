@@ -15,7 +15,7 @@ width: clamp(10rem, 15vw, 21rem);
   height: 4vh;
   
   img {
-    height: 1.3vh;
+    height: 1.5vh;
     margin-right: 0.55vh;
   }
 `;
