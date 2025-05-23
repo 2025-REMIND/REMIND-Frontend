@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Overlay = styled.div`
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
@@ -22,19 +22,29 @@ export const MissionPopupLayout = styled.div`
     background-color: #F6BFCF;
     border: 0.05vw solid #D7749B;
     border-radius: 2.60vw;
+    overflow-y: auto;
 `
 
 export const Label = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-left: 5.93vw;
+    gap: 32.66vw;
+`
+
+export const TopLeft = styled.div`
+    display: flex;
+    gap: 0.52vw;
+`
+
+export const TopRight = styled.div`
+    display: flex;
+    gap: 1.56vw;
 `
 
 export const Icon = styled.img`
     width: 3.64vw;
     height: 3.64vw;
-    margin-right: 0.52vw;
 `
 
 export const Title = styled.div`
@@ -49,7 +59,6 @@ export const SaveButton = styled.div`
     align-items: center;
     width: 15.62vw;
     height: 5.20vw;
-    margin-left: 40vw;
     border: 0.05vw solid #D7749B;
     border-radius: 1.56vw;
     font-size: 2.34vw;
@@ -67,46 +76,82 @@ export const SaveButton = styled.div`
 export const CloseButton = styled.img`
     width: 3.65vw;
     height: 3.65vw;
-    margin-left: 1.56vw;
-    margin-right: 3.13vw;
 `
 
-export const SubTitle = styled.div`
+export const Detail = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 5.52vw;
+`
+
+export const SubTitle = styled.p`
+    position: relative;
+    left: 9.58vw;
+    display: flex;
+    align-items: center;
+    width: 70.63vw;
+    height: 4.38vw;
     color: #FFFAF8;
     font-size: 1.56vw;
     font-weight: 400;
     white-space: pre-line;
     line-height: 140%;
-    margin-left: 9.58vw;
-    margin-bottom: 4.11vw;
+    margin: 0;
 `
 
-export const QuestionBox = styled.div`
-    margin-left: 9.58vw;
-    margin-bottom: 1.25vw;
+export const QuestionGroup = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.40vw;
+`
+
+export const Check = styled.div`
+`
+
+export const CheckBox = styled.img`
+    width: 3.65vw;
+    height: 3.65vw;
+`
+
+export const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.56vw;
 `
 
 export const Question = styled.div`
-    margin-bottom: 1.04vw;
+    display: flex;
+    align-items: center;
+    width: 70.63vw;
+    gap: 1.56vw;
+`
+
+export const QuestionBox = styled.p`
+    display: flex;
+    align-items: center;
+    /* margin-bottom: 1.04vw; */
     color: #D7749B;
     font-size: 2.60vw;
     font-weight: 600;
+    margin: 0;
 `
 
 export const AnswerBox = styled.div`
     display: flex;
     width: 70.63vw;
     height: 9.74vw;
+    padding: 1.82vw 3.64vw;
     background-color: #FFFAF8;
     border: 0.05vw solid #D7749B;
     border-radius: 0vw 2.60vw 2.60vw 2.60vw;
+    box-sizing: border-box;
 `
 
 export const Input = styled.textarea`
     width: 100%;
     height: 100%;
-    margin-top: 1.82vw;
-    margin-left: 3.65vw;
     font-size: 2.08vw;
     font-weight: 200;
     line-height: 140%;
@@ -119,54 +164,4 @@ export const Input = styled.textarea`
     &:focus {
         color: #D7749B; 
     }
-`
-
-export const Button = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 2.40vw;
-    margin-right: 8.33vw;
-    gap: 2.08vw;
-`
-
-export const ExampleButton = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 17.71vw;
-    height: 5.20vw;
-    background-color: #F6BFCF;
-    border: 0.05vw solid #D7749B;
-    border-radius: 1.56vw;
-    color: #D7749B;
-    font-size: 2.08vw;
-    font-weight: 400;
-
-    color: ${({ isExample }) => (
-        isExample ? "#FFFAF8" : "#D7749B"
-    )};
-
-    background-color: ${({ isExample }) => (
-        isExample ? "#D7749B" : "#F6BFCF"
-    )};
-`
-
-export const EndButton = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 17.71vw;
-    height: 5.20vw;
-    border: 0.05vw solid #D7749B;
-    border-radius: 1.56vw;
-    font-size: 2.08vw;
-    font-weight: 400;
-
-    color: ${({ isEnded }) => (
-        isEnded ? "#FFFAF8" : "#D7749B"
-    )};
-
-    background-color: ${({ isEnded }) => (
-        isEnded ? "#D7749B" : "#FFFAF8"
-    )};
 `

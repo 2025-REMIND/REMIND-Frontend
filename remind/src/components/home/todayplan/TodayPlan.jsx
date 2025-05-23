@@ -1,7 +1,14 @@
 import * as S from "./TodayPlan.style";
 import MISSION from "../../../assets/home/todayplan/todaymission.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function TodayPlan() {
+    const navigate = useNavigate();
+    
+    const handleClick = () => {
+        navigate(`/todayplan`);
+    }
+
     return (
         <S.TodayScheduleLayout>
             <S.Content>
@@ -13,8 +20,8 @@ export default function TodayPlan() {
 
                     지금, 오늘의 데이트 미션을 확인해 볼까요?
                 `}</S.Comment>
-                <S.CheckBox>오늘의 일정 보기</S.CheckBox>
-            </S.Content>
+                <S.CheckBox onClick = { () => handleClick() }>오늘의 일정 보기</S.CheckBox>
+                </S.Content>
             <S.Image src = { MISSION }></S.Image>
         </S.TodayScheduleLayout>
     )

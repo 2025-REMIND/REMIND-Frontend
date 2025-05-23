@@ -3,9 +3,11 @@ import HOME from "../../../assets/todayplan/remind.svg";
 import MUSIC from "../../../assets/todayplan/music.svg";
 import TIME from "../../../assets/todayplan/time.svg"
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
     const [time, setTime] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
         const updateTime = () => {
@@ -25,20 +27,31 @@ export default function Header() {
         return () => clearInterval(ing);
     }, []);
 
+    const logoClick = () => {
+        navigate(`/home`);
+    }
+
     return (
         <S.HeaderLayout>
-            <S.LogoBox>
-                <S.Logo src = { HOME } />
-            </S.LogoBox>
-            <S.Title>오늘의 일정</S.Title>
-            <S.TimeBox>
-                <S.Icon src = { TIME } />
-                <S.Time>{ time }</S.Time>
-            </S.TimeBox>
-            <S.MusicBox>
-                <S.Icon src = { MUSIC } />
-                오늘의 노래 추천
-            </S.MusicBox>          
+            <S.LeftBox>
+                <S.LogoBox onClick = { logoClick }>
+                    <S.Logo src = { HOME } />
+                </S.LogoBox>
+                <S.Title>
+                    <p>오늘의 일정</p>
+                </S.Title>
+            </S.LeftBox>
+
+            <S.RightBox>
+                <S.TimeBox>
+                    <S.Icon src = { TIME } />
+                    <S.Time>{ time }</S.Time>
+                </S.TimeBox>
+                <S.MusicBox>
+                    <S.Icon src = { MUSIC } />
+                    <S.Music>오늘의 노래 추천</S.Music>
+                </S.MusicBox>  
+            </S.RightBox>        
         </S.HeaderLayout>
     )
 }

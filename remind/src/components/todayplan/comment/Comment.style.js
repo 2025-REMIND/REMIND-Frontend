@@ -6,9 +6,10 @@ export const CommentLayout = styled.div`
     align-items: center;
     width: 100vw;
     height: 23.81vw;
+    gap: 1.25vw;
 `
 
-export const Text = styled.div`
+export const Text = styled.p`
     width: 40.93vw;
     height: 12.86vw;
     color: #9D8C84;
@@ -16,6 +17,13 @@ export const Text = styled.div`
     font-weight: 400;
     line-height: 140%;
     white-space: pre-line;
+    margin: 0;
+`
+
+export const Box = styled.div`
+    display: flex;
+    flex-direction: row;
+    gap: 1.04vw;
 `
 
 export const ImageBox = styled.div`
@@ -29,7 +37,6 @@ export const ImageBox = styled.div`
     color: #D7749B;
     font-size: 2.34vw;
     font-weight: 600;
-    margin-left: 1.25vw;
     box-shadow: 0vw 0.2vw 0.2vw rgba(215, 116, 155, 0.25);
 `
 
@@ -49,7 +56,6 @@ export const SaveBox = styled.div`
     )};
     font-size: 2.34vw;
     font-weight: 600;
-    margin-left: 1.04vw;
     box-shadow: 0vw 0.2vw 0.2vw rgba(215, 116, 155, 0.25);
 `
 

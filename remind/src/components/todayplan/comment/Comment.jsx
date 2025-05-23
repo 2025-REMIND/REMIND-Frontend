@@ -40,15 +40,17 @@ export default function Comment() {
                 언제든 '일정 보관함'에서 다시 꺼내볼 수 있어요. 
 
                 기억하고 싶은 오늘이라면, 보관함에 쏙ㅡ `}</S.Text>
-            <S.ImageBox onClick = { ImageClick }>사진 추가하기</S.ImageBox>
-            <input
-                type = "file"
-                accept = "image/*"
-                ref = { inputRef } 
-                onChange = { handleImage } 
-                style = {{ display: "none" }} 
-            />
-            <S.SaveBox isSaved = { isSaved } onClick = { saveClick }>일정 보관함에 저장하기</S.SaveBox>
+            <S.Box>
+                <S.ImageBox onClick = { ImageClick }>사진 추가하기</S.ImageBox>
+                <input
+                    type = "file"
+                    accept = "image/*"
+                    ref = { inputRef } 
+                    onChange = { handleImage } 
+                    style = {{ display: "none" }} 
+                />
+                <S.SaveBox isSaved = { isSaved } onClick = { saveClick }>일정 보관함에 저장하기</S.SaveBox>
+            </S.Box>
         </S.CommentLayout>
     )
 }

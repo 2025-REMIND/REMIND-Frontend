@@ -2,10 +2,18 @@ import styled from "styled-components";
 
 export const HeaderLayout = styled.div`
     display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
     background-color: #F6BFCF;
     width: 100vw;
     height: 6.25vw;
     border-radius: 0vw 0vw 4.68vw 4.68vw;
+`
+
+export const LeftBox = styled.div`
+    display: flex;
+    flex-direction: row;
+    padding-left: 6.88vw;
 `
 
 export const LogoBox = styled.div`
@@ -16,8 +24,6 @@ export const LogoBox = styled.div`
     background-color: #D7749B;
     width: 18.38vw;
     height: 3.90vw;
-    margin-left: 6.87vw;
-    margin-top: 2.34vw;
     border-radius: 2.08vw 2.08vw 0vw 0vw;
 `
 
@@ -34,11 +40,20 @@ export const Title = styled.div`
     width: 13.54vw;
     height: 3.90vw;
     background-color: #FFFAF8;
-    color: #D7749B;
-    font-size: 2.08vw;
-    font-weight: 800;
-    margin-top: 2.34vw;
     border-radius: 2.08vw 2.08vw 0vw 0vw;
+
+    p {
+        color: #D7749B;
+        font-size: 2.08vw;
+        font-weight: 800;
+        margin: 0;
+    }
+`
+
+export const RightBox = styled.div`
+    display: flex;
+    flex-direction: row;
+    padding-right: 6.88vw;
 `
 
 export const TimeBox = styled.div`
@@ -48,8 +63,6 @@ export const TimeBox = styled.div`
     width: 13.54vw;
     height: 4.06vw;
     background-color: #D7749B;
-    margin-left: 23.69vw;
-    margin-top: 2.18vw;
     border-radius: 2.08vw 2.08vw 0vw 0vw;
     gap: 0.78vw;
 `
@@ -67,11 +80,7 @@ export const MusicBox = styled.div`
     width: 17.08vw;
     height: 4.06vw;
     background-color: #D7749B;
-    margin-top: 2.18vw;
     border-radius: 2.08vw 2.08vw 0vw 0vw;
-    color: #FFFAF8;
-    font-size: 1.56vw;
-    font-weight: 700;
     gap: 0.78vw;
 `
 
@@ -80,5 +89,9 @@ export const Icon = styled.img`
     height: 3.12vw;
 `
 
-export const Music = styled.div`
+export const Music = styled.p`
+    color: #FFFAF8;
+    font-size: 1.56vw;
+    font-weight: 700;
+    margin: 0;
 `

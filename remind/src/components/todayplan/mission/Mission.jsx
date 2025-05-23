@@ -28,20 +28,24 @@ export default function Mission() {
             </S.Check>
             <S.MissionBox>
                 <S.Content>
-                    <S.Mission>
-                        <S.Icon src = { MISSION } />
-                        <S.Label>오늘의 미션</S.Label>
-                    </S.Mission>
-                    <S.Title>감정을 함께 나누는 시간</S.Title>
-                    <S.SubTitle>서로에게 궁금했던 점 3가지 질문하기</S.SubTitle>
+                    <S.BoxText>
+                        <S.Mission>
+                            <S.Icon src = { MISSION } />
+                            <S.Label>오늘의 미션</S.Label>
+                        </S.Mission>
+                        <S.Text>
+                            <S.Title>감정을 함께 나누는 시간</S.Title>
+                            <S.SubTitle>서로에게 궁금했던 점 3가지 질문하기</S.SubTitle>
+                        </S.Text>
+                    </S.BoxText>
+                    <S.StartBox isStarted = { isStarted }>
+                        <S.Start isStarted = { isStarted } onClick = { () => {
+                            setIsStarted(true);
+                            setShowPopup(true); 
+                        }}>미션 시작하기</S.Start>
+                        { showPopup && <MissionPopup onClose = { closePopup } /> }
+                    </S.StartBox>
                 </S.Content>
-                <S.StartBox isStarted = { isStarted }>
-                    <S.Start isStarted = { isStarted } onClick = { () => {
-                        setIsStarted(true);
-                        setShowPopup(true); 
-                    }}>미션 시작하기</S.Start>
-                    { showPopup && <MissionPopup onClose = { closePopup } /> }
-                </S.StartBox>
             </S.MissionBox>
         </S.MissionLayout>
     )
