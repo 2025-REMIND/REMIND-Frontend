@@ -19,14 +19,34 @@ export const BlurOverlay = styled.div`
     pointer-events: none;
 `;
 
-export const LogoBox = styled.div`
+export const Header = styled.div`
     position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    right: 3.54vw;
+`
+
+export const User = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     width: 21.14vw;
     height: 5.20vw;
-    right: 3.54vw;
+    border-radius: 0vw 0vw 2.08vw 2.08vw;
+    background-color: #F6BFCF;
+    color: #D7749B;
+    font-size: 1.56vw;
+    font-weight: 700;
+    z-index: 10;
+`
+
+export const LogoBox = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 21.14vw;
+    height: 5.20vw;
     border-radius: 0vw 0vw 2.08vw 2.08vw;
     background-color: #D7749B;
     z-index: 10;
@@ -53,31 +73,37 @@ export const Content = styled.div`
     flex-direction: column;
 `
 
-export const Title = styled.div`
+export const Text = styled.div`
+    position: absolute;
     display: flex;
-    margin-top: 6.25vw;
-    margin-left: 5.52vw;
-    color: #D7749B;
-    font-weight: 700;
-    font-size: 3.12vw;
-    line-height: 140%;
+    flex-direction: column;
+    top: 6.25vw;
+    left: 5.52vw;
+    gap: 0;
 `
 
-export const SubTitle = styled.div`
-    display: flex;
-    margin-left: 5vw;
+export const Title = styled.p`
+    color: #D7749B;
+    font-size: 3.13vw;
+    font-weight: 700;
+    margin: 0;
+`
+
+export const SubTitle = styled.p`
     color: #FFFAF8;
     font-size: 1.30vw;
-    line-height: 140%;
+    font-weight: 400;
+    margin: 0;
 `
 
 export const Memory = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 1.82vw;
+    padding-top: 15vw;
 `
 
 export const ImageBox = styled.div`
@@ -132,8 +158,9 @@ export const CommentBox = styled.div`
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    width: 48.33vw;
-    height: 10.41vw;
+    padding: 1.93vw 3.13vw;
+    width: 42.14vw;
+    height: 6.56vw;
     background-color: #fffaF8;
     border: 0.05vw solid #d7749b;
     border-radius: 1.56vw;
@@ -146,23 +173,21 @@ export const CommentBox = styled.div`
 export const SongBox = styled.div`
     display: flex;
     flex-direction: column;
-    width: 48.33vw;
-    height: 5.20vw;
+    width: 42.14vw;
+    height: 2.19vw;
+    padding: 1.61vw 3.13vw;
     background-color: #fffaF8;
     border: 0.05vw solid #d7749b;
     border-radius: 1.56vw;
     color: #878787;
     font-weight: 200;
     font-size: 1.56vw;
-    margin: 0 auto;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `;
 
 export const CommentText = styled.textarea`
     width: 100%;
     height: 100%;
-    margin-top: 1.92vw;
-    margin-left: 3.12vw;
     border: none;
     resize: none;
     background: transparent;
@@ -179,8 +204,6 @@ export const CommentText = styled.textarea`
 export const SongText = styled.textarea`
     width: 100%;
     height: 100%;
-    margin-top: 1.61vw;
-    margin-left: 3.12vw;
     border: none;
     resize: none;
     background: transparent;

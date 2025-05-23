@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function MemoryRecord() {
     const [isUploading, setIsUploading] = useState(false);
+    const [userName, setUserName] = useState("000");
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
     const inputRef = useRef(null);
     const navigate = useNavigate();
 
@@ -61,13 +63,20 @@ export default function MemoryRecord() {
     return (
         <S.RecordLayout>
             {isUploading && <S.BlurOverlay />}
-            <S.LogoBox onClick = { logoClick }>
-                <S.Logo src = { HOME } />
-            </S.LogoBox>   
+            <S.Header>
+                <S.User>
+                    안녕하세요 { isLoggedIn && userName ? `${ userName } 님` : "" }
+                </S.User>
+                <S.LogoBox onClick = { logoClick }>
+                    <S.Logo src = { HOME } />
+                </S.LogoBox>  
+            </S.Header> 
             <S.RecordImage src = { RECORD } /> 
             <S.Content>
-                <S.Title>기억을 기록해요</S.Title>
-                <S.SubTitle>그날의 온도와 마음을 여기에 남겨보세요.</S.SubTitle>
+                <S.Text>
+                    <S.Title>기억을 기록해요</S.Title>
+                    <S.SubTitle>그날의 온도와 마음을 여기에 남겨 보세요.</S.SubTitle>
+                </S.Text>
                 <S.Memory>
                     <S.ImageBox $status = { isUploading }>
                         <S.BasicPlusImage 

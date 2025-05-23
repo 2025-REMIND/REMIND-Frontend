@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function MemoryRecord() {
-    // const memoryList = response.data.memories;
     const memoryList = [1, 2, 3, 4];
 
     const mainRef = useRef(null);
@@ -53,7 +52,6 @@ export default function MemoryRecord() {
                                 RE:MIND에 기록해 보아요
                                 `}</S.Detail>
                                 <S.Image src = { ARCHIVE } />
-                                <S.Detail>2025. 03. 13.</S.Detail>
                             </S.ItemLayout>
                         </S.Item>
                     ))}
