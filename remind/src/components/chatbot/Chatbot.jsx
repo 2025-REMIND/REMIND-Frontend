@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import * as S from './Chatbot.style';
 import Header from './header/ChatbotHeader';
 import ChatInput from './input/ChatInput';
@@ -20,6 +20,7 @@ const Chatbot = () => {
 
 ];
 
+  const chatEndRef=useRef(null);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [messages, setMessages] = useState([
     { from: 'bot', text: questions[0] }
@@ -43,6 +44,13 @@ const Chatbot = () => {
     setMessages(updatedMessages);
     setInput('');
   };
+  //massages가 의존성 배열로서, massages가 바뀔때마다 마지막 요소로 스크롤 하는 역할
+
+  useEffect(()=>{
+    chatEndRef.current?.scrollIntoView({behavior: 'smooth'});
+
+  },[messages]);
+  
 
   return (
     <>
@@ -50,11 +58,13 @@ const Chatbot = () => {
       <S.ChatWrapper>
         <S.ChatBox>
           {messages.map((msg, idx) => (
-  <S.Message key={idx} from={msg.from}>
-    {msg.from === 'bot' && <S.BotIcon src={RimiIcon} alt="리마" />}
-    <S.MessageText from={msg.from}>{msg.text}</S.MessageText>
-  </S.Message>
-))}
+          <S.Message key={idx} from={msg.from}>
+            {msg.from === 'bot' && <S.BotIcon src={RimiIcon} alt="리마" />}
+            <S.MessageText from={msg.from}>{msg.text}</S.MessageText>
+          </S.Message>
+        ))}
+        <div ref={chatEndRef}/>
+        {/*massages 변경 시 자동 스크롤*/ }
         </S.ChatBox>
         <ChatInput input={input} setInput={setInput} onSend={handleSend} />
       </S.ChatWrapper>

@@ -1,8 +1,11 @@
 import styled from 'styled-components';
+export const HeaderLayout=styled.div`
+  background-color: #fffaf8 ;
+`
 
 export const Header = styled.header`
   width: 100%;
-  height: 11.1vh; /* 120px → 11.1vh */
+  height: 9vh; /* 120px → 11.1vh */
   background-color: #e9bdcc;
   border-bottom-left-radius: 2.8vh;
   border-bottom-right-radius: 2.8vh;
@@ -14,9 +17,7 @@ export const TabContainer = styled.div`
   bottom: 0;
   width: 100%;
   display: flex;
-  
   justify-content: space-around;
-
   align-items: flex-end;
 `;
 
