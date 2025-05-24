@@ -1,62 +1,35 @@
 import * as S from "./MemoryRecord.style";
-import ARCHIVE from "../../../assets/home/memoryrecord/archive.svg";
-import { useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import RECORD from "../../../assets/home/memoryrecord/record.svg";
+import SONG from "../../../assets/home/memoryrecord/home-song.svg";
+import EDIT from "../../../assets/home/memoryrecord/home-edit.svg";
 
 export default function MemoryRecord() {
-    const memoryList = [1, 2, 3, 4];
-
-    const mainRef = useRef(null);
-
-    useEffect(() => {
-        if (mainRef.current) {
-            const itemWidth = 34.68;
-            const gap = 3.1;
-            const vw = window.innerWidth / 100;
-
-            const itemAllWidth = (itemWidth + gap) * vw;
-            const gapCenter = (gap * vw) / 2;
-
-            const myMain = itemAllWidth * 2 - gapCenter;
-
-            const center = window.innerWidth / 2;
-            const scroll = myMain - center;
-
-            mainRef.current.scrollLeft = scroll;
-        }
-    }, []);
-
-    const navigate = useNavigate();
-    
-    const handleClick = () => {
-        navigate(`/memoryrecord`);
-    }
-
     return (
-        <S.RecordLayout>
-            <S.Title>기억 기록하기</S.Title>
-            <S.SubTitle>
-                사진과 감정, 그날의 기억까지ㅡ 우리의 순간을 'RIMI'와 함께 기록해 보세요
-            </S.SubTitle>
-            <S.Plus>더보기 ＞</S.Plus>
+        <S.MemoryRecordLayout>
+            <S.Text>
+                <S.Title>기억 기록하기</S.Title>
+                <S.SubTitle>
+                    {`사진, 감정, 음악까지ㅡ그날의 순간을 온전히 담아 보세요.
+                    직접 사진을 올리고, 그날의 기분과 함께 듣던 노래를 적어 당신만의 소중한 기억을 기록할 수 있어요.`}
+                </S.SubTitle>
+            </S.Text>
+            <S.MemoryGroup>
+                <S.Content>
+                    <S.Img src = { RECORD } />
+                    <S.InputBox>
+                        <S.SongBox>
+                            <S.Icon src = { SONG } />
+                            <S.Detail>이때 들었던 노래나 생각나는 노래가 있으면 입력해 주세요.</S.Detail>
+                        </S.SongBox>
+                        <S.EditBox>
+                            <S.Icon src = { EDIT } />
+                            <S.Detail>이때 들었던 노래나 생각나는 노래가 있으면 입력해 주세요.</S.Detail>
+                        </S.EditBox>
+                    </S.InputBox>
+                </S.Content>
+                <S.GoBox>기록하러 가기</S.GoBox>
+            </S.MemoryGroup>
+    </S.MemoryRecordLayout>
+    )
 
-            <S.ItemWrapper ref = { mainRef }>
-                <S.Items>
-                    { memoryList.map((_, i) => (
-                        <S.Item key = { i } onClick = { () => handleClick() }>
-                            <S.ItemLayout>
-                                <S.Name>오늘, 문득 떠오른 생각</S.Name>
-                                <S.Detail>{`
-                                함께 했던 순간,
-                                문득 떠오른 기억을
-                                RE:MIND에 기록해 보아요
-                                `}</S.Detail>
-                                <S.Image src = { ARCHIVE } />
-                            </S.ItemLayout>
-                        </S.Item>
-                    ))}
-                </S.Items>
-            </S.ItemWrapper>
-        </S.RecordLayout>
-    );
 }
