@@ -11,13 +11,11 @@ export default function Header() {
             <S.Home>
                 <S.Image src = { LOGO } />
             </S.Home>
-
-            <S.User>
-                안녕하세요 { isLoggedIn && userName ? `${ userName } 님` : "" }
-            </S.User>
-
-            <S.Account>회원가입</S.Account>
-            <S.Account>로그인</S.Account>
+            <S.UserBox>
+                <S.User>안녕하세요 { isLoggedIn && userName ? `${ userName } 님` : "" }</S.User>
+                <S.Account>회원가입</S.Account>
+                <S.Account>로그인</S.Account>
+            </S.UserBox>
         </S.HeaderLayout>
     )
 }

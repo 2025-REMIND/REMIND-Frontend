@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const TodayScheduleLayout = styled.div`
     display: flex;
     align-items: center;
+    justify-content: center;
     background-color: #D7749B;
     border-radius: 1.56vw;
     width: 100vw;
@@ -12,7 +13,6 @@ export const TodayScheduleLayout = styled.div`
 export const Content = styled.div`
     display: flex;
     flex-direction: column;
-    margin-left: 5.20vw;
 `
 
 export const Title = styled.div`
