@@ -97,6 +97,7 @@ export const LocationInfo = styled.div`
     gap: 1.56vw;
     padding-left: 1.41vw;
     box-sizing: border-box;
+    box-shadow: 0vw 0.2vw 0.2vw rgba(215, 116, 155, 0.25);
 `
 
 export const Location = styled.img`
@@ -123,6 +124,7 @@ export const TimeInfo = styled.div`
     gap: 1.56vw;
     padding-left: 1.77vw;
     box-sizing: border-box;
+    box-shadow: 0vw 0.2vw 0.2vw rgba(215, 116, 155, 0.25);
 `
 
 export const Time = styled.img`

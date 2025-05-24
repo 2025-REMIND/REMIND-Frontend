@@ -25,6 +25,7 @@ export const SuggestBox = styled.div`
     height: 22.23vw;
     border: 0.05vw solid #D7749B;
     border-radius: 2.60vw;
+    box-shadow: 0vw 0.2vw 0.2vw rgba(215, 116, 155, 0.25);
 `
 
 export const Content = styled.div`

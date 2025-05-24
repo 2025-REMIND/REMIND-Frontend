@@ -13,6 +13,13 @@ export const TodayScheduleLayout = styled.div`
 export const Content = styled.div`
     display: flex;
     flex-direction: column;
+    gap: 6.25vw;
+`
+
+export const Text = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 2.06vw;
 `
 
 export const Title = styled.div`
@@ -37,7 +44,7 @@ export const CheckBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 6.25vw;
+    /* margin-top: 6.25vw; */
     width: 24.79vw;
     height: 6.77vw;
     border-radius: 1.56vw;
