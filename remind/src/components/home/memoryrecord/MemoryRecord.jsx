@@ -2,8 +2,15 @@ import * as S from "./MemoryRecord.style";
 import RECORD from "../../../assets/home/memoryrecord/record.svg";
 import SONG from "../../../assets/home/memoryrecord/home-song.svg";
 import EDIT from "../../../assets/home/memoryrecord/home-edit.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function MemoryRecord() {
+    const navigate = useNavigate();
+
+    const memoryClick = () => {
+        navigate(`/memoryrecord`);
+    };
+
     return (
         <S.MemoryRecordLayout>
             <S.Text>
@@ -27,7 +34,7 @@ export default function MemoryRecord() {
                         </S.EditBox>
                     </S.InputBox>
                 </S.Content>
-                <S.GoBox>기록하러 가기</S.GoBox>
+                <S.GoBox onClick = { memoryClick }>기록하러 가기</S.GoBox>
             </S.MemoryGroup>
     </S.MemoryRecordLayout>
     )
