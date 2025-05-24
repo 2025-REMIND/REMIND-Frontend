@@ -6,7 +6,7 @@ import RegisterPage from './pages/RegisterPage';
 import MainHomePage from "./pages/MainHomePage";
 import MemoryRecordPage from "./pages/MemoryRecordPage";
 import GlobalStyle from "./styles/globalStyles";
-
+import ChatBot from './components/chatbot/Chatbot';
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +17,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path = "/home" element = { <MainHomePage /> } />
         <Route path = "/memoryrecord" element = { <MemoryRecordPage /> } />
+        <Route path = "/chatbot" element={<ChatBot/>}/>
       </Routes>
     </BrowserRouter>
   );
