@@ -14,25 +14,32 @@ export default function MissionPopup({ onClose }) {
 
     const [answer, setAnswer] = useState([]);
     const [isSaved, setIsSaved] = useState(false);
-    const [isChecked, setIsChecked] = useState(false);
+    const [isChecked, setIsChecked] = useState([]);
 
     useEffect(() => {
         setAnswer(Array(questions.length).fill(""));
     }, [questions.length]);
 
     const updateAnswer = (index, value) => {
-        const update = [...answer];
-        update[index] = value;
-        setAnswer(update);
+        const answerUpdate = [...answer];
+        answerUpdate[index] = value;
+        setAnswer(answerUpdate);
     };
 
     const saveClick = () => {
         setIsSaved((prev) => !prev);
     };
 
-    const checkClick = () => {
-        setIsChecked((prev) => !prev);
-    };
+    useEffect(() => {
+        setAnswer(Array(questions.length).fill(""));
+        setIsChecked(Array(questions.length).fill(false));
+    }, [questions.length]);
+
+    const checkClick = (index) => {
+        const checkUpdate = [...isChecked];
+        checkUpdate[index] = !checkUpdate[index];
+        setIsChecked(checkUpdate);
+    }
 
     return (
         <S.Overlay>
@@ -56,8 +63,8 @@ export default function MissionPopup({ onClose }) {
                         { questions.map((question, idx) => (
                             <S.Content key = { idx }>
                                 <S.Question>
-                                    <S.Check onClick = { checkClick }>
-                                        <S.CheckBox src = { isChecked ? CHECK : UNCHECK } />
+                                    <S.Check onClick = { () => checkClick(idx) }>
+                                        <S.CheckBox src = { isChecked[idx] ? CHECK : UNCHECK } />
                                     </S.Check>
                                     <S.QuestionBox>
                                         { question }

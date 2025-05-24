@@ -131,7 +131,6 @@ export const Question = styled.div`
 export const QuestionBox = styled.p`
     display: flex;
     align-items: center;
-    /* margin-bottom: 1.04vw; */
     color: #D7749B;
     font-size: 2.60vw;
     font-weight: 600;

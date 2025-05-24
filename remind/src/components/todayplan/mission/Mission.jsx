@@ -1,6 +1,6 @@
 import * as S from "./Mission.style";
-import CHECKBOX from "../../../assets/todayplan/checkbox.svg";
-import CHECKINGBOX from "../../../assets/todayplan/checkingbox.svg";
+import UNCHECK from "../../../assets/todayplan/checkbox.svg";
+import CHECK from "../../../assets/todayplan/checkingbox.svg";
 import MISSION from "../../../assets/todayplan/mission.svg";
 import { useState } from "react";
 import MissionPopup from "./MissionPopup";
@@ -15,17 +15,15 @@ export default function Mission() {
     };
 
     const startClick = () => {
-        setIsStarted((prev) => !prev);
+        setIsStarted(true);
+        setShowPopup(true);
     };
 
-    const openPopup = () => setShowPopup(true);
     const closePopup = () => setShowPopup(false);
 
     return (
         <S.MissionLayout>
-            <S.Check onClick = { checkClick } >
-                <S.CheckBox src = { isChecked ? CHECKINGBOX : CHECKBOX } />
-            </S.Check>
+            <S.CheckBox src = { isChecked ? CHECK : UNCHECK } onClick = { checkClick } />
             <S.MissionBox>
                 <S.Content>
                     <S.BoxText>
@@ -39,10 +37,7 @@ export default function Mission() {
                         </S.Text>
                     </S.BoxText>
                     <S.StartBox isStarted = { isStarted }>
-                        <S.Start isStarted = { isStarted } onClick = { () => {
-                            setIsStarted(true);
-                            setShowPopup(true); 
-                        }}>미션 시작하기</S.Start>
+                        <S.Start isStarted = { isStarted } onClick = { startClick }>미션 시작하기</S.Start>
                         { showPopup && <MissionPopup onClose = { closePopup } /> }
                     </S.StartBox>
                 </S.Content>

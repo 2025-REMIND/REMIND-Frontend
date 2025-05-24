@@ -28,7 +28,17 @@ export const SuggestBox = styled.div`
 `
 
 export const Content = styled.div`
-    margin-left: 3.54vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 3.54vw;
+    gap: 0.63vw;
+`
+
+export const BoxText = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1.30vw;
 `
 
 export const Suggest = styled.div`
@@ -43,24 +53,32 @@ export const Icon = styled.img`
     height: 2.08vw;
 `
 
-export const Label = styled.div`
+export const Label = styled.p`
     color: #D7749B;
     font-size: 1.56vw;
     font-weight: 500;
+    margin: 0;
 `
 
-export const Title = styled.div`
+export const Text = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.83vw;
+`
+
+export const Title = styled.p`
     color: #D7749B;
     font-size: 2.60vw;
     font-weight: 800;
-    margin-top: 1.30vw;
+    margin: 0;
 `
 
-export const SubTitle = styled.div`
+export const SubTitle = styled.p`
     color: #D7749B;
     font-size: 2.08vw;
     font-weight: 400;
-    margin-top: 0.83vw;
+    margin: 0;
 `
 
 export const PlanBox = styled.div`
@@ -71,20 +89,21 @@ export const PlanBox = styled.div`
     width: 15.62vw;
     height: 4.68vw;   
     border: 0.05vw solid #D7749B;
+    background-color: #FFFAF8;
     border-radius: 1.56vw;
-    margin-right: 3.54vw;
-    margin-top: 1.56vw;
     box-shadow: 0vw 0.2vw 0.2vw rgba(215, 116, 155, 0.25);
 
-    background-color: ${({ isLooked }) => (
-        isLooked ? "#D7749B" : "#FFFAF8"
-    )};
+    &:active {
+        background-color: #D7749B;
+    }
 `
 
 export const Plan = styled.div`
-    color: ${({ isLooked }) => (
-        isLooked ? "#FFFAF8" : "#D7749B"
-    )};
+    color: #D7749B;
     font-size: 2.08vw;
     font-weight: 600;
+
+    &:active {
+        color: #FFFAF8;
+    }
 `

@@ -9,9 +9,6 @@ export const MissionLayout = styled.div`
     gap: 5.31vw;
 `
 
-export const Check = styled.div`
-`
-
 export const CheckBox = styled.img`
     width: 5.20vw;
     height: 5.20vw;
