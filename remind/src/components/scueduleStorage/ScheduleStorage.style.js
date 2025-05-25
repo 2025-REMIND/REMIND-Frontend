@@ -2,19 +2,26 @@ import styled from "styled-components";
 
 export const StorageLayout=styled.div`
   display: flex;
-
+  flex-direction:column;
+  gap:1rem;
   height: 100%;
   width:100%;
 `
 
+export const TitleBlock = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap:1rem;
+`;
+
 export const StorageTitle = styled.div`
-  color: #d7749b;
   font-size: 2.4rem;
-  margin-bottom: 1rem;
-  margin: 42px 0 0 130px;
+  color: #d7749b;
+  margin: 5rem 0 0 3rem;
 `;
 
 export const StorageText = styled.div`
-  color: black;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  color: #9d8c84;
 `;
