@@ -1,5 +1,6 @@
 import * as S from "./Header.style";
 import LOGO from "../../../assets/home/remind.svg";
+import AllHeader from "../components/AllHeader";
 import { useState } from "react";
 
 export default function Header() {
@@ -9,12 +10,15 @@ export default function Header() {
     return (
         <S.HeaderLayout>
             <S.Home>
-                <S.Image src = { LOGO } />
+                <AllHeader icon = { LOGO } />
             </S.Home>
             <S.UserBox>
-                <S.User>안녕하세요 { isLoggedIn && userName ? `${ userName } 님` : "" }</S.User>
-                <S.Account>회원가입</S.Account>
-                <S.Account>로그인</S.Account>
+                <AllHeader
+                    input = { `안녕하세요 ${ userName } 님` }
+                    width = "17.86vw"
+                />
+                <AllHeader input = "회원가입" BGcolor = "#D7749B" color = "#FFFAF8" />
+                <AllHeader input = "로그인" BGcolor = "#D7749B" color = "#FFFAF8" />
             </S.UserBox>
         </S.HeaderLayout>
     )
