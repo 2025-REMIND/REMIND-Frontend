@@ -9,9 +9,11 @@ export default function Header() {
 
     return (
         <S.HeaderLayout>
-            <S.Home>
-                <AllHeader icon = { LOGO } />
-            </S.Home>
+            <AllHeader 
+                icon = { LOGO } 
+                BGcolor = "#D7749B"
+                width = "17.86vw"
+            />
             <S.UserBox>
                 <AllHeader
                     input = { `안녕하세요 ${ userName } 님` }

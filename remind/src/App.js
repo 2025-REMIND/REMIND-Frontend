@@ -18,7 +18,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path = "/home" element = { <MainHomePage /> } />
         <Route path = "/memoryrecord" element = { <MemoryRecordPage /> } />
-        <Route path = "/todayplan" element = { <TodayPlanPage /> />
+        <Route path = "/todayplan" element = { <TodayPlanPage /> } />
         <Route path = "/chatbot" element={<ChatBot/>}/>
       </Routes>
     </BrowserRouter>

@@ -1,18 +1,16 @@
 import * as S from "./AllHeader.style";
 
-const AllHeader = ({ input, BGcolor, icon, color, width }) => {
-    const hasText = Boolean(input && input.trim());
-
+const AllHeader = ({ input, BGcolor, icon, color, width, onClick }) => {
     return (
         <S.Header 
             input = { input }
-            hasText = { hasText }
             BGcolor = { BGcolor } 
             color = { color } 
             width = { width }
+            onClick = { onClick }
         >
             { icon && <img src = { icon } /> }
-            { hasText && input }
+            { input }
         </S.Header>
     )
 }
