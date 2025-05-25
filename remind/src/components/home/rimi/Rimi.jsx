@@ -1,7 +1,14 @@
 import * as S from "./Rimi.style";
 import RIMI from "../../../assets/home/rimi/rimi.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function Rimi() {
+    const navigate = useNavigate();
+
+    const rimiClick = () => {
+        navigate(`/chatbot`);
+    };
+
     return (
         <S.RIMILayout>
             <S.Text>
@@ -13,7 +20,7 @@ export default function Rimi() {
                         서로의 마음을 다시 마주보고, 조금은 잊고 지냈던 감정을 되살려 보는 시간,
                         지금 'RIMI'와 함께 시작해 보세요.`}
                     </S.SubTitle>   
-                    <S.Box>대화하러 가기</S.Box>          
+                    <S.Box onClick = { rimiClick }>대화하러 가기</S.Box>          
                 </S.RIMI>
             </S.Text>
             <S.Img src = { RIMI } />
