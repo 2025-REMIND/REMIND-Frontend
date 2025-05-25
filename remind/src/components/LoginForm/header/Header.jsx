@@ -15,7 +15,6 @@ export default function Header() {
       <S.HeaderWrapper>
         <S.LogoBox>
           <img src={Icon} alt="로고" style={{ marginRight: '8px', height: '20px' }} />
-          RE:MIND
         </S.LogoBox>
         <S.MenuBox>
           <S.Tab active={isRegister} onClick={() => navigate('/register')}>회원가입</S.Tab>
