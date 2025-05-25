@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function Header() {
     const [userName, setUserName] = useState("000");
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
 
     const navigate = useNavigate();
 

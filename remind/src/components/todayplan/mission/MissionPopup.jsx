@@ -3,22 +3,16 @@ import ICON from "../../../assets/todayplan/mission.svg";
 import CLOSE from "../../../assets/todayplan/popup/closebutton.svg";
 import UNCHECK from "../../../assets/todayplan/checkbox.svg";
 import CHECK from "../../../assets/todayplan/checkingbox.svg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export default function MissionPopup({ onClose }) {
+export default function MissionPopup({ onClose, onSave, isChecked, setIsChecked, answer, setAnswer, setParentChecked }) {
     const questions = [
         "애인에게 어떤 순간이 가장 좋은지 물어보기",
         "손잡고 걷기",
         "애인에게 mbti 물어보기"
     ]
 
-    const [answer, setAnswer] = useState([]);
     const [isSaved, setIsSaved] = useState(false);
-    const [isChecked, setIsChecked] = useState([]);
-
-    useEffect(() => {
-        setAnswer(Array(questions.length).fill(""));
-    }, [questions.length]);
 
     const updateAnswer = (index, value) => {
         const answerUpdate = [...answer];
@@ -28,17 +22,17 @@ export default function MissionPopup({ onClose }) {
 
     const saveClick = () => {
         setIsSaved((prev) => !prev);
-    };
 
-    useEffect(() => {
-        setAnswer(Array(questions.length).fill(""));
-        setIsChecked(Array(questions.length).fill(false));
-    }, [questions.length]);
+        const allChecked = isChecked.every((v) => v === true);
+        if (allChecked) onSave();
+    };
 
     const checkClick = (index) => {
         const checkUpdate = [...isChecked];
         checkUpdate[index] = !checkUpdate[index];
         setIsChecked(checkUpdate);
+
+        if (checkUpdate.some(v => !v)) setParentChecked(false);
     }
 
     return (

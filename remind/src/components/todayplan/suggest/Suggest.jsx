@@ -9,6 +9,7 @@ export default function Mission() {
     const [isChecked, setIsChecked] = useState(false);
     const [isLooked, setIsLooked] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
+    const [checkedList, setCheckedList] = useState([false, false, false, false]);
 
     const checkClick = () => {
         setIsChecked((prev) => !prev);
@@ -24,6 +25,10 @@ export default function Mission() {
     };
 
     const closePopup = () => setShowPopup(false);
+
+    const handleSave = () => {
+        if (checkedList.every(Boolean)) setIsChecked(true);
+    }
 
     return (
         <S.SuggestLayout>
@@ -44,7 +49,15 @@ export default function Mission() {
                     </S.BoxText>
                     <S.PlanBox isLooked = { isLooked }>
                         <S.Plan isLooked = { isLooked } onClick = { startClick }>일정 자세히 보기</S.Plan>
-                        { showPopup && <SuggestPopup onClose = { closePopup } /> }
+                        { showPopup && 
+                            <SuggestPopup 
+                                onClose = { closePopup } 
+                                onSave = { handleSave }
+                                isChecked = { checkedList }
+                                setIsChecked = { setCheckedList }
+                                setParentChecked = { setIsChecked }
+                            /> 
+                        }
                     </S.PlanBox>
                 </S.Content>
             </S.SuggestBox>

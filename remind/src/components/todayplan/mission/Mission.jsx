@@ -9,6 +9,8 @@ export default function Mission() {
     const [isChecked, setIsChecked] = useState(false);
     const [isStarted, setIsStarted] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
+    const [checkedList, setCheckedList] = useState([false, false, false]);
+    const [answerList, setAnswerList] = useState(["", "", ""]);
 
     const checkClick = () => {
         setIsChecked((prev) => !prev);
@@ -20,6 +22,10 @@ export default function Mission() {
     };
 
     const closePopup = () => setShowPopup(false);
+
+    const handleSave = () => {
+        if (checkedList.every(Boolean)) setIsChecked(true);
+    }
 
     return (
         <S.MissionLayout>
@@ -38,7 +44,17 @@ export default function Mission() {
                     </S.BoxText>
                     <S.StartBox isStarted = { isStarted }>
                         <S.Start isStarted = { isStarted } onClick = { startClick }>미션 시작하기</S.Start>
-                        { showPopup && <MissionPopup onClose = { closePopup } /> }
+                        { showPopup && 
+                            <MissionPopup 
+                                onClose = { closePopup } 
+                                onSave = { handleSave } 
+                                isChecked = { checkedList }
+                                setIsChecked = { setCheckedList }
+                                answer = { answerList }
+                                setAnswer = { setAnswerList }
+                                setParentChecked = { setIsChecked }
+                            /> 
+                        }
                     </S.StartBox>
                 </S.Content>
             </S.MissionBox>

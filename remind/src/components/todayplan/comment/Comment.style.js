@@ -38,6 +38,11 @@ export const ImageBox = styled.div`
     font-size: 2.34vw;
     font-weight: 600;
     box-shadow: 0vw 0.2vw 0.2vw rgba(215, 116, 155, 0.25);
+
+    &:hover {
+        background-color: #D7749B;
+        color: #FFFAF8;
+    }
 `
 
 export const SaveBox = styled.div`

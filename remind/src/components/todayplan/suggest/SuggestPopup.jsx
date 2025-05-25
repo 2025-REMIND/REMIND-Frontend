@@ -6,9 +6,9 @@ import TIME from "../../../assets/todayplan/suggest/suggest-time.svg";
 import TODO from "../../../assets/todayplan/suggest/todo.svg";
 import UNCHECK from "../../../assets/todayplan/checkbox.svg";
 import CHECK from "../../../assets/todayplan/checkingbox.svg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export default function SuggestPopup({ onClose }) {
+export default function SuggestPopup({ onClose, onSave, isChecked, setIsChecked, setParentChecked }) {
     const lists = [
         "돗자리 펴고 조용한 음악 같이 듣기",
         "노을 보며 맥주 한 잔",
@@ -18,11 +18,6 @@ export default function SuggestPopup({ onClose }) {
 
     const [answer, setAnswer] = useState([]);
     const [isSaved, setIsSaved] = useState(false);
-    const [isChecked, setIsChecked] = useState([]);
-
-    useEffect(() => {
-        setAnswer(Array(lists.length).fill(""));
-    }, [lists.length]);
 
     const updateAnswer = (index, value) => {
         const answerUpdate = [...answer];
@@ -32,18 +27,26 @@ export default function SuggestPopup({ onClose }) {
 
     const saveClick = () => {
         setIsSaved((prev) => !prev);
+        
+        if (isChecked.every(Boolean)) onSave();
     };
-
-    useEffect(() => {
-        setAnswer(Array(lists.length).fill(""));
-        setIsChecked(Array(lists.length).fill(false));
-    }, [lists.length]);
 
     const checkClick = (index) => {
         const checkUpdate = [...isChecked];
         checkUpdate[index] = !checkUpdate[index];
         setIsChecked(checkUpdate);
+
+        if (checkUpdate.some(v => v === false)) setParentChecked(false);
     }
+
+    const handleClose = () => {
+        if (isChecked.every(Boolean)) {
+            onSave();
+        }
+
+        onClose();
+    };
+
     return (
         <S.Overlay>
             <S.SuggestPopupLayout>
@@ -54,7 +57,7 @@ export default function SuggestPopup({ onClose }) {
                                 <S.Icon src = { ICON } />
                                 <S.Title>추천 데이트 코스</S.Title>
                             </S.TopLeft>
-                            <S.CloseButton src = { CLOSE } onClick = { onClose } />
+                            <S.CloseButton src = { CLOSE } onClick = { handleClose } />
                         </S.Header>
                         <S.SubTitle>
                         {`어디로 가야 할지 고민될 땐, RE:MIND가 오늘 분위기에 어울리는 데이트 코스를 살포시 추천해 드려요.
