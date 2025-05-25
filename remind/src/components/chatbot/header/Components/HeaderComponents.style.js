@@ -6,17 +6,17 @@ export const HeaderBox = styled.div`
   justify-content: center;
   background-color: ${({ bgColor }) => bgColor || '#fff'};
   color: ${({ textColor }) => textColor || '#7d2953'};
-  padding: 0.74vh 1.5vh;
-  border-top-left-radius: 1.5vh;
-  border-top-right-radius: 1.5vh;
+
+  
   font-weight: 500;
-  font-size: 1.3vh;
-width: clamp(10rem, 15vw, 21rem);
-  height: 4vh;
+  font-size: 1.5vw;
+  width: 18.38vw;
+  height: 3.90vw;
+  border-radius: 2.08vw 2.08vw 0vw 0vw;
   
   img {
-    height: 1.5vh;
-    margin-right: 0.55vh;
+    width: 14.11vw;
+    height: 2.34vw;
   }
 `;
 

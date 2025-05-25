@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ChatWrapper = styled.div`
   width: 100%;
-  height: 92vh;
+  height: 87.5vh;
   background: #fffaf8;
   display: flex;
   flex-direction: column;
@@ -31,14 +31,14 @@ export const Message = styled.div`
 
 
 export const BotIcon = styled.img`
-  height: 8em;
+  height: 10vw;
   margin-top: 0.4vh;
 `;
 
 
 export const MessageText = styled.div`
   background: ${({ from }) => (from === 'user' ? '#ffd5eb' : '#fff')};
-  color: #333;
+  color:#d7749b;
   padding: 1.1vh 1.5vh;
   white-space: pre-wrap;
   font-size: 1.3vh;
@@ -49,6 +49,7 @@ export const MessageText = styled.div`
   border-top-right-radius: 2.8vh;
   border-bottom-left-radius: ${({ from }) => (from === 'user' ? '2.8vh' : '0')};
   border-bottom-right-radius: ${({ from }) => (from === 'user' ? '0' : '2.8vh')};
+  font-size: 1.5vw;
   ${({ from }) => from === 'bot' && `
     margin-bottom: 16px; /* ✅ 아이콘보다 살짝 위로 */
   `}
@@ -60,6 +61,8 @@ export const MessageInputBox = styled.div`
   padding: 1.1vh;
   border-top: 0.1vh solid #eab1d5;
   background: #fff0f5;
+
+  
 `;
 
 export const Input = styled.input`

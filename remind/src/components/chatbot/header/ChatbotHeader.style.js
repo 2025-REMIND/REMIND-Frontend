@@ -4,11 +4,10 @@ export const HeaderLayout=styled.div`
 `
 
 export const Header = styled.header`
-  width: 100%;
-  height: 9vh; /* 120px → 11.1vh */
+  width: 100vw;
+  height: 6.25vw;
+  border-radius: 0vw 0vw 4.68vw 4.68vw;
   background-color: #e9bdcc;
-  border-bottom-left-radius: 2.8vh;
-  border-bottom-right-radius: 2.8vh;
   position: relative;
 `;
 

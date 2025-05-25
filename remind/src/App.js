@@ -8,6 +8,7 @@ import MemoryRecordPage from "./pages/MemoryRecordPage";
 import GlobalStyle from "./styles/globalStyles";
 import TodayPlanPage from './pages/TodayPlanPage';
 import ChatBot from './components/chatbot/Chatbot';
+import { ScheduleStorage } from './components/scueduleStorage/ScheduleStorage';
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +21,7 @@ function App() {
         <Route path = "/memoryrecord" element = { <MemoryRecordPage /> } />
         <Route path = "/todayplan" element = { <TodayPlanPage /> } />
         <Route path = "/chatbot" element={<ChatBot/>}/>
+        <Route path="/storage"element={<ScheduleStorage/>}/>
       </Routes>
     </BrowserRouter>
   );
