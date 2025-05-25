@@ -1,11 +1,12 @@
 import * as S from "./AllHeader.style";
 
-const AllHeader = ({ input, BGcolor, icon, color, width, onClick }) => {
+const AllHeader = ({ input, BGcolor, icon, color, weight, width, onClick }) => {
     return (
         <S.Header 
             input = { input }
             BGcolor = { BGcolor } 
             color = { color } 
+            weight = { weight }
             width = { width }
             onClick = { onClick }
         >

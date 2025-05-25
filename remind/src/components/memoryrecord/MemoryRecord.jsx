@@ -67,6 +67,7 @@ export default function MemoryRecord() {
             <S.Header>
                 <AllHeader
                     input = { `안녕하세요 ${ userName } 님` }
+                    weight = "700"
                     BGcolor = "#F6BFCF"
                     width = "17.86vw"
                 />
