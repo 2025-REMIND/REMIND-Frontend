@@ -23,5 +23,4 @@ export const TabContainer = styled.div`
 
 export const TabLeftGroup = styled.div`
   display: flex;
-  padding-left: 6.88vw;
 `;

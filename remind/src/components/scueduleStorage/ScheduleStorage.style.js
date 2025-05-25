@@ -13,6 +13,7 @@ export const TitleBlock = styled.div`
   flex-direction: row;
   align-items: baseline;
   gap:1rem;
+  padding-left: 10%;
 `;
 
 export const StorageTitle = styled.div`

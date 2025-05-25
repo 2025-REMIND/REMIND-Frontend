@@ -5,7 +5,7 @@ export const CardWrapper = styled.div`
   border-radius: 20px;
   padding: 2rem;
   margin: 2rem auto;
-  width: 80%;
+  width: 60%;
   box-shadow: 0 0.3vh 0.6vh rgba(0, 0, 0, 0.1);
 `;
 
@@ -29,21 +29,30 @@ export const IconRow = styled.div`
 `;
 
 export const RowIcon = styled.img`
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  object-fit: contain; /* 아이콘 비율 유지 */
 `;
 
 export const DateText = styled.div`
   font-size: 1.4rem;
   font-weight: bold;
+  
+  padding-bottom: 1rem;
 `;
 
 export const Location = styled.div`
   font-size: 1rem;
+  line-height: 1.2rem;  /* 아이콘과 같은 높이로 맞추기 */
+  display: flex;
+  align-items: center;
+  padding-bottom:2rem;
 `;
 
 export const MissionTitle = styled.div`
   font-size: 1rem;
+  
+  padding-bottom: 0.5rem;
 `;
 
 export const MissionList = styled.ul`
