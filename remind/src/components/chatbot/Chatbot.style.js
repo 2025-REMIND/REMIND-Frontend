@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ChatWrapper = styled.div`
   width: 100%;
-  height: 87vh;
+  height: 92vh;
   background: #fffaf8;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@ export const ChatBox = styled.div`
 
 export const Message = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: ${({ from }) => (from === 'user' ? 'flex-end' : 'flex-start')};
   gap: 1vh;
   max-width: 100%; // ✅ 여백은 ChatBox에서 처리
@@ -49,6 +49,9 @@ export const MessageText = styled.div`
   border-top-right-radius: 2.8vh;
   border-bottom-left-radius: ${({ from }) => (from === 'user' ? '2.8vh' : '0')};
   border-bottom-right-radius: ${({ from }) => (from === 'user' ? '0' : '2.8vh')};
+  ${({ from }) => from === 'bot' && `
+    margin-bottom: 16px; /* ✅ 아이콘보다 살짝 위로 */
+  `}
 `;
 
 
