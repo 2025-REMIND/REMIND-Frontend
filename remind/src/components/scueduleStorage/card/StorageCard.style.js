@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const CardWrapper = styled.div`
-  background-color: #f3c8da;
+  background-color: ${({ $bgColor }) => $bgColor || '#fff'};
   border-radius: 20px;
   padding: 2rem;
   margin: 2rem auto;
@@ -17,23 +17,33 @@ export const CardContent = styled.div`
 
 export const CardLeft = styled.div`
   flex: 1;
-  color: white;
+  color: ${({ $textColor }) => $textColor || '#000'};
+`;
+
+
+export const IconRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.7rem;
+`;
+
+export const RowIcon = styled.img`
+  width: 1.6rem;
+  height: 1.6rem;
 `;
 
 export const DateText = styled.div`
   font-size: 1.4rem;
   font-weight: bold;
-  margin-bottom: 0.5rem;
 `;
 
 export const Location = styled.div`
   font-size: 1rem;
-  margin-bottom: 0.5rem;
 `;
 
 export const MissionTitle = styled.div`
   font-size: 1rem;
-  margin-bottom: 1rem;
 `;
 
 export const MissionList = styled.ul`
@@ -46,6 +56,12 @@ export const MissionItem = styled.li`
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
+`;
+
+export const MissionIcon = styled.img`
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 0.3rem;
 `;
 
 export const MissionCheck = styled.span`
