@@ -161,6 +161,6 @@ export const Input = styled.textarea`
     color: #878787;
 
     &:focus {
-        color: #D7749B; 
+        color: #3F2E2E; 
     }
 `

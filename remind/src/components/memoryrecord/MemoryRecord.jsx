@@ -3,6 +3,7 @@ import HOME from "../../assets/memoryrecord/remind.svg";
 import RECORD from "../../assets/memoryrecord/memory.svg";
 import BASIC_PLUS from "../../assets/memoryrecord/basic-plusimage.svg";
 import UPLOADING_PLUS from "../../assets/memoryrecord/uploading-plusimage.svg";
+import AllHeader from "../home/components/AllHeader";
 import React, { useCallback, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -64,12 +65,18 @@ export default function MemoryRecord() {
         <S.RecordLayout>
             {isUploading && <S.BlurOverlay />}
             <S.Header>
-                <S.User>
-                    안녕하세요 { isLoggedIn && userName ? `${ userName } 님` : "" }
-                </S.User>
-                <S.LogoBox onClick = { logoClick }>
-                    <S.Logo src = { HOME } />
-                </S.LogoBox>  
+                <AllHeader
+                    input = { `안녕하세요 ${ userName } 님` }
+                    weight = "700"
+                    BGcolor = "#F6BFCF"
+                    width = "17.86vw"
+                />
+                <AllHeader 
+                    icon = { HOME } 
+                    BGcolor = "#D7749B"
+                    width = "17.86vw"
+                    onClick = { logoClick }
+                />
             </S.Header> 
             <S.RecordImage src = { RECORD } /> 
             <S.Content>

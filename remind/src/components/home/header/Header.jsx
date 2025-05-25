@@ -1,20 +1,47 @@
 import * as S from "./Header.style";
 import LOGO from "../../../assets/home/remind.svg";
+import AllHeader from "../components/AllHeader";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
     const [userName, setUserName] = useState("000");
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+    const navigate = useNavigate();
+
+    const loginClick = () => {
+        navigate(`/login`);
+    };
+
+    const signupClick = () => {
+        navigate(`/register`);
+    };
 
     return (
         <S.HeaderLayout>
-            <S.Home>
-                <S.Image src = { LOGO } />
-            </S.Home>
+            <AllHeader 
+                icon = { LOGO } 
+                BGcolor = "#D7749B"
+                width = "17.86vw"
+            />
             <S.UserBox>
-                <S.User>안녕하세요 { isLoggedIn && userName ? `${ userName } 님` : "" }</S.User>
-                <S.Account>회원가입</S.Account>
-                <S.Account>로그인</S.Account>
+                <AllHeader
+                    input = { `안녕하세요 ${ userName } 님` }
+                    weight = "700"
+                    width = "17.86vw"
+                />
+                <AllHeader 
+                    input = "회원가입" 
+                    BGcolor = "#D7749B" 
+                    color = "#FFFAF8" 
+                    onClick = { signupClick }
+                />
+                <AllHeader 
+                    input = "로그인" 
+                    BGcolor = "#D7749B" 
+                    color = "#FFFAF8" 
+                    onClick = { loginClick }
+                />
             </S.UserBox>
         </S.HeaderLayout>
     )

@@ -25,6 +25,7 @@ export const Header = styled.div`
     justify-content: flex-end;
     align-items: flex-start;
     right: 3.54vw;
+    z-index: 1;
 `
 
 export const User = styled.div`
