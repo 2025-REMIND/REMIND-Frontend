@@ -96,6 +96,10 @@ export const NavigateButton = styled.button`
   border: 1px solid #d7749b;
   border-radius: 12px;
   cursor: pointer;
+  :hover{
+    
+    background-color: #d7749b;
+  }
 `;
 
 export const DeleteButton = styled.button`
@@ -105,4 +109,7 @@ export const DeleteButton = styled.button`
   border: 1px solid #d7749b;
   border-radius: 12px;
   cursor: pointer;
+  :hover{
+    background-color: #d7749b;
+  }
 `;

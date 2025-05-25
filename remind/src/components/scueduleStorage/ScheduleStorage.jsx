@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Header from './header/StorageHeader';
 import * as S from './ScheduleStorage.style';
 import { StorageTitle } from './title/StorageTitle';
@@ -12,7 +12,9 @@ import LocationWhite from '../../assets/storage/location-white.png';
 import LocationPink from '../../assets/storage/location-pink.png';
 import HeartPink from '../../assets/storage/heart-pink.svg';
 
+import Pagination from './pagination/Pagination';
 export const ScheduleStorage = () => {
+  const [page, setPage]=useState(1);
   return (
     <>
       <Header />
@@ -67,7 +69,13 @@ export const ScheduleStorage = () => {
           onNavigate={() => console.log("바로가기")}
           onDelete={() => console.log("삭제")}
         />
+        <Pagination
+  currentPage={page}
+  totalPages={5}
+  onPageChange={setPage}
+/>
       </S.StorageLayout>
+      
     </>
   );
 };
