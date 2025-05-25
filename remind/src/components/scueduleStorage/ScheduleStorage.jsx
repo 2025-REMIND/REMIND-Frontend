@@ -4,7 +4,7 @@ import * as S from './ScheduleStorage.style';
 import { StorageTitle } from './title/StorageTitle';
 import StorageCard from './card/StorageCard';
 import StorageCardButtons from './card/StorageCardButton';
-
+import { useNavigate } from 'react-router-dom';
 // 아이콘 경로 불러오기
 import ListWhite from '../../assets/storage/list-white.png';
 import ListPink from '../../assets/storage/list-pink.svg';
@@ -14,6 +14,7 @@ import HeartPink from '../../assets/storage/heart-pink.svg';
 
 import Pagination from './pagination/Pagination';
 export const ScheduleStorage = () => {
+  const navigate=useNavigate();
   const [page, setPage]=useState(1);
   return (
     <>
@@ -33,7 +34,7 @@ export const ScheduleStorage = () => {
             { text: '산책하기', completed: false },
           ]}
           images={[]}
-          backgroundColor="#f3c8da"
+          backgroundColor="#d7749b"
           listIcon={ListWhite}
           locationIcon={LocationWhite}
           heartIcon={HeartPink}
@@ -41,7 +42,7 @@ export const ScheduleStorage = () => {
 
         />
         <StorageCardButtons
-          onNavigate={() => console.log("바로가기")}
+          onNavigate={() => navigate('/todayplan')}
           onDelete={() => console.log("삭제")}
         />
 

@@ -19,6 +19,7 @@ export const StorageTitle = styled.div`
   font-size: 2.4rem;
   color: #d7749b;
   margin: 5rem 0 0 3rem;
+  font-weight: bold;
 `;
 
 export const StorageText = styled.div`

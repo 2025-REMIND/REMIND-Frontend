@@ -25,14 +25,14 @@ const StorageCard = ({
             <S.Location>{location}</S.Location>
           </S.IconRow>
           <S.IconRow>
-            <S.RowIcon src={heartIcon} alt="mission" />
+            <S.RowIcon src={listIcon} alt="mission" />
             <S.MissionTitle>{missionTitle}</S.MissionTitle>
           </S.IconRow>
 
           <S.MissionList>
             {missionList.map((mission, idx) => (
               <S.MissionItem key={idx}>
-                <S.MissionIcon src={listIcon} alt="list icon" />
+                <S.MissionIcon src={heartIcon} alt="list icon" />
                 {mission.text}
               </S.MissionItem>
             ))}
