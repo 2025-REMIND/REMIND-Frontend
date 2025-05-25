@@ -30,7 +30,7 @@ export default function MemoryRecord() {
                         </S.SongBox>
                         <S.EditBox>
                             <S.Icon src = { EDIT } />
-                            <S.Detail>이때 들었던 노래나 생각나는 노래가 있으면 입력해 주세요.</S.Detail>
+                            <S.Detail>이때 어떤 일이 있었는지, 지금은 어땠는지 자유롭게 남겨 보세요.</S.Detail>
                         </S.EditBox>
                     </S.InputBox>
                 </S.Content>
