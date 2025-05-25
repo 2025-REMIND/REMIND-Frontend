@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ChatWrapper = styled.div`
   width: 100%;
-  height: 87vh;
+  height: 92vh;
   background: #fffaf8;
   display: flex;
   flex-direction: column;
