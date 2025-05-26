@@ -3,13 +3,15 @@ import CHECKBOX from "../../../assets/todayplan/checkbox.svg";
 import CHECKINGBOX from "../../../assets/todayplan/checkingbox.svg";
 import SUGGEST from "../../../assets/todayplan/suggest.svg";
 import SuggestPopup from "./SuggestPopup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import suggestionGetApi from "../../../api/api/suggestionGetApi";
 
 export default function Mission() {
     const [isChecked, setIsChecked] = useState(false);
     const [isLooked, setIsLooked] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const [checkedList, setCheckedList] = useState([false, false, false, false]);
+    const [courseData, setCourseData] = useState(null);
 
     const checkClick = () => {
         setIsChecked((prev) => !prev);
@@ -30,6 +32,15 @@ export default function Mission() {
         if (checkedList.every(Boolean)) setIsChecked(true);
     }
 
+    useEffect(() => {
+        const fetchCourse = async () => {
+            const data = await suggestionGetApi(1);
+            if (data) setCourseData(data.course);
+        };
+
+        fetchCourse();
+    }, []);
+
     return (
         <S.SuggestLayout>
             <S.Check onClick = { checkClick }>
@@ -43,8 +54,8 @@ export default function Mission() {
                             <S.Label>추천 데이트 코스</S.Label>
                         </S.Suggest>
                         <S.Text>
-                            <S.Title>여의도 한강공원으로 데이트 가기</S.Title>
-                            <S.SubTitle>함께 돗자리를 펴고 서로에게 궁금했던 질문 3가지 주고받기</S.SubTitle>
+                            <S.Title>{ courseData?.title }</S.Title>
+                            <S.SubTitle>{ courseData?.description }</S.SubTitle>
                         </S.Text>
                     </S.BoxText>
                     <S.PlanBox isLooked = { isLooked }>
