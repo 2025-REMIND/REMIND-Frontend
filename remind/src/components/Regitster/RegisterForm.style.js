@@ -28,7 +28,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Form = styled.div`
+export const Form = styled.form`
   flex: 1;              /* 폼이 Wrapper의 남은 공간 채우도록 */
   display: flex;
   flex-direction: column;
@@ -151,3 +151,10 @@ export const LoginText = styled.p`
   text-decoration: underline;
   cursor: pointer;
 `;
+
+export const ApiErrorMessage=styled.div`
+  color:#ff0000;
+  margin-left: 7rem;
+    font-size: 14px;
+
+`

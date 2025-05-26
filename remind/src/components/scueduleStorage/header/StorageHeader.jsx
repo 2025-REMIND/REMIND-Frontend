@@ -1,8 +1,5 @@
 import * as S from "./Header.style";
 import HOME from "../../../assets/todayplan/remind.svg";
-import MUSIC from "../../../assets/todayplan/music.svg";
-import TIME from "../../../assets/todayplan/time.svg"
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {
