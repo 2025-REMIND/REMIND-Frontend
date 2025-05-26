@@ -1,34 +1,47 @@
 import defaultInstance from "../utils/instance"
 
 
-const createPostApi=async(id, password)=>{
+const createPostApi=async( id, password)=>{
    try{
-    const response=await defaultInstance.post(`post`,{
+    const response=await defaultInstance.post(`/signup`,{
       id,
       password,
     })
-    if(response.data.httpStatus===200){//로그인 성공
+    if(response.data.httpStatus===200){//회원가입 성공
       console.log(response.data.message);
-      return response.data.data.memberId;//18
-    }
-    else if(response.data.httpStatus===400){//아이디 불일치
-      if(response.data.code==="USER_400_1"){
-         console.log(response.data.message);
-        return response.data.data;//null
-      }
-      else if(response.data.code="SIGNIN_400_2"){//비밀번호 불일치치
-        console.log(response.data.message);
-        return response.data.data;//null
-      }
-    }
-    else if(response.data.httpStatus===500){
-      console.log(response.data.message)
       return response.data.data;//null
     }
     
   }
     catch(e){
-      console.error(e);
+      const { code, message, httpStatus } = error.response.data;
+
+      if (httpStatus === 400) {
+        if (code === "GLOBAL_400_2") {
+          console.log(message);
+          return code;
+        }
+        if (code === "GLOBAL_400_2") {
+          console.log(message);
+          return code;
+        }
+        if (code === "GLOBAL_400_2") {
+          console.log(message);
+          return code;
+        }
+        if (code === "GLOBAL_400_2") {
+          console.log(message);
+          return code;
+        }
+
+      }
+      else if (httpStatus === 500) {
+        console.log(message);
+        return code;
+      }
+     else {
+      console.error(error);
+    }
   }
 }
 

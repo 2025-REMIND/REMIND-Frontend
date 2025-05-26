@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as S from './LoginForm.style';
 import Header from './header/Header';
 import UsernameInput from './input/UsernameInput';
 import PasswordInput from './input/PasswordInput';
 import ToRegisterButton from './button/ToRegisterButton';
+import createPostApi from '../../api/login/createPostApi';
 export const LoginForm = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({ username: '', password: '' });
-
+  const navigate=useNavigate();
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prev) => !prev);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = { username: '', password: '' };
     let isValid = true;
@@ -31,8 +33,13 @@ export const LoginForm = () => {
 
     setErrors(newErrors);
     if (isValid) {
-      // 로그인 처리 로직 (ex. API 호출)
-      console.log('로그인 시도:', username, password);
+      try{
+        const result = await createPostApi(username, password);
+        if(result==='SUCCESS_200')//로그인 성공 시
+        {navigate('/home');}//홈 화면 이동동
+      }catch(error){
+        console.error('로그인 실패:',error);
+      }
     }
   };
 
