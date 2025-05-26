@@ -1,14 +1,21 @@
 import { useCallback, useRef, useState } from "react";
 import * as S from "./Comment.style";
+import ArchivePostApi from "../../../api/api/ArchivePostApi";
 
-export default function Comment() {
+export default function Comment({ suggestionId }) {
     const [isSaved, setIsSaved] = useState(false);
     const [isUploading, setIsUploading] = useState(false);
     const [images, setImages] = useState([]);
     const inputRef = useRef(null);
 
-    const saveClick = () => {
-        setIsSaved((prev) => !prev);
+    const saveClick = async () => {
+        const memberId = Number(localStorage.getItem("memberId"));
+
+        const success = await ArchivePostApi(suggestionId, memberId);
+
+        if (success) {
+            setIsSaved(true);
+        }
     };
 
     const ImageClick = useCallback(() => {
