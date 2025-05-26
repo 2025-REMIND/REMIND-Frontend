@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from "react";
 import * as S from "./Comment.style";
 import ArchivePostApi from "../../../api/api/ArchivePostApi";
+import ImagePostApi from "../../../api/api/ImagePostApi";
 
 export default function Comment({ suggestionId }) {
     const [isSaved, setIsSaved] = useState(false);
@@ -31,13 +32,18 @@ export default function Comment({ suggestionId }) {
         window.addEventListener("focus", Focus);
     }, []);
 
-    const handleImage = useCallback((e) => {
-        if (!e.target.files || e.target.files.length === 0) return;
+    const handleImage = useCallback(async (e) => {
+        const files = e.target.files;
+        if (!files || files.length === 0) return;
 
-        const selectFiles = Array.from(e.target.files);
+        const selectFiles = Array.from(files);
         setImages((prev) => [...prev, ...selectFiles]);
         setIsUploading(false);
-    }, []);
+
+        const success = await ImagePostApi(suggestionId, selectFiles);
+
+        e.target.value = null;
+    }, [suggestionId]);
 
     return (
         <S.CommentLayout>
@@ -52,6 +58,7 @@ export default function Comment({ suggestionId }) {
                 <input
                     type = "file"
                     accept = "image/*"
+                    multiple
                     ref = { inputRef } 
                     onChange = { handleImage } 
                     style = {{ display: "none" }} 

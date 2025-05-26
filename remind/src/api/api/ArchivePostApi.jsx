@@ -2,7 +2,7 @@ import defaultInstance from "../utils/instance";
 
 const ArchivePostApi = async (suggestionId, memberId) => {
     try {
-        const response = await defaultInstance.post(`/suggestion/${suggetionId}/archive`, {
+        const response = await defaultInstance.post(`/suggestion/${suggestionId}/archive`, {
             memberId
         });
 
