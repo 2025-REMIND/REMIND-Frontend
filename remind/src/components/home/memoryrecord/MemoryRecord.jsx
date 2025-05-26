@@ -3,13 +3,28 @@ import RECORD from "../../../assets/home/memoryrecord/record.svg";
 import SONG from "../../../assets/home/memoryrecord/home-song.svg";
 import EDIT from "../../../assets/home/memoryrecord/home-edit.svg";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import RecentGetApi from "../../../api/api/RecentGetApi";
 
 export default function MemoryRecord() {
     const navigate = useNavigate();
+    const [recentDiary, setRecentDiary] = useState(null);
 
     const memoryClick = () => {
         navigate(`/memoryrecord`);
     };
+
+    useEffect(() => {
+        const fetchDiary = async () => {
+            const memberId = Number(localStorage.getItem("memberId"));
+            const diaryList = await RecentGetApi(memberId);
+
+            if (diaryList && diaryList.length > 0)
+                setRecentDiary(diaryList[0]);
+        };
+
+        fetchDiary();
+    }, []);
 
     return (
         <S.MemoryRecordLayout>
@@ -26,11 +41,11 @@ export default function MemoryRecord() {
                     <S.InputBox>
                         <S.SongBox>
                             <S.Icon src = { SONG } />
-                            <S.Detail>이때 들었던 노래나 생각나는 노래가 있으면 입력해 주세요.</S.Detail>
+                            <S.Detail>{ recentDiary?.song }</S.Detail>
                         </S.SongBox>
                         <S.EditBox>
                             <S.Icon src = { EDIT } />
-                            <S.Detail>이때 어떤 일이 있었는지, 지금은 어땠는지 자유롭게 남겨 보세요.</S.Detail>
+                            <S.Detail>{ recentDiary?.content }</S.Detail>
                         </S.EditBox>
                     </S.InputBox>
                 </S.Content>
