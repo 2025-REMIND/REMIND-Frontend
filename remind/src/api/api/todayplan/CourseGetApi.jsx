@@ -2,7 +2,7 @@ import defaultInstance from "../../utils/instance";
 
 const CourseGetApi = async (memberId, courseId) => {
     try {
-        const response = await defaultInstance.get(`/mission/${memberId}/${courseId}`);
+        const response = await defaultInstance.get(`/course/${memberId}/${courseId}`);
 
         if (response.data.httpStatus === 200) 
             return response.data.data;

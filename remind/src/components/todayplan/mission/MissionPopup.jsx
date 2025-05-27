@@ -20,12 +20,13 @@ export default function MissionPopup({ memberId, missionId, onClose, onSave, isC
             if (result) {
                 const missionContents = result.getMissionDetailResList.map((item) => item.content);
                 const id = result.getMissionDetailResList.map((item) => item.missionDetailId);
+                const checkStatus = result.getMissionDetailResList.map(item => item.status === "DONE");
                 
                 setMissionData(missionContents);
                 setMissionIds(id);
 
-                setIsChecked(Array(missionContents.length).fill(false));
-                setAnswer(Array(missionContents.length).fill(""));
+                setIsChecked(checkStatus);
+                setAnswer(result.getMissionDetailResList.map(item => item.memo));
             }
         };
 

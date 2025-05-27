@@ -25,13 +25,16 @@ export default function SuggestPopup({ memberId, courseId, onClose, onSave, isCh
                 const list = data.getCourseDetailResList;
 
                 const todoContents = list.map(item => item.content);
-                const courseIds = list.map(item => item.courseDatailId);
+                const courseIds = list.map(item => item.courseDetailId);
+
+                const checkStatus = list.map(item => item.status === "DONE");
 
                 setPlace(data.place);
                 setTime(data.time);
                 setTodoList(todoContents);
                 setCourseIds(courseIds);
-                setIsChecked(Array(todoContents.length).fill(false));
+
+                setIsChecked(checkStatus);
             }
         };
 

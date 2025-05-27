@@ -59,7 +59,7 @@ export default function Mission() {
                         { showPopup && 
                             <MissionPopup 
                                 memberId = { Number(localStorage.getItem("userId")) }
-                                missionId = { missionData?.missionId }
+                                missionId = { missionData?.mission?.missionId }
                                 onClose = { closePopup } 
                                 onSave = { handleSave } 
                                 isChecked = { checkedList }

@@ -64,7 +64,7 @@ export default function Suggest() {
                         { showPopup && 
                             <SuggestPopup 
                                 memberId = { Number(localStorage.getItem("userId")) }
-                                courseId = { courseData?.courseId }
+                                courseId = { courseData?.course?.courseId }
                                 onClose = { closePopup } 
                                 onSave = { handleSave }
                                 isChecked = { checkedList }
