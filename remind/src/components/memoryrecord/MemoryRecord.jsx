@@ -6,7 +6,7 @@ import UPLOADING_PLUS from "../../assets/memoryrecord/uploading-plusimage.svg";
 import AllHeader from "../home/components/AllHeader";
 import React, { useCallback, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import diaryPostApi from "../../api/api/diaryPostApi";
+import diaryPostApi from "../../api/api/memoryrecord/diaryPostApi";
 
 export default function MemoryRecord() {
     const [isUploading, setIsUploading] = useState(false);

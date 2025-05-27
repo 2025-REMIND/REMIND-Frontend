@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from "react";
 import * as S from "./Comment.style";
-import ArchivePostApi from "../../../api/api/ArchivePostApi";
-import ImagePostApi from "../../../api/api/ImagePostApi";
+import ArchivePostApi from "../../../api/api/todayplan/ArchivePostApi";
+import ImagePostApi from "../../../api/api/todayplan/ImagePostApi";
 
 export default function Comment({ suggestionId }) {
     const [isSaved, setIsSaved] = useState(false);

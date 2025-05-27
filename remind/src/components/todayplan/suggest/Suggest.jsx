@@ -3,8 +3,8 @@ import CHECKBOX from "../../../assets/todayplan/checkbox.svg";
 import CHECKINGBOX from "../../../assets/todayplan/checkingbox.svg";
 import SUGGEST from "../../../assets/todayplan/suggest.svg";
 import SuggestPopup from "./SuggestPopup";
+import suggestionGetApi from "../../../api/api/todayplan/suggestionGetApi";
 import { useEffect, useState } from "react";
-import suggestionGetApi from "../../../api/api/suggestionGetApi";
 
 export default function Mission() {
     const [isChecked, setIsChecked] = useState(false);
@@ -34,7 +34,8 @@ export default function Mission() {
 
     useEffect(() => {
         const fetchCourse = async () => {
-            const data = await suggestionGetApi(1);
+            const memberId = Number(localStorage.getItem("memberId"));
+            const data = await suggestionGetApi(memberId);
             if (data) setCourseData(data.course);
         };
 

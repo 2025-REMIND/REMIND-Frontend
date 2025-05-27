@@ -4,7 +4,7 @@ import SONG from "../../../assets/home/memoryrecord/home-song.svg";
 import EDIT from "../../../assets/home/memoryrecord/home-edit.svg";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import RecentGetApi from "../../../api/api/RecentGetApi";
+import RecentGetApi from "../../../api/api/home/RecentGetApi";
 
 export default function MemoryRecord() {
     const navigate = useNavigate();
