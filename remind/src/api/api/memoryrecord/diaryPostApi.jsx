@@ -1,4 +1,4 @@
-import defaultInstance from "../utils/instance";
+import defaultInstance from "../../utils/instance";
 
 const diaryPostApi = async (memberId, content, song, images) => {
     try {
