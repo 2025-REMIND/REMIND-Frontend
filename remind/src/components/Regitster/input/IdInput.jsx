@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from '../RegisterForm.style';
 
-const IdInput = ({ id, onChange, error }) => (
+const IdInput = ({ id, onChange, error , onCheck, message}) => (
   <S.Row>
     <S.Label>아이디 <span>*</span></S.Label>
     <S.InputRow>
@@ -12,10 +12,11 @@ const IdInput = ({ id, onChange, error }) => (
           onChange={onChange}
           $isError={!!error}
         />
-        <S.CheckButton>아이디 중복 확인</S.CheckButton>
+        <S.CheckButton type="button" onClick={onCheck}>아이디 중복 확인</S.CheckButton>
       </S.InputWithButton>
+
       <S.Guideline style={{ color: error ? 'red' : '#999' }}>
-        {error || '영문 / 숫자 혼용하여 4자~10자 이내로 작성해주세요'}
+        {error || message || '영문 / 숫자 혼용하여 4자~10자 이내로 작성해주세요'}
       </S.Guideline>
     </S.InputRow>
   </S.Row>

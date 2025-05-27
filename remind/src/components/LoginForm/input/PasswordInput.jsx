@@ -16,7 +16,8 @@ const PasswordInput = ({ value, onChange, error, isVisible, toggle }) => (
     <S.ToggleIcon onClick={toggle}>
       {isVisible ? <FaEye /> : <FaEyeSlash />}
     </S.ToggleIcon>
-    {error && <S.ErrorText visible>{error}</S.ErrorText>}
+    <S.ErrorText visible={!!error}>{error || ' '}</S.ErrorText>
+
   </S.InputBox>
 );
 

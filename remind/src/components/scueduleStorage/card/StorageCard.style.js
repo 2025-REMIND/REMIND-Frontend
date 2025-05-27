@@ -25,13 +25,16 @@ export const IconRow = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.7rem;
+  margin-bottom: 1rem;
 `;
 
 export const RowIcon = styled.img`
   width: 1.2rem;
   height: 1.2rem;
-  object-fit: contain; /* 아이콘 비율 유지 */
+  
+  object-fit: contain;
+  vertical-align: middle; // ✅ 추가
+
 `;
 
 export const DateText = styled.div`
@@ -42,22 +45,21 @@ export const DateText = styled.div`
 `;
 
 export const Location = styled.div`
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.2rem;  /* 아이콘과 같은 높이로 맞추기 */
-  display: flex;
+  display: inline-block;
   align-items: center;
-  padding-bottom:2rem;
 `;
 
 export const MissionTitle = styled.div`
-  font-size: 1rem;
-  
-  padding-bottom: 0.5rem;
+  font-size: 1.2rem;
+  display: inline-block;
 `;
 
 export const MissionList = styled.ul`
   list-style: none;
   padding: 0;
+  font-size: 1rem;
 `;
 
 export const MissionItem = styled.li`
@@ -68,8 +70,8 @@ export const MissionItem = styled.li`
 `;
 
 export const MissionIcon = styled.img`
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 2rem;
+  height: 2rem;
   margin-right: 0.3rem;
 `;
 

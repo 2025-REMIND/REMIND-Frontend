@@ -37,8 +37,8 @@ export const InputBoxText=styled.div`
 export const Input = styled.input`
   width: 100%;
   padding: 12px 40px 12px 16px;
-  background-color: ${(props)=>(props.error ? '#FF000026' : "white")};
-  border: 1px solid ${(props) => (props.error ? 'red' : '#555')}; 
+  background-color: ${(props) => (props.$isError ? '#FF000026' : 'white')};
+  border: 1px solid ${(props) => (props.$isError ? 'red' : '#555')};
   border-radius: 25px;
   font-size: 14px;
   box-sizing: border-box;

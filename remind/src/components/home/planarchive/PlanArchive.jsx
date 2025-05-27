@@ -1,6 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import * as S from "./PlanArchive.style";
 
 export default function PlanArchive() {
+    const navigate = useNavigate();
+
+    const storageClick = () => {
+        navigate(`/storage`);
+    };
+
     return (
         <S.PlanArchiveLayout>
             <S.Text>
@@ -13,7 +20,7 @@ export default function PlanArchive() {
                     그날의 풍경, 들었던 노래, 느꼈던 감정들까지 고스란히 담아, 우리의 이야기를 다시 시작해 볼 수 있어요.`}
                 </S.Comment>
             </S.Text>
-            <S.PlanArchiveBox>일정 보관함 바로가기</S.PlanArchiveBox>       
+            <S.PlanArchiveBox onClick = { storageClick }>일정 보관함 바로가기</S.PlanArchiveBox>       
         </S.PlanArchiveLayout>
     )
 }
