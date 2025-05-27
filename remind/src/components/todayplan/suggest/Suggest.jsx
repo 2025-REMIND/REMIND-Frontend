@@ -6,7 +6,7 @@ import SuggestPopup from "./SuggestPopup";
 import suggestionGetApi from "../../../api/api/todayplan/suggestionGetApi";
 import { useEffect, useState } from "react";
 
-export default function Mission() {
+export default function Suggest() {
     const [isChecked, setIsChecked] = useState(false);
     const [isLooked, setIsLooked] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
@@ -34,9 +34,9 @@ export default function Mission() {
 
     useEffect(() => {
         const fetchCourse = async () => {
-            const memberId = Number(localStorage.getItem("memberId"));
+            const memberId = Number(localStorage.getItem("userId"));
             const data = await suggestionGetApi(memberId);
-            if (data) setCourseData(data.course);
+            if (data) setCourseData(data);
         };
 
         fetchCourse();
@@ -55,14 +55,16 @@ export default function Mission() {
                             <S.Label>추천 데이트 코스</S.Label>
                         </S.Suggest>
                         <S.Text>
-                            <S.Title>{ courseData?.title }</S.Title>
-                            <S.SubTitle>{ courseData?.description }</S.SubTitle>
+                            <S.Title>{ courseData?.course?.title }</S.Title>
+                            <S.SubTitle>{ courseData?.course?.description }</S.SubTitle>
                         </S.Text>
                     </S.BoxText>
                     <S.PlanBox isLooked = { isLooked }>
                         <S.Plan isLooked = { isLooked } onClick = { startClick }>일정 자세히 보기</S.Plan>
                         { showPopup && 
                             <SuggestPopup 
+                                memberId = { Number(localStorage.getItem("userId")) }
+                                courseId = { courseData?.courseId }
                                 onClose = { closePopup } 
                                 onSave = { handleSave }
                                 isChecked = { checkedList }

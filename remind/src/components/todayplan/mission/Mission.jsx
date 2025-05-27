@@ -4,7 +4,7 @@ import CHECK from "../../../assets/todayplan/checkingbox.svg";
 import MISSION from "../../../assets/todayplan/mission.svg";
 import { useEffect, useState } from "react";
 import MissionPopup from "./MissionPopup";
-import suggestionGetApi from "../../../api/api/suggestionGetApi";
+import suggestionGetApi from "../../../api/api/todayplan/suggestionGetApi";
 
 export default function Mission() {
     const [isChecked, setIsChecked] = useState(false);
@@ -31,8 +31,9 @@ export default function Mission() {
 
     useEffect(() => {
         const fetchMission = async () => {
-            const data = await suggestionGetApi(1);
-            if (data) setMissionData(data.mission);
+            const memberId = Number(localStorage.getItem("userId"));
+            const data = await suggestionGetApi(memberId);
+            if (data) setMissionData(data);
         };
 
         fetchMission();
@@ -49,14 +50,16 @@ export default function Mission() {
                             <S.Label>오늘의 미션</S.Label>
                         </S.Mission>
                         <S.Text>
-                            <S.Title>{ missionData?.title }</S.Title>
-                            <S.SubTitle>{ missionData?.description }</S.SubTitle>
+                            <S.Title>{ missionData?.mission?.title }</S.Title>
+                            <S.SubTitle>{ missionData?.mission?.description }</S.SubTitle>
                         </S.Text>
                     </S.BoxText>
                     <S.StartBox isStarted = { isStarted }>
                         <S.Start isStarted = { isStarted } onClick = { startClick }>미션 시작하기</S.Start>
                         { showPopup && 
                             <MissionPopup 
+                                memberId = { Number(localStorage.getItem("userId")) }
+                                missionId = { missionData?.missionId }
                                 onClose = { closePopup } 
                                 onSave = { handleSave } 
                                 isChecked = { checkedList }
