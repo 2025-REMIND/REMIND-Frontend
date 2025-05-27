@@ -8,12 +8,14 @@ import UNCHECK from "../../../assets/todayplan/checkbox.svg";
 import CHECK from "../../../assets/todayplan/checkingbox.svg";
 import { useEffect, useState } from "react";
 import CourseGetApi from "../../../api/api/todayplan/CourseGetApi";
+import CoursePutApi from "../../../api/api/todayplan/CoursePutApi";
 
 export default function SuggestPopup({ memberId, courseId, onClose, onSave, isChecked, setIsChecked, setParentChecked }) {
     const [isSaved, setIsSaved] = useState(false);
     const [place, setPlace] = useState("");
     const [time, setTime] = useState("");
     const [todoList, setTodoList] = useState([]);
+    const [courseIds, setCourseIds] = useState([]);
 
     useEffect(() => {
         const fetchCourse = async () => { 
@@ -23,9 +25,13 @@ export default function SuggestPopup({ memberId, courseId, onClose, onSave, isCh
                 const list = data.getCourseDetailResList;
 
                 const todoContents = list.map(item => item.content);
+                const courseIds = list.map(item => item.courseDatailId);
 
                 setPlace(data.place);
                 setTime(data.time);
+                setTodoList(todoContents);
+                setCourseIds(courseIds);
+                setIsChecked(Array(todoContents.length).fill(false));
             }
         };
 
@@ -38,13 +44,20 @@ export default function SuggestPopup({ memberId, courseId, onClose, onSave, isCh
         if (isChecked.every(Boolean)) onSave();
     };
 
-    const checkClick = (index) => {
+    const checkClick = async (index) => {
         const checkUpdate = [...isChecked];
         checkUpdate[index] = !checkUpdate[index];
         setIsChecked(checkUpdate);
 
         if (checkUpdate.some(v => v === false)) setParentChecked(false);
-    }
+
+        try {
+            const id = courseIds[index];
+            await CoursePutApi(id);
+        } catch (e) {
+            console.log(e);
+        }
+    };
 
     const handleClose = () => {
         if (isChecked.every(Boolean)) {
