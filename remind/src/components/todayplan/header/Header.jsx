@@ -47,10 +47,6 @@ export default function Header() {
                     <S.Icon src = { TIME } />
                     <S.Time>{ time }</S.Time>
                 </S.TimeBox>
-                <S.MusicBox>
-                    <S.Icon src = { MUSIC } />
-                    <S.Music>오늘의 노래 추천</S.Music>
-                </S.MusicBox>  
             </S.RightBox>        
         </S.HeaderLayout>
     )
