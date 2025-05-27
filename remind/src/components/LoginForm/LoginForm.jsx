@@ -20,8 +20,8 @@ export const LoginForm = () => {
   e.preventDefault();
 
   // 간단 유효성 검사
-  const newErrors = { username: '', password: '' };
-  let isValid = true;
+  // const newErrors = { username: '', password: '' };
+  // let isValid = true;
 
   // if (username.trim().length < 4) {
   //   newErrors.username = '아이디가 일치하지 않습니다.';
@@ -33,14 +33,17 @@ export const LoginForm = () => {
   //   isValid = false;
   // }
 
-  setErrors(newErrors);
-  if (!isValid) return;
+  // setErrors(newErrors); 너 이거 코드 수정해야 할 듯, newError라는게 없다 야
+  // if (!isValid) return;
 
   try {
     const result = await createPostApi(username, password);
 
     if (result.success) {
       // 로그인 성공
+      console.log(typeof(result.data.memberId));
+      const memberId = result.data.memberId.toString();
+      localStorage.setItem("userId", memberId);
       navigate('/home');
     } else {
       // 로그인 실패 처리: 에러 코드에 따라 적절히 오류 메시지 설정
