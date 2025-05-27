@@ -6,6 +6,7 @@ import CHECK from "../../../assets/todayplan/checkingbox.svg";
 import { useEffect, useState } from "react";
 import MissionGetApi from "../../../api/api/todayplan/MissionGetApi";
 import MissionPostApi from "../../../api/api/todayplan/MissionPostApi";
+import MissionPutApi from "../../../api/api/todayplan/MissionPutApi";
 
 export default function MissionPopup({ memberId, missionId, onClose, onSave, isChecked, setIsChecked, answer, setAnswer, setParentChecked }) {
     const [isSaved, setIsSaved] = useState(false);
@@ -56,13 +57,20 @@ export default function MissionPopup({ memberId, missionId, onClose, onSave, isC
         }
     };
 
-    const checkClick = (index) => {
+    const checkClick = async (index) => {
         const checkUpdate = [...isChecked];
         checkUpdate[index] = !checkUpdate[index];
         setIsChecked(checkUpdate);
 
         if (checkUpdate.some(v => !v)) setParentChecked(false);
-    }
+
+        try {
+            const missionId = missionIds[index];
+            await MissionPutApi(missionId);
+        } catch (e) {
+            console.log(e);
+        }
+    };
 
     return (
         <S.Overlay>
