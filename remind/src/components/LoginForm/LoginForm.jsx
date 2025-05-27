@@ -17,31 +17,51 @@ export const LoginForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const newErrors = { username: '', password: '' };
-    let isValid = true;
+  e.preventDefault();
 
-    if (username.trim().length < 4) {
-      newErrors.username = '아이디가 일치하지 않습니다.';
-      isValid = false;
-    }
+  // 간단 유효성 검사
+  const newErrors = { username: '', password: '' };
+  let isValid = true;
 
-    if (password.length < 8) {
-      newErrors.password = '비밀번호가 일치하지 않습니다.';
-      isValid = false;
-    }
+  // if (username.trim().length < 4) {
+  //   newErrors.username = '아이디가 일치하지 않습니다.';
+  //   isValid = false;
+  // }
 
-    setErrors(newErrors);
-    if (isValid) {
-      try{
-        const result = await createPostApi(username, password);
-        if(result==='SUCCESS_200')//로그인 성공 시
-        {navigate('/home');}//홈 화면 이동동
-      }catch(error){
-        console.error('로그인 실패:',error);
+  // if (password.length < 4) {
+  //   newErrors.password = '비밀번호가 일치하지 않습니다.';
+  //   isValid = false;
+  // }
+
+  setErrors(newErrors);
+  if (!isValid) return;
+
+  try {
+    const result = await createPostApi(username, password);
+
+    if (result.success) {
+      // 로그인 성공
+      navigate('/home');
+    } else {
+      // 로그인 실패 처리: 에러 코드에 따라 적절히 오류 메시지 설정
+      if (result.code === 'SIGNIN_400_1') {
+        setErrors((prev) => ({ ...prev, username: result.message }));
+      } else if (result.code === 'SIGNIN_400_2') {
+        setErrors((prev) => ({ ...prev, password: result.message }));
+      } else if (result.httpStatus === 500) {
+        alert('서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+      } else {
+        alert(result.message || '로그인 중 알 수 없는 오류가 발생했습니다.');
       }
     }
-  };
+  } catch (error) {
+    console.error('로그인 실패:', error);
+    alert('로그인 중 오류가 발생했습니다.');
+  }
+};
+
+
+
 
   return (
     <>

@@ -1,38 +1,32 @@
-import defaultInstance from "../utils/instance"
-
+import defaultInstance from "../utils/instance";
 
 const createPostApi = async (id, password) => {
   try {
     const response = await defaultInstance.post('signin', { id, password });
-
     if (response.data.httpStatus === 200) {
       console.log(response.data.message);
-      return response.data.code; // SUCCESS_200
+      return { success: true, code: response.data.code, data: response.data.data };
     }
-
   } catch (error) {
     if (error.response) {
       const { code, message, httpStatus } = error.response.data;
 
-      if (httpStatus === 400) {
-        if (code === "USER_400_1") {
-          console.log(message);
-          return code;
-        }
-        if (code === "SIGNIN_400_2") {
-          console.log(message);
-          return code;
-        }
-      }
-      else if (httpStatus === 500) {
-        console.log(message);
-        return code;
-      }
+      // 400, 500 에러에 대해 메시지와 코드를 같이 반환
+      return {
+        success: false,
+        code,
+        message,
+        httpStatus
+      };
     } else {
-      console.error(error);
+      // 네트워크 오류 등
+      return {
+        success: false,
+        code: 'NETWORK_ERROR',
+        message: '네트워크 오류가 발생했습니다.'
+      };
     }
   }
 };
-
 
 export default createPostApi;

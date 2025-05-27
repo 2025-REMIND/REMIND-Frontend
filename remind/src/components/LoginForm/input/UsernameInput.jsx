@@ -12,7 +12,8 @@ const UsernameInput = ({ value, onChange, error }) => (
       $isError={!!error}
       required
     />
-    {error && <S.ErrorText visible>{error}</S.ErrorText>}
+    <S.ErrorText visible={!!error}>{error || ' '}</S.ErrorText>
+
   </S.InputBox>
 );
 

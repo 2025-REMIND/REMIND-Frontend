@@ -6,11 +6,13 @@ import PasswordInput from './input/PasswordInput';
 import ConfirmPasswordInput from './input/ConfirmPasswordInput';
 import createPostApi from '../../api/register/CreatePostApi';
 import { useNavigate } from 'react-router-dom';
+import CheckDuplicateApi from '../../api/register/CheckDuplicateApi';
 export const RegisterForm = () => {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
   const [confirmPw, setConfirmPw] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [idMessage, setIdMessage] = useState('');
 
   // 입력별 에러 상태 분리
   const [idError, setIdError] = useState('');
@@ -24,7 +26,6 @@ export const RegisterForm = () => {
 
   const navigate=useNavigate();
 
-  
   useEffect(() => {
     if (confirmPw) {
       setConfirmPwError(pw === confirmPw ? '' : '비밀번호가 일치하지 않습니다.');
@@ -53,8 +54,7 @@ export const RegisterForm = () => {
 
       if (result === 'SUCCESS_200') {
         setApiMessage('회원가입 성공!');
-        // 성공 후 로그인 페이지 이동 등 추가 가능
-        navigate('login');
+        navigate('/login');
       } else {
         setApiMessage(result);
       }
@@ -71,6 +71,24 @@ export const RegisterForm = () => {
       }
     }
   };
+  const handleCheckDuplicate=async()=>{
+    try{
+      const result=await CheckDuplicateApi(id);
+      if(result===true){
+        setIdError('이미 존재하는 아이디입니다.');
+        setIdMessage('');
+      }
+      else if(result===false)
+      {
+        setIdError('');//사용 가능한 경우
+        setIdMessage("사용가능한 아이디입니다.");
+      }
+    }catch(error){
+      const msg=error.message||'중복 확인 중 오류 발생';
+      setIdError(msg);
+      setIdMessage('');
+    }
+  }
 
   return (
     <>
@@ -79,7 +97,13 @@ export const RegisterForm = () => {
         <S.Wrapper>
           <h1>회원가입</h1>
           <S.Form onSubmit={handleSubmit}>
-            <IdInput id={id} onChange={handleIdChange} error={idError} />
+            <IdInput 
+              id={id} 
+              onChange={handleIdChange} 
+              error={idError} 
+              onCheck={handleCheckDuplicate}
+              message={idMessage}
+            />
             <PasswordInput
               pw={pw}
               onChange={handlePwChange}
