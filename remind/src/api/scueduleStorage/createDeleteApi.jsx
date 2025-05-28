@@ -15,7 +15,7 @@ const createDeleteApi=async(suggestionId, memberId)=>{
   }
   catch(e){
     if(e.response){
-      const {httpStatus, code, message}=error.response.data;
+      const {httpStatus, code, message}=e.response.data;
       throw new Error(`${httpStatus} = ${code} : ${message}`);
     }
     throw e;

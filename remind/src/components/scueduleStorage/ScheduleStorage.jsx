@@ -15,6 +15,7 @@ import HeartPink from '../../assets/storage/heart-pink.svg';
 import Pagination from './pagination/Pagination';
 
 import createGutApi from '../../api/scueduleStorage/createGutApi';
+import createDeleteApi from '../../api/scueduleStorage/createDeleteApi';
 export const ScheduleStorage = () => {
   const navigate=useNavigate();
   const [page, setPage]=useState(0);
@@ -42,6 +43,22 @@ export const ScheduleStorage = () => {
       setLoading(false);
     }
   };
+  const handleDelete = async (suggestionIdToDelete) => {
+    const confirm = window.confirm('정말 삭제하시겠어요?');
+    if (!confirm) return;
+
+    try {
+      const result = await createDeleteApi(suggestionIdToDelete, memberId);
+      console.log('삭제 성공:', result.message);
+
+      // 삭제 후 리스트 갱신 (간단한 방법: 현재 페이지 다시 불러오기)
+      fetchStorageData(page);
+    } catch (error) {
+      alert(error.message || '삭제 중 오류가 발생했습니다.');
+    }
+  };
+
+
   useEffect(() => {
     fetchStorageData(page);
   }, [page, memberId]);
@@ -79,7 +96,7 @@ export const ScheduleStorage = () => {
             />
             <StorageCardButtons
               onNavigate={() => navigate('/todayplan')}
-              onDelete={() => console.log("삭제")}
+              onDelete={() => handleDelete(item.suggestionId)} // ✅ 여기 연결
             />
           </React.Fragment>
         ))
@@ -115,7 +132,7 @@ export const ScheduleStorage = () => {
             />
             <StorageCardButtons
               onNavigate={() => console.log("바로가기")}
-              onDelete={() => console.log("삭제")}
+              onDelete={() => handleDelete(item.suggestionId)} // ✅ 여기 연결
             />
           </React.Fragment>
         ))
