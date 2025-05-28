@@ -3,16 +3,35 @@ import ICON from "../../../assets/todayplan/mission.svg";
 import CLOSE from "../../../assets/todayplan/popup/closebutton.svg";
 import UNCHECK from "../../../assets/todayplan/checkbox.svg";
 import CHECK from "../../../assets/todayplan/checkingbox.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import MissionGetApi from "../../../api/api/todayplan/MissionGetApi";
+import MissionPostApi from "../../../api/api/todayplan/MissionPostApi";
+import MissionPutApi from "../../../api/api/todayplan/MissionPutApi";
 
-export default function MissionPopup({ onClose, onSave, isChecked, setIsChecked, answer, setAnswer, setParentChecked }) {
-    const questions = [
-        "애인에게 어떤 순간이 가장 좋은지 물어보기",
-        "손잡고 걷기",
-        "애인에게 mbti 물어보기"
-    ]
-
+export default function MissionPopup({ memberId, missionId, onClose, onSave, isChecked, setIsChecked, answer, setAnswer, setParentChecked }) {
     const [isSaved, setIsSaved] = useState(false);
+    const [missionData, setMissionData] = useState([]);
+    const [missionIds, setMissionIds] = useState([]);
+
+    useEffect(() => {
+        const fetchMission = async () => {
+            const result = await MissionGetApi(memberId, missionId);
+
+            if (result) {
+                const missionContents = result.getMissionDetailResList.map((item) => item.content);
+                const id = result.getMissionDetailResList.map((item) => item.missionDetailId);
+                const checkStatus = result.getMissionDetailResList.map(item => item.status === "DONE");
+                
+                setMissionData(missionContents);
+                setMissionIds(id);
+
+                setIsChecked(checkStatus);
+                setAnswer(result.getMissionDetailResList.map(item => item.memo));
+            }
+        };
+
+        fetchMission();
+    }, [memberId, missionId]);
 
     const updateAnswer = (index, value) => {
         const answerUpdate = [...answer];
@@ -20,20 +39,39 @@ export default function MissionPopup({ onClose, onSave, isChecked, setIsChecked,
         setAnswer(answerUpdate);
     };
 
-    const saveClick = () => {
-        setIsSaved((prev) => !prev);
+    const saveClick = async () => {
+        const requestBody = {
+            memberId,
+            missionDetailId1: missionIds[0],
+            memo1: answer[0],
+            missionDetailId2: missionIds[1],
+            memo2: answer[1],
+            missionDetailId3: missionIds[2],
+            memo3: answer[2]
+        };
 
-        const allChecked = isChecked.every((v) => v === true);
-        if (allChecked) onSave();
+        const response = await MissionPostApi(missionId, requestBody);
+
+        if (response?.httpStatus === 200) {
+            setIsSaved(true);
+            onSave();
+        }
     };
 
-    const checkClick = (index) => {
+    const checkClick = async (index) => {
         const checkUpdate = [...isChecked];
         checkUpdate[index] = !checkUpdate[index];
         setIsChecked(checkUpdate);
 
         if (checkUpdate.some(v => !v)) setParentChecked(false);
-    }
+
+        try {
+            const missionId = missionIds[index];
+            await MissionPutApi(missionId);
+        } catch (e) {
+            console.log(e);
+        }
+    };
 
     return (
         <S.Overlay>
@@ -54,14 +92,14 @@ export default function MissionPopup({ onClose, onSave, isChecked, setIsChecked,
                         천천히 솔직하게, 오늘은 감정을 나누는 연습을 해 봐요.`}
                     </S.SubTitle>
                     <S.QuestionGroup>
-                        { questions.map((question, idx) => (
+                        { missionData.map((mission, idx) => (
                             <S.Content key = { idx }>
                                 <S.Question>
                                     <S.Check onClick = { () => checkClick(idx) }>
                                         <S.CheckBox src = { isChecked[idx] ? CHECK : UNCHECK } />
                                     </S.Check>
                                     <S.QuestionBox>
-                                        { question }
+                                        { mission }
                                     </S.QuestionBox>
                                 </S.Question>
                                 <S.AnswerBox>

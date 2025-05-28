@@ -6,24 +6,40 @@ import TIME from "../../../assets/todayplan/suggest/suggest-time.svg";
 import TODO from "../../../assets/todayplan/suggest/todo.svg";
 import UNCHECK from "../../../assets/todayplan/checkbox.svg";
 import CHECK from "../../../assets/todayplan/checkingbox.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import CourseGetApi from "../../../api/api/todayplan/CourseGetApi";
+import CoursePutApi from "../../../api/api/todayplan/CoursePutApi";
 
-export default function SuggestPopup({ onClose, onSave, isChecked, setIsChecked, setParentChecked }) {
-    const lists = [
-        "돗자리 펴고 조용한 음악 같이 듣기",
-        "노을 보며 맥주 한 잔",
-        "산책하기",
-        "전화하기"
-    ]
-
-    const [answer, setAnswer] = useState([]);
+export default function SuggestPopup({ memberId, courseId, onClose, onSave, isChecked, setIsChecked, setParentChecked }) {
     const [isSaved, setIsSaved] = useState(false);
+    const [place, setPlace] = useState("");
+    const [time, setTime] = useState("");
+    const [todoList, setTodoList] = useState([]);
+    const [courseIds, setCourseIds] = useState([]);
 
-    const updateAnswer = (index, value) => {
-        const answerUpdate = [...answer];
-        answerUpdate[index] = value;
-        setAnswer(answerUpdate);
-    };
+    useEffect(() => {
+        const fetchCourse = async () => { 
+            const data = await CourseGetApi(memberId, courseId);
+
+            if (data) {
+                const list = data.getCourseDetailResList;
+
+                const todoContents = list.map(item => item.content);
+                const courseIds = list.map(item => item.courseDetailId);
+
+                const checkStatus = list.map(item => item.status === "DONE");
+
+                setPlace(data.place);
+                setTime(data.time);
+                setTodoList(todoContents);
+                setCourseIds(courseIds);
+
+                setIsChecked(checkStatus);
+            }
+        };
+
+        fetchCourse();
+    }, [memberId, courseId]);
 
     const saveClick = () => {
         setIsSaved((prev) => !prev);
@@ -31,13 +47,20 @@ export default function SuggestPopup({ onClose, onSave, isChecked, setIsChecked,
         if (isChecked.every(Boolean)) onSave();
     };
 
-    const checkClick = (index) => {
+    const checkClick = async (index) => {
         const checkUpdate = [...isChecked];
         checkUpdate[index] = !checkUpdate[index];
         setIsChecked(checkUpdate);
 
         if (checkUpdate.some(v => v === false)) setParentChecked(false);
-    }
+
+        try {
+            const id = courseIds[index];
+            await CoursePutApi(id);
+        } catch (e) {
+            console.log(e);
+        }
+    };
 
     const handleClose = () => {
         if (isChecked.every(Boolean)) {
@@ -67,11 +90,11 @@ export default function SuggestPopup({ onClose, onSave, isChecked, setIsChecked,
                     <S.Info>
                         <S.LocationInfo>
                             <S.Location src = { LOCATION } />
-                            <S.Place>여의도 한강 공원</S.Place>
+                            <S.Place>{ place }</S.Place>
                         </S.LocationInfo>
                         <S.TimeInfo>
                             <S.Time src = { TIME } />
-                            <S.Clock>18:00 ~ 21:00</S.Clock>
+                            <S.Clock>{ time }</S.Clock>
                         </S.TimeInfo>
                     </S.Info>
                 </S.AllInfo>
@@ -81,7 +104,7 @@ export default function SuggestPopup({ onClose, onSave, isChecked, setIsChecked,
                         <S.Name>오늘 할 일</S.Name>
                     </S.TodoText>
                     <S.TodoGroup>
-                        { lists.map((todo, idx) => (
+                        { todoList.map((todo, idx) => (
                             <S.Content key = { idx }>
                                 <S.TodoList>
                                     <S.CheckBox src = { isChecked[idx] ? CHECK : UNCHECK } onClick = { () => checkClick(idx) }/>

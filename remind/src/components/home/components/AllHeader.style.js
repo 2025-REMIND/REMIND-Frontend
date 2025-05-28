@@ -14,7 +14,7 @@ export const Header = styled.div`
     cursor: pointer;
 
     img {
-        width: 14.11vw;
+        width: ${({ iconWidth }) => iconWidth || "14.11vw" };
         height: 2.34vw;
         pointer-events: none;
     }

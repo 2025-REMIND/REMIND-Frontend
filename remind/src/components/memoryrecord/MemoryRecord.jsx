@@ -6,11 +6,11 @@ import UPLOADING_PLUS from "../../assets/memoryrecord/uploading-plusimage.svg";
 import AllHeader from "../home/components/AllHeader";
 import React, { useCallback, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import diaryPostApi from "../../api/api/memoryrecord/diaryPostApi";
 
 export default function MemoryRecord() {
     const [isUploading, setIsUploading] = useState(false);
     const [userName, setUserName] = useState("000");
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
     const inputRef = useRef(null);
     const navigate = useNavigate();
 
@@ -37,8 +37,8 @@ export default function MemoryRecord() {
 
     const onUploadImageButtonClick = useCallback(() => {
         setIsUploading(true);
-
         if (!inputRef.current) return;
+
         inputRef.current.value = "";
         inputRef.current.click();
 
@@ -50,16 +50,29 @@ export default function MemoryRecord() {
         window.addEventListener("focus", handleFocusBack);
     }, []);
 
-    const Save = () => {
+    const Save = async () => {
         const { comment, song, images } = formData;
+        const memberId = Number(localStorage.getItem("memberId"));
 
-        const form = new FormData();
-        form.append("comment", comment);
-        form.append("song", song);
-        images.forEach(file => {
-            form.append("images", file);
-        });
-    }
+        if (!memberId) {
+            alert("로그인이 필요합니다.");
+            navigate("/login");
+            return;
+        }
+
+        const diaryId = await diaryPostApi(memberId, comment, song, images);
+
+        if (diaryId) {
+            alert(`${ diaryId } 기억이 저장되었습니다!`);
+            setFormData({
+                comment: "",
+                song: "",
+                images: [],
+            });
+        } else {
+            alert("저장에 실패했습니다. 다시 시도해 주세요.");
+        }
+    };
     
     return (
         <S.RecordLayout>
