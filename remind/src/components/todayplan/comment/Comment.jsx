@@ -1,7 +1,8 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import * as S from "./Comment.style";
 import ArchivePostApi from "../../../api/api/todayplan/ArchivePostApi";
 import ImagePostApi from "../../../api/api/todayplan/ImagePostApi";
+import suggestionGetApi from "../../../api/api/todayplan/suggestionGetApi";
 
 export default function Comment({ suggestionId }) {
     const [isSaved, setIsSaved] = useState(false);
@@ -10,7 +11,7 @@ export default function Comment({ suggestionId }) {
     const inputRef = useRef(null);
 
     const saveClick = async () => {
-        const memberId = Number(localStorage.getItem("memberId"));
+        const memberId = Number(localStorage.getItem("userId"));
 
         const success = await ArchivePostApi(suggestionId, memberId);
 
@@ -40,7 +41,7 @@ export default function Comment({ suggestionId }) {
         setImages((prev) => [...prev, ...selectFiles]);
         setIsUploading(false);
 
-        const success = await ImagePostApi(suggestionId, selectFiles);
+        await ImagePostApi(suggestionId, selectFiles);
 
         e.target.value = null;
     }, [suggestionId]);
