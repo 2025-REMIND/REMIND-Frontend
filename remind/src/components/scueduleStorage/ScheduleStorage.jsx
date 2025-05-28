@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Header from './header/StorageHeader';
 import * as S from './ScheduleStorage.style';
 import { StorageTitle } from './title/StorageTitle';
@@ -13,70 +13,122 @@ import LocationPink from '../../assets/storage/location-pink.png';
 import HeartPink from '../../assets/storage/heart-pink.svg';
 
 import Pagination from './pagination/Pagination';
+
+import createGutApi from '../../api/scueduleStorage/createGutApi';
 export const ScheduleStorage = () => {
   const navigate=useNavigate();
-  const [page, setPage]=useState(1);
+  const [page, setPage]=useState(0);
+  const memberId = localStorage.getItem('userId');
+
+  const [doneList, setDoneList] = useState([]);
+  const [progressList, setProgressList] = useState([]);
+  const [totalPage, setTotalPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+
+  const fetchStorageData = async (pageNum) => {
+    if (!memberId) return; // memberId 없으면 호출하지 않음
+    setLoading(true);
+    try {
+      const data = await createGutApi(memberId, pageNum, 1);
+      setDoneList(data.done);
+      setProgressList(data.progress);
+      setTotalPage(data.totalPage);
+    } catch (error) {
+      console.error('일정보관함 조회 실패:', error);
+      setDoneList([]);
+      setProgressList([]);
+      setTotalPage(1);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchStorageData(page);
+  }, [page, memberId]);
+
+
   return (
-    <>
-      <Header />
-      <S.StorageLayout>
-        <StorageTitle
-          title="기록된 순간들"
-          subTitle="다시 꺼내보고 싶은 기억이 하나 생겼어요"
-        />
-        <StorageCard
-          date="2024년 05월 25일"
-          location="여의도 한강 공원"
-          missionTitle="서로에게 궁금했던 점 3가지 질문"
-          missionList={[
-            { text: '돗자리 펴고 음악 감상', completed: true },
-            { text: '노을 보며 맥주 한 잔', completed: true },
-            { text: '산책하기', completed: false },
-          ]}
-          images={[]}
-          backgroundColor="#d7749b"
-          listIcon={ListWhite}
-          locationIcon={LocationWhite}
-          heartIcon={HeartPink}
-          textColor="#ffffff"   // ✅ 흰색 텍스트
+  <>
+    <Header />
+    <S.StorageLayout>
+      {/* 기록된 순간들 */}
+      <StorageTitle
+        title="기록된 순간들"
+        subTitle="다시 꺼내보고 싶은 기억이 하나 생겼어요"
+      />
+      {loading ? (
+        <div>로딩중...</div>
+      ) : doneList.length > 0 ? (
+        doneList.map((item) => (
+          <React.Fragment key={item.suggestionId}>
+            <StorageCard
+              date={item.date}
+              location={item.place}
+              missionTitle={item.missionDescription}
+              missionList={[
+                { text: item.course1, completed: true },
+                { text: item.course2, completed: true },
+                { text: item.course3, completed: true },
+              ]}
+              images={item.images}
+              backgroundColor="#d7749b"
+              listIcon={ListWhite}
+              locationIcon={LocationWhite}
+              heartIcon={HeartPink}
+              textColor="#ffffff"
+            />
+            <StorageCardButtons
+              onNavigate={() => navigate('/todayplan')}
+              onDelete={() => console.log("삭제")}
+            />
+          </React.Fragment>
+        ))
+      ) : (
+        <div>기록된 순간이 없습니다.</div>
+      )}
 
-        />
-        <StorageCardButtons
-          onNavigate={() => navigate('/todayplan')}
-          onDelete={() => console.log("삭제")}
-        />
+      {/* 기다리는 일정들 */}
+      <StorageTitle
+        title="기다리는 일정들"
+        subTitle="우리만의 시간이 아직 시작되지 않았어요"
+      />
+      {loading ? (
+        <div>로딩중...</div>
+      ) : progressList.length > 0 ? (
+        progressList.map((item) => (
+          <React.Fragment key={item.suggestionId}>
+            <StorageCard
+              date={item.date}
+              location={item.place}
+              missionTitle={item.missionDescription}
+              missionList={[
+                { text: item.course1, completed: false },
+                { text: item.course2, completed: false },
+                { text: item.course3, completed: false },
+              ]}
+              images={item.images}
+              backgroundColor="#fff"
+              listIcon={ListPink}
+              locationIcon={LocationPink}
+              heartIcon={HeartPink}
+              textColor="#d7749b"
+            />
+            <StorageCardButtons
+              onNavigate={() => console.log("바로가기")}
+              onDelete={() => console.log("삭제")}
+            />
+          </React.Fragment>
+        ))
+      ) : (
+        <div>기다리는 일정이 없습니다.</div>
+      )}
 
-        <StorageTitle
-          title="기다리는 일정들"
-          subTitle="우리만의 시간이 아직 시작되지 않았어요"
-        />
-        <StorageCard
-          date="0000년 00월 20일"
-          location="여의도 한강 공원"
-          missionTitle="서로에게 궁금했던 점 3가지 질문"
-          missionList={[
-            { text: '돗자리 펴고 음악 감상', completed: true },
-            { text: '노을 보며 맥주 한 잔', completed: true },
-            { text: '산책하기', completed: false },
-          ]}
-          images={[]}
-          listIcon={ListPink}
-          locationIcon={LocationPink}
-          heartIcon={HeartPink}
-          textColor='#d7749b'   // ✅ 흰색 텍스트
-
-        />
-        <StorageCardButtons
-          onNavigate={() => console.log("바로가기")}
-          onDelete={() => console.log("삭제")}
-        />
-        <Pagination
-  currentPage={page}
-  totalPages={5}
-  onPageChange={setPage}
-/>
-      </S.StorageLayout>
-      
-    </>
+      <Pagination
+        currentPage={page}
+        totalPages={totalPage}
+        onPageChange={setPage}
+      />
+    </S.StorageLayout>
+  </>
   );
-};
+}
