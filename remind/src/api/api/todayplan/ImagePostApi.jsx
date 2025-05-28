@@ -9,7 +9,12 @@ const ImagePostApi = async (suggestionId, images) => {
         });
 
         const response = await defaultInstance.post(`/suggestion/${suggestionId}/image`,
-            form
+            form,
+    {
+        headers: {
+            'Content-Type': undefined,
+        },
+    }
         );
 
         if (response.data.httpStatus === 200) {
