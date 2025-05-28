@@ -1,4 +1,3 @@
-// ✅ StorageCard.jsx
 import React from 'react';
 import * as S from './StorageCard.style';
 const StorageCard = ({
@@ -40,8 +39,8 @@ const StorageCard = ({
         </S.CardLeft>
 
         <S.CardRight>
-          {images.map((src, idx) => (
-            <S.Image key={idx} src={src} alt={`추억 ${idx + 1}`} />
+          {images.slice(0, 4).map((src, idx) => (
+          <S.Image key={idx} src={src} alt={`추억 ${idx + 1}`} />
           ))}
         </S.CardRight>
       </S.CardContent>
