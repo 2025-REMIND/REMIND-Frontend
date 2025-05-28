@@ -53,7 +53,7 @@ export const Title = styled.div`
     font-weight: 600;
 `
 
-export const SaveButton = styled.div`
+export const SaveButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
