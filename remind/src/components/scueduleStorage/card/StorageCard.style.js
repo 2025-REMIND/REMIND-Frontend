@@ -87,6 +87,7 @@ export const CardRight = styled.div`
 `;
 
 export const Image = styled.img`
+  padding-top:25px;;
   width: 100%;
   height: 80px;
   object-fit: cover;
