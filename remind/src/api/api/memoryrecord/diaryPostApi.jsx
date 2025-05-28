@@ -20,6 +20,10 @@ const diaryPostApi = async (memberId, content, song, images) => {
         if (response.data.httpStatus === 200) {
             console.log("저장 성공");
             return response.data.data.diaryId;
+        } else if (response.data.httpStatus === 400) {
+            console.log("400: 잘못된 요청");
+        } else if (response.data.httpStatus === 500) {
+            console.log("500: 서버 오류 발생");
         }
     }   catch (e) {
             console.log(e);
