@@ -7,7 +7,7 @@ import createPostApi from '../../api/chatbot/CreatePostApi';
 
 const Chatbot = () => {
   const chatEndRef = useRef(null);
-  
+  const [imageFile, setImageFile]=useState(null);
   // 첫 메시지는 고정 인삿말
   const [messages, setMessages] = useState([
     {
@@ -31,7 +31,7 @@ const Chatbot = () => {
 
     try {
       // API 호출
-      const responseContent = await createPostApi(memberId, input);
+      const responseContent = await createPostApi(memberId, input, imageFile);
       // 봇 응답 메시지 추가
       setMessages((prev) => [...prev, { from: 'bot', text: responseContent }]);
     } catch (error) {
@@ -39,6 +39,7 @@ const Chatbot = () => {
     }
 
     setInput('');
+    setImageFile(null);
   };
 
   useEffect(() => {
@@ -58,7 +59,12 @@ const Chatbot = () => {
           ))}
           <div ref={chatEndRef} />
         </S.ChatBox>
-        <ChatInput input={input} setInput={setInput} onSend={handleSend} />
+        <ChatInput 
+          input={input} 
+          setInput={setInput} 
+          onSend={handleSend} 
+          setImageFile={setImageFile}  
+        />
       </S.ChatWrapper>
     </>
   );
