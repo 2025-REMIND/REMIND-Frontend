@@ -1,21 +1,22 @@
 import defaultInstance from "../../utils/instance";
 
-const diaryPostApi = async (memberId, content, song, images) => {
+const diaryPostApi = async (memberId, content, song, image) => {
     try {
         const form = new FormData();
 
-        form.append(
-            "data",
-            new Blob([JSON.stringify({ memberId, content, song })], {
-                type: "application/json",
-            })
-        );
+        const json = JSON.stringify({ memberId, content, song });
+        const blob = new Blob([json], { type: "application/json" });
+        form.append("data", blob);
 
-        images.forEach((file) => {
-            form.append("image", file);
-        });
+        if (image && image.length > 0) {
+            form.append("image", image[0]);
+        }
 
-        const response = await defaultInstance.post(`/diary`, form);
+        const response = await defaultInstance.post(`/diary`, form, {
+        headers: {
+            'Content-Type': undefined,
+        },
+    });
 
         if (response.data.httpStatus === 200) {
             console.log("저장 성공");
