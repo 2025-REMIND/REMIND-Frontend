@@ -34,6 +34,7 @@ export const ScheduleStorage = () => {
     setLoading(true);
     try {
       const data = await createGutApi(memberId, pageNum, 1);
+
       setDoneList(data.done);
       setProgressList(data.progress);
       setTotalPage(data.totalPage);

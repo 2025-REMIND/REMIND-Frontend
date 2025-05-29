@@ -13,10 +13,10 @@ const diaryPostApi = async (memberId, content, song, image) => {
         }
 
         const response = await defaultInstance.post(`/diary`, form, {
-        headers: {
-            'Content-Type': undefined,
-        },
-    });
+            headers: {
+                'Content-Type': undefined,
+            },
+        });
 
         if (response.data.httpStatus === 200) {
             console.log("저장 성공");

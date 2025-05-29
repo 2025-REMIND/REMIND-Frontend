@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {
-    const [userName, setUserName] = useState("000");
+    const [userName, setUserName] = useState("");
     const [time, setTime] = useState("");
 
     const navigate = useNavigate();
@@ -19,6 +19,10 @@ export default function Header() {
         navigate(`/register`);
     };
 
+    useEffect(() => {
+        const storedName = localStorage.getItem("userNickname");
+        if (storedName) setUserName(storedName);
+    }, []);
 
     useEffect(() => {
         const updateTime = () => {
