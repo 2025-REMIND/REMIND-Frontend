@@ -64,7 +64,7 @@ export default function MemoryRecord() {
         const diaryId = await diaryPostApi(memberId, content, song, image);
 
         if (diaryId) {
-            alert(`${ diaryId } 기억이 저장되었습니다!`);
+            alert(`기억이 저장되었습니다!`);
             setFormData({
                 content: "",
                 song: "",
