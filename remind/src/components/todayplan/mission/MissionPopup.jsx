@@ -39,7 +39,7 @@ export default function MissionPopup({ memberId, missionId, onClose, onSave, isC
         setAnswer(answerUpdate);
     };
 
-    const saveClick = async () => {
+    const saveClick = async () => {     
         const requestBody = {
             memberId,
             missionDetailId1: missionIds[0],
@@ -72,6 +72,14 @@ export default function MissionPopup({ memberId, missionId, onClose, onSave, isC
             console.log(e);
         }
     };
+    
+    const handleClose = () => {
+        if (isChecked.every(Boolean)) {
+            setParentChecked(true);
+        }
+
+        onClose();
+    };
 
     return (
         <S.Overlay>
@@ -83,7 +91,7 @@ export default function MissionPopup({ memberId, missionId, onClose, onSave, isC
                     </S.TopLeft>
                     <S.TopRight>
                         <S.SaveButton isSaved = { isSaved } onClick = { saveClick }>저장하기</S.SaveButton>
-                        <S.CloseButton src = { CLOSE } onClick = { onClose } />
+                        <S.CloseButton src = { CLOSE } onClick = { handleClose } />
                     </S.TopRight>
                 </S.Label>
                 <S.Detail>

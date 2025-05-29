@@ -15,9 +15,9 @@ export default function MemoryRecord() {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        comment: "",
+        content: "",
         song: "",
-        images: [],
+        image: [],
     });
     
     const logoClick = () => {
@@ -31,7 +31,7 @@ export default function MemoryRecord() {
         const files = Array.from(e.target.files);
         setFormData(prev => ({
             ...prev,
-            images: [...prev.images, ...files],
+            image: [...prev.image, ...files],
         }))
     }, []);
 
@@ -51,7 +51,7 @@ export default function MemoryRecord() {
     }, []);
 
     const Save = async () => {
-        const { comment, song, images } = formData;
+        const { content, song, image } = formData;
         const memberId = Number(localStorage.getItem("memberId"));
 
         if (!memberId) {
@@ -60,14 +60,14 @@ export default function MemoryRecord() {
             return;
         }
 
-        const diaryId = await diaryPostApi(memberId, comment, song, images);
+        const diaryId = await diaryPostApi(memberId, content, song, image);
 
         if (diaryId) {
             alert(`${ diaryId } 기억이 저장되었습니다!`);
             setFormData({
-                comment: "",
+                content: "",
                 song: "",
-                images: [],
+                image: [],
             });
         } else {
             alert("저장에 실패했습니다. 다시 시도해 주세요.");
