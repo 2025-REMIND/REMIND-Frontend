@@ -1,49 +1,33 @@
-import styled from 'styled-components';
-export const Header=styled.div`
-  background-color: #fdf9f7;
-`
-export const HeaderWrapper = styled.header`
-  position: relative; /* ✅ 기준점으로 설정 */
-  background-color: #e9bdcc;
-  height: 100px;
-  padding: 0 40px;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
+import styled from "styled-components";
+
+export const HeaderLayout = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 30.36vw;
+  background-color: #F6BFCF;
+  width: 100vw;
+  height: 6.25vw;
 `;
 
-export const LogoBox = styled.div`
-  position: absolute; /* ✅ 하단 왼쪽 고정 */
-  bottom: 0;
-  left: 40px;
-  background-color: #bd6f8c;
-  color: white;
-  padding: 10px 24px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+export const UserBox = styled.div`
   display: flex;
+  flex-direction: row;
+`;
+
+export const Home = styled.div`
+  display: flex;
+  justify-content: center;
   align-items: center;
-  font-weight: bold;
-  font-size: 14px;
-
-  img {
-    margin-right: 10px;
-    height: 18px;
-  }
+  background-color: #d7749B;
+  border-radius: 0vw 0vw 2.08vw 2.08vw;
+  width: 21.14vw;
+  height: 3.90vw;
 `;
-
-export const MenuBox = styled.div`
-  position: absolute; /* ✅ 하단 오른쪽 고정 */
-  bottom: 0;
-  right: 40px;
-  display: flex;
-  
-`;
-
 
 export const Tab = styled.div`
   padding: 8px 20px;
-  background-color: ${(props) => (props.active ? 'white' : '#bd6f8c')};
-  color: ${(props) => (props.active ? '#bd6f8c' : 'white')};
+  background-color: ${(props) => (props.active ? 'white' : '#d7749b')};
+  color: ${(props) => (props.active ? '#d7749b' : 'white')};
   border: 1px solid #bd6f8c;
   border-bottom: none;
   border-top-left-radius: 20px;
