@@ -1,8 +1,11 @@
 import defaultInstance from "../../utils/instance";
 
-const MissionPutApi = async (missionDetailId) => {
+const MissionPutApi = async (missionDetailId, memberId) => {
+    console.log(missionDetailId);
     try {
-        const response = await defaultInstance.put(`/mission/${missionDetailId}`);
+        const response = await defaultInstance.put(`/mission/${missionDetailId}`, {
+            memberId: memberId
+        });
 
         if (response.data.httpStatus === 200) {
             console.log("호출 성공");

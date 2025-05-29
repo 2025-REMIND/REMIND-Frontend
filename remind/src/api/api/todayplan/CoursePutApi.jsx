@@ -1,8 +1,10 @@
 import defaultInstance from "../../utils/instance";
 
-const CoursePutApi = async (courseDetailId) => {
+const CoursePutApi = async (courseDetailId, memberId) => {
     try {
-        const response = await defaultInstance.put(`/course/${courseDetailId}`);
+        const response = await defaultInstance.put(`/course/${courseDetailId}`, {
+            memberId: memberId
+        });
 
         if (response.data.httpStatus === 200) {
             console.log("호출 성공");

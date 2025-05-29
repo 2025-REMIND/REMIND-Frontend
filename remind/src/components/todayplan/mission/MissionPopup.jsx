@@ -52,6 +52,12 @@ export default function MissionPopup({ memberId, missionId, onClose, onSave, isC
 
         const response = await MissionPostApi(missionId, requestBody);
 
+        for (let i = 0; i < isChecked.length; i++) {
+            if (isChecked[i]) {
+                await MissionPutApi(missionIds[i], memberId);
+            }
+        }
+
         if (response?.httpStatus === 200) {
             setIsSaved(true);
             onSave();
@@ -64,13 +70,6 @@ export default function MissionPopup({ memberId, missionId, onClose, onSave, isC
         setIsChecked(checkUpdate);
 
         if (checkUpdate.some(v => !v)) setParentChecked(false);
-
-        try {
-            const missionId = missionIds[index];
-            await MissionPutApi(missionId);
-        } catch (e) {
-            console.log(e);
-        }
     };
     
     const handleClose = () => {
