@@ -41,10 +41,22 @@ export default function SuggestPopup({ memberId, courseId, onClose, onSave, isCh
         fetchCourse();
     }, [memberId, courseId]);
 
-    const saveClick = () => {
+    const saveClick = async () => {
         setIsSaved((prev) => !prev);
         
-        if (isChecked.every(Boolean)) onSave();
+        try {
+            for (let i = 0; i < isChecked.length; i++) {
+                if (isChecked[i]) {
+                    await CoursePutApi(courseIds[i], memberId);
+                }
+            }
+
+            if (isChecked.every(Boolean)) {
+                onSave();
+            }
+        } catch (e) {
+            console.log(e);
+        }
     };
 
     const checkClick = async (index) => {
@@ -53,20 +65,10 @@ export default function SuggestPopup({ memberId, courseId, onClose, onSave, isCh
         setIsChecked(checkUpdate);
 
         if (checkUpdate.some(v => v === false)) setParentChecked(false);
-
-        try {
-            const id = courseIds[index];
-            await CoursePutApi(id);
-        } catch (e) {
-            console.log(e);
-        }
     };
 
-    const handleClose = () => {
-        if (isChecked.every(Boolean)) {
-            onSave();
-        }
-
+    const handleClose = async () => {
+        await saveClick();
         onClose();
     };
 

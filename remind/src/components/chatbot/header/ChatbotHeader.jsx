@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './ChatbotHeader.style';
 import Icon from '../../../assets/icon.png';
 import HeaderComponents from './Components/HeaderComponents';
 import { useNavigate } from 'react-router-dom';
 export default function ChatbotHeader() {
+    const [userName, setUserName] = useState("");
+
+    useEffect(() => {
+        const storedName = localStorage.getItem("userNickname");
+        if (storedName) setUserName(storedName);
+    }, []);
+
   const navigate=useNavigate();
   return (
     <S.HeaderLayout>
@@ -22,7 +29,7 @@ export default function ChatbotHeader() {
             />
           </S.TabLeftGroup>
           <HeaderComponents
-            input="안녕하세요 000 님"
+            input={`안녕하세요 ${ userName } 님`}
             bgColor="#fffaf8"
           />
         </S.TabContainer>
