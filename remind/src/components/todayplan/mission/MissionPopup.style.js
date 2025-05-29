@@ -60,17 +60,16 @@ export const SaveButton = styled.button`
     width: 15.62vw;
     height: 5.20vw;
     border: 0.05vw solid #D7749B;
+    background-color: #FFFAF8;
+    color: #D7749B;
     border-radius: 1.56vw;
     font-size: 2.34vw;
     font-weight: 600;
 
-    color: ${({ isSaved }) => (
-        isSaved ? "#FFFAF8" : "#D7749B"
-    )};
-
-    background-color: ${({ isSaved }) => (
-        isSaved ? "#D7749B" : "#FFFAF8"
-    )};
+    &:active {
+        background-color: #D7749B;
+        color: #FFFAF8;
+    }
 `
 
 export const CloseButton = styled.img`
