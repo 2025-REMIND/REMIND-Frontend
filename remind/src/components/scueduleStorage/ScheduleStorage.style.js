@@ -13,7 +13,7 @@ export const TitleBlock = styled.div`
   flex-direction: row;
   align-items: baseline;
   gap:1rem;
-  padding-left: 10%;
+  padding-left: 20%;
 `;
 
 export const StorageTitle = styled.div`
@@ -26,4 +26,18 @@ export const StorageTitle = styled.div`
 export const StorageText = styled.div`
   font-size: 1rem;
   color: #9d8c84;
+`;
+
+export const EmptyImageBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 4rem 0;
+  
+
+  img {
+    width: 50rem;
+    max-width: 80%;
+    object-fit: contain;
+  }
 `;
