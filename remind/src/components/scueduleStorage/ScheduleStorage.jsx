@@ -144,7 +144,7 @@ export const ScheduleStorage = () => {
               textColor="#d7749b"
             />
             <StorageCardButtons
-              onNavigate={() => console.log("바로가기")}
+              onNavigate={() => navigate('/todayplan')}
               onDelete={() => handleDelete(item.suggestionId)} // ✅ 여기 연결
             />
           </React.Fragment>
