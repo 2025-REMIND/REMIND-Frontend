@@ -24,8 +24,6 @@ export const InputWrapper = styled.div`
 
 
 export const ImageButton = styled.button`
-  width: 4.4vh;
-  height: 4.4vh;
   border: none;
   border-right: 0.1vh solid #d49bad;
   background-color: transparent;
@@ -44,7 +42,7 @@ export const Input = styled.input`
   outline: none;
   font-size: 1.3vh;
   color: #b36d88;
-
+  
   &::placeholder {
     color: #b36d88;
     opacity: 0.6;
@@ -52,8 +50,6 @@ export const Input = styled.input`
 `;
 
 export const SendButton = styled.button`
-  width: 4.4vh;
-  height: 4.4vh;
   background-color: #bd6f8c;
   border: none;
   border-radius: 1.6vh;
