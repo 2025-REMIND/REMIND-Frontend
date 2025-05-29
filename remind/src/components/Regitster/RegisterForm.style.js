@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
 export const RegitsterFormLayout = styled.div`
-  height: 100vh;
+  height: 85vh;
   display: flex;
   justify-content: center;
-  align-items: center;
   background-color: #fdf9f7;
 `;
 
@@ -12,19 +11,21 @@ export const Wrapper = styled.div`
   background-color: #fff;
   border: 1px solid #ecc5d1;
   border-radius: 20px;
-  width: 1000px;
+  width: 55rem;
   height: 850px;
   margin: auto;
   padding: 60px 80px;  /* 패딩 추가해서 내부 여백 확보 */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 
   h1 {
     text-align: center;
-    color: #b55b7b;
-    font-size: 28px;
-    margin-bottom: 40px;
+    color: #d55b7b;
+    font-size: 40px;
+    margin-bottom: 60px;
   }
 `;
 
@@ -38,7 +39,7 @@ export const Form = styled.form`
 export const Row = styled.div`
   display: flex;
   align-items: flex-start;
-  margin-top: 20px;
+  margin-top: 40px;
 `;
 
 export const Label = styled.label`
@@ -62,14 +63,13 @@ export const InputRow = styled.div`
 
 export const InputWithButton = styled.div`
   display: flex;
-  gap: 10px;
-  width: 650px;
+  gap: 10px;  
 `;
 
 export const Input = styled.input`
   flex: 1;
   padding-left:12px;
-  width: 100%;
+  width: 28rem;
   height: 60px;
   padding-right: 40px;
   border: 1px solid ${(props) => (props.$isError ? '#ff0000' : '#3f2e2e')};
@@ -103,7 +103,7 @@ export const CheckButton = styled.button`
 export const InputWrapper = styled.div`
   position: relative;
   flex: 1;
-  width : 500px;
+  width : 28rem;
 `;
 
 export const ToggleIcon = styled.span`
@@ -126,28 +126,30 @@ export const Guideline = styled.p`
 
 export const SubmitButton = styled.button`
   margin-top: 60px;
-  width: 420px;
-  height: 80px;
+  width:30rem;
+  height: 5rem;
   border-radius: 20px;
-  border: 1px solid #b55b7b;
-  color: #b55b7b;
+  border: 1px solid #d55b7b;
+  color: #d55b7b;
   background-color: white;
   font-weight: bold;
   font-size: 18px;
-  
-  display: block;   /* block 요소로 만들기 */
+    
   margin: 60px auto 0 auto;  /* 위쪽 마진 60px, 좌우 auto로 가운데 정렬 */
 
   &:hover {
-    background-color: #fde8f0;
+    background-color: #fce4ec;  
+    color:white;
+        
+    border: none;
   }
 `;
 
 export const LoginText = styled.p`
-  margin-top: 24px;
+  margin-top: 40px;
   text-align: center;
   color: #666;
-  font-size: 14px;
+  font-size: 18px;
   text-decoration: underline;
   cursor: pointer;
 `;

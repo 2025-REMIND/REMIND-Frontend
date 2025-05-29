@@ -11,6 +11,9 @@ import ListPink from '../../assets/storage/list-pink.svg';
 import LocationWhite from '../../assets/storage/location-white.png';
 import LocationPink from '../../assets/storage/location-pink.png';
 import HeartPink from '../../assets/storage/heart-pink.svg';
+import NoStoragePink from '../../assets/storage/nostorage-pink.svg';
+import NoStorageWhite from '../../assets/storage/nostorage-white.svg';
+
 
 import Pagination from './pagination/Pagination';
 
@@ -102,7 +105,16 @@ export const ScheduleStorage = () => {
           </React.Fragment>
         ))
       ) : (
-        <div>기록된 순간이 없습니다.</div>
+       <>
+    <S.EmptyImageBox>
+      <img src={NoStoragePink} alt="기록된 순간 없음" />
+    </S.EmptyImageBox>
+    <StorageCardButtons
+      onNavigate={() => navigate('/todayplan')}
+      onDelete={() => {}}
+      disableDelete={true}  // ✅ 비활성화
+    />
+  </>
       )}
 
       {/* 기다리는 일정들 */}
@@ -138,8 +150,17 @@ export const ScheduleStorage = () => {
           </React.Fragment>
         ))
       ) : (
-        <div>기다리는 일정이 없습니다.</div>
-      )}
+<>
+    <S.EmptyImageBox>
+      <img src={NoStorageWhite} alt="기록된 순간 없음" />
+    </S.EmptyImageBox>
+    <StorageCardButtons
+      onNavigate={() => navigate('/todayplan')}
+      onDelete={() => {}}
+      disableDelete={true}  // ✅ 비활성화
+    />
+  </>      )}
+
 
       <Pagination
         currentPage={page}

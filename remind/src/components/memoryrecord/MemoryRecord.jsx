@@ -52,6 +52,7 @@ export default function MemoryRecord() {
 
     const Save = async () => {
         const { content, song, image } = formData;
+
         const memberId = Number(localStorage.getItem("userId"));
 
         if (!memberId) {
