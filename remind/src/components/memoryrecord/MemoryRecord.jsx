@@ -4,13 +4,13 @@ import RECORD from "../../assets/memoryrecord/memory.svg";
 import BASIC_PLUS from "../../assets/memoryrecord/basic-plusimage.svg";
 import UPLOADING_PLUS from "../../assets/memoryrecord/uploading-plusimage.svg";
 import AllHeader from "../home/components/AllHeader";
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import diaryPostApi from "../../api/api/memoryrecord/diaryPostApi";
 
 export default function MemoryRecord() {
     const [isUploading, setIsUploading] = useState(false);
-    const [userName, setUserName] = useState("000");
+    const [userName, setUserName] = useState("");
     const inputRef = useRef(null);
     const navigate = useNavigate();
 
@@ -52,7 +52,7 @@ export default function MemoryRecord() {
 
     const Save = async () => {
         const { content, song, image } = formData;
-        const memberId = Number(localStorage.getItem("memberId"));
+        const memberId = Number(localStorage.getItem("userId"));
 
         if (!memberId) {
             alert("로그인이 필요합니다.");
@@ -73,6 +73,11 @@ export default function MemoryRecord() {
             alert("저장에 실패했습니다. 다시 시도해 주세요.");
         }
     };
+
+    useEffect(() => {
+        const storedName = localStorage.getItem("userNickname");
+        if (storedName) setUserName(storedName);
+    }, []);
     
     return (
         <S.RecordLayout>
@@ -114,11 +119,11 @@ export default function MemoryRecord() {
                     </S.ImageBox>  
                     <S.CommentBox>
                         <S.CommentText
-                            value = { formData.comment }
+                            value = { formData.content }
                             onChange = { (e) => 
                                 setFormData((prev) => ({
                                     ...prev,
-                                    comment: e.target.value,
+                                    content: e.target.value,
                                 })) 
                             }
                             placeholder = "이때 어떤 일이 있었는지, 지금은 어땠는지 자유롭게 남겨보세요."

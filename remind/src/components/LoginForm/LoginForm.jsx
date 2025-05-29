@@ -43,7 +43,9 @@ export const LoginForm = () => {
       // 로그인 성공
       console.log(typeof(result.data.memberId));
       const memberId = result.data.memberId.toString();
+      const nickname = result.data.nickname.toString();
       localStorage.setItem("userId", memberId);
+      localStorage.setItem("userNickname", nickname);
       navigate('/home');
     } else {
       // 로그인 실패 처리: 에러 코드에 따라 적절히 오류 메시지 설정
