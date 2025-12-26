@@ -102,4 +102,10 @@ export const GoBox = styled.div`
     color: #D7749B;
     font-size: 2.60vw;
     font-weight: 600;
+
+    
+    &:active {
+        background-color: #F6BFCF;
+        color: #FFFAF8;
+    }
 `

@@ -51,17 +51,18 @@ export const SaveBox = styled.div`
     align-items: center;
     width: 26.04vw;
     height: 7.81vw;
-    background-color: ${({ isSaved }) => (
-        isSaved ? "#D7749B" : "#FFFAF8"
-    )};
+    background-color: #FFFAF8;
     border: 0.05vw solid #D7749B;
     border-radius: 2.08vw;
-    color: ${({ isSaved }) => (
-        isSaved ? "#FFFAF8" : "#D7749B"
-    )};
+    color: #D7749B;
     font-size: 2.34vw;
     font-weight: 600;
     box-shadow: 0vw 0.2vw 0.2vw rgba(215, 116, 155, 0.25);
+
+    &:active {
+        background-color: #D7749B;
+        color: #FFFAF8;
+    }
 `
 
 export const BlurOverlay = styled.div`

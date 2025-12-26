@@ -53,6 +53,12 @@ export const CheckBox = styled.div`
     font-weight: 700;
     font-size: 2.08vw;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    
+    &:active {
+        background-color: #F6BFCF;
+        color: #FFFAF8;
+    }
 `
 
 export const Image = styled.img`
